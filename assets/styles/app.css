@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    background: url('../images/background.jpg');
+    background-size: cover;
+}
+
+
+
+h1 {
+    border-bottom: 4px double #ccc;
+}
+
+.site-header {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+}
