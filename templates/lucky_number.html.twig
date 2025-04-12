@@ -1,9 +1,35 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Magic number{% endblock %}
+{% block title %}Lucky Casino{% endblock %}
 
 {% block body %}
-    <h1>Magic number</h1>
-    <p>Welcome to my awesome magical homepage.</p>
-    <p>This is the current magic number: {{ number }}</p>
+
+<div class="slot-machine-container">
+    <h1>Lucky Slot Machine Casino</h1>
+    <div class="slots">
+        <div class="slot">
+            <img src="{{ asset('img/slots/' ~ slot1 ~ '.png') }}" alt="{{ slot1 }}">
+        </div>
+        <div class="slot">
+            <img src="{{ asset('img/slots/' ~ slot2 ~ '.png') }}" alt="{{ slot2 }}">
+        </div>
+        <div class="slot">
+            <img src="{{ asset('img/slots/' ~ slot3 ~ '.png') }}" alt="{{ slot3 }}">
+        </div>
+    </div>
+    <div class="result">
+        {% if win.won %}
+            <div class="win-message">
+                {{ win.message }}
+                <p>Du vann {{ win.amount }} poäng!</p>
+            </div>
+        {% else %}
+            <div class="lose-message">{{ win.message }}</div>
+        {% endif %}
+    </div>
+
+    <a href="{{ path('lucky') }}" class="spin-button">SNURRA IGEN!</a>
+
+</div>
+    
 {% endblock %}

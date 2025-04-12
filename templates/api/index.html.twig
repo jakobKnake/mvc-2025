@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block body %}
+    <div class="api-container">
+        <h1>API-Dokumentation</h1>
+        <div class="api-lista">
+            <p>Sammanställning av alla JSON routes</p>
+            <ul>
+                {% for route in routes %}
+                    <li>
+                        <div class="api-route">
+                            {{ route.path }}
+                        </div>
+                        <div class="api-description">
+                            <b>{{ route.method }}</b> {{ route.description }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+
+{% endblock %}

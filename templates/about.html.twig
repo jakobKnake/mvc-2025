@@ -3,11 +3,33 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1>About</h1>
-    <p>An image which can be clicked on.</p>
-    <a href="{{ asset('img/glider.svg') }}">
-        <img src="{{ asset('img/glider.svg') }}" alt="">
-    </a>
-    <img src="{{ asset('build/images/background.jpg') }}" alt="">
+    <div class="about">
+        <h1>About</h1>
+        <div class="two-column">
+            <div class="column">
+                <h2>Om kursen</h2>
+                <p>Kursen <b>MVC</b> är en av de sista kurserna i termin 2 på programmet 
+                'webbprogrammering' på BTH</p>
+
+                <p>Syftet med kursen är att arbeta med objektorienterad PHP-programmering 
+                i Symfony, enhetstesta, lära sig kodkvalitet och databaskopplingar 
+                med ORM (objekt relational mapping).</p>
+
+                <h3>Länkar</h3>
+                <ul>
+                    <li><a href="https://github.com/dbwebb-se/mvc">Kursens GitHub-repo</a></li>
+                    <li><a href="https://github.com/jakobKnake/mvc-2025">Mitt GitHub-repo</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <figure>
+                    <a href="https://sv.wikipedia.org/wiki/Model-View-Controller">
+                        <img src="{{ asset('img/diagram.png') }}" alt="mvc-diagram">
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

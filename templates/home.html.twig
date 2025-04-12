@@ -3,5 +3,37 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <h1>Home</h1>
+    <div class="home">
+        <h1>Välkommen till min sida</h1>
+
+        <div class="profile">
+            <div class="profile-img">
+                <img src="{{ asset('build/images/jakob.jpg') }}" alt="Bild på mig">
+            </div>
+            <div class="profile-content">
+                <h2>Hej, jag heter Jakob!</h2>
+                <p>Född i Cali, Colombia men uppvuxen i Örebro. Har bott i Örebro i hela mitt liv, 
+                förutom när jag studerande en termin i Australien, CounterTerrorism och Cyber Security. 
+                Just nu bor jag i Gandía, Valencia men har min bas i Örebro.
+                Sedan jag tog gymnasiet har jag jobbat på Epiroc som materialhanterare och kände att 
+                det var dags för något nytt. Under våren och sommaren 2024 studerade jag upp mina 
+                gymnasiebetyg och tog några förberedande kurser på komvux inför denna utbildning.
+                Har alltid tyckt om att gamea, under högstadiet var det främst CS och LOL med kompisar 
+                när jag inte befann mig på fotbollsplanen/träning. Nu blir det varken dataspelande 
+                eller fotbollsträning, något gympass när jag kan är väl den träning som blir av.
+                Min hobby är framförallt fotboll, titta på, spela och snacka om. Mitt lag som jag 
+                följer är Juventus. Har även tagit en första kurs i scouting då jag tycker om att 
+                analysera matcher och spelare.</p>
+
+                <p>Den här webbplatsen är byggd med Symfony som en del av kursen i MVC. 
+                Här kommer jag att samla mina projekt och redovisningstexter under kursens gång.</p>
+
+                <div class="link-buttons">
+                    <a href="{{ path('report') }}" class="link-button">Se mina redovisningar</a>
+                    <a href="{{ path('about') }}" class="link-button">Läs om kursen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

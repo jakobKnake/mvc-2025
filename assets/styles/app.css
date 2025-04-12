@@ -1,24 +1,214 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro');
+
+@import 'slots.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 100%;
+}
+
 body {
     margin: 0 auto;
-    background: url('../images/background.jpg');
-    background-size: cover;
+    line-height: 1.4;
 }
 
-
+h1,
+h2,
+h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 h1 {
+    font-size: 2.4rem;
+    margin-bottom: 2.8rem;
     border-bottom: 4px double #ccc;
+    text-align: center;
 }
 
-.site-header {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 250px;
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+
+p {
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    font-family: Merriweather, serif;
+    color: #333;
+}
+
+
+
+
+.site-header nav ul {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    
+}
+
+.site-header nav a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.site-header nav a:hover {
+    text-decoration: underline;
+}
+
+.site-header nav a.active {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.column img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .two-column {
+        flex-direction: column;
+    }
+    
+    .column {
+        width: 100%;
+    }
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-img {
+        max-width: 300px;
+        margin-bottom: 1rem;
+    }
+    
+    .site-header nav ul {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+}
+
+.home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+
+.about, .redovisningar {
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.profile-img {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.profile-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.profile-content {
+    flex: 2;
+    min-width: 300px;
+
+}
+
+.link-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.link-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #3a3f44;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Source Sans Pro', sans-serif;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.link-button:hover {
+    background-color: #4a5056;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    color: #000;
+    font-size: 0.3rem;
+    border-top: 2px solid #000;
+}
+
+.api-container {
+    padding: 0.7rem;
+    text-align: center;
+}
+
+.api-route, .api-description {
+    background-color: #ccc;
+    color: #000;
+    margin-top: 0.8rem;
+}
+
+.api-lista ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }

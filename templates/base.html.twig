@@ -14,16 +14,20 @@
         {% endblock %}
     </head>
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
-            <span class="site-title">My Symfony Site</span>
+        <header class="site-header">
+            <nav>
+                <ul>
+                    <li><a href="{{ path('home') }}" {% if app.request.attributes.get('_route') == 'home' %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="{{ path('report') }}" {% if app.request.attributes.get('_route') == 'report' %}class="active"{% endif %}>Report</a></li>
+                    <li><a href="{{ path('about') }}" {% if app.request.attributes.get('_route') == 'about' %}class="active"{% endif %}>About</a></li>
+                    <li><a href="{{ path('lucky') }}" {% if app.request.attributes.get('_route') == 'lucky' %}class="active"{% endif %}>Lucky Casino</a></li>
+                    <li><a href="{{ path('api_index') }}" {% if app.request.attributes.get('_route') == 'api_index' %}class="active"{% endif %}>API</a></li>
+                </ul>
+            </nav>
         </header>
-        <nav>
-            <ul>
-                <li><a href="{{ path('home') }}">Home</a></li>
-                <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
-            </ul>
-        </nav>
         {% block body %}{% endblock %}
+        <footer class="footer">
+            <p>&copy; 2025 Jakob Holmström</p>
+        </footer>
     </body>
 </html>
