@@ -4,7 +4,7 @@ MVC Course README
 ![Bild på mig](assets/images/jakob.jpg)
 
 ## About
-Detta repo kommer att användas av mig 'Jakob Holmström' i kursen MVC på programmer 'Webbprogrammering 120hp', Blekinge Tekniska Högskola. Kommer att arbeta med objektorienterad PHP-programmering i Symfony, enhetstestning, kodkvalitet och databaskopplingar med ORM (objekt relational mapping).
+Detta repo kommer att användas av mig 'Jakob Holmström' i kursen MVC på programmet 'Webbprogrammering 120hp', Blekinge Tekniska Högskola. Kommer att arbeta med objektorienterad PHP-programmering i Symfony, enhetstestning, kodkvalitet och databaskopplingar med ORM (objekt relational mapping).
 
 ## Kom igång
 För att klona och köra detta repo lokalt så kan du följa dessa steg:
