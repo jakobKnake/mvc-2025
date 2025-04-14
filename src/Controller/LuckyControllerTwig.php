@@ -47,9 +47,8 @@ class LuckyControllerTwig extends AbstractController
                 'message' => 'JACKPOT! Tre ' . $slot1 . '!',
                 'amount' => 100
             ];
-        }
-        elseif ($slot1 === $slot2 || $slot1 === $slot3 || $slot2 === $slot3) {
-            $symbol = ($slot1 === $slot2) ? $slot1: (($slot2 === $slot3) ? $slot2: $slot1);
+        } elseif ($slot1 === $slot2 || $slot1 === $slot3 || $slot2 === $slot3) {
+            $symbol = ($slot1 === $slot2) ? $slot1 : (($slot2 === $slot3) ? $slot2 : $slot1);
 
             $result = [
                 'won' => true,

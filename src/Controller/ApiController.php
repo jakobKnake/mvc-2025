@@ -24,7 +24,7 @@ class ApiController extends AbstractController
                 'description' => 'Retunerar slumpässig (bland 4) citat med dagens datum samt tidstämpel.'
             ]
         ];
-        
+
 
         return $this->render('api/index.html.twig', ['routes' => $apiRoutes]);
     }

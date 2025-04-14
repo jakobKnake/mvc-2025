@@ -7,6 +7,7 @@
  */
 import './styles/app.css';
 import './styles/slots.css';
+import './styles/pig.css';
 import hello from './js/hello.js';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -18,8 +18,8 @@ class LuckyControllerJson
             'lucky-message' => 'Hi there!',
         ];
 
-       // return new JsonResponse($data);
-       $response = new JsonResponse($data);
+        // return new JsonResponse($data);
+        $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
