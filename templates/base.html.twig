@@ -23,6 +23,7 @@
                     <li><a href="{{ path('lucky') }}" {% if app.request.attributes.get('_route') == 'lucky' %}class="active"{% endif %}>Lucky Casino</a></li>
                     <li><a href="{{ path('api_index') }}" {% if app.request.attributes.get('_route') == 'api_index' %}class="active"{% endif %}>API</a></li>
                     <li><a href="{{ path('pig_init_get') }}" {% if app.request.attributes.get('_route') == 'pig_init_get' %}class="active"{% endif %}>Pig Game</a></li>
+                    <li><a href="{{ path('card') }}" {% if app.request.attributes.get('_route') == 'card' %}class="active"{% endif %}>Kortleken</a></li>
                 </ul>
             </nav>
         </header>
