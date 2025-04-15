@@ -21,7 +21,6 @@ html {
 body {
     margin: 0 auto;
     line-height: 1.4;
-    background-color: #d1ccc7;
 }
 
 h1,
@@ -55,31 +54,6 @@ p {
     color: #333;
 }
 
-
-.site-header {
-    background-color: #403e3c;
-    height: 150px;
-}
-
-.site-header nav ul {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: center;
-    list-style-type: none;
-    padding-top: 1.5rem;    
-}
-
-.site-header nav a {
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.site-header nav a:hover {
-    text-decoration: underline;
-}
 
 .site-header nav a.active {
     background-color: #ff8b6b;
