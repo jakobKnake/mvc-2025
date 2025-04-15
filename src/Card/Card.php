@@ -31,7 +31,7 @@ class Card
     public function draw(): void
     {
         $colors = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
-        $values = ['1', '2', '3', '4', '5', '6', '7', '8', '9',
+        $values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9',
                     '10', 'Jack', 'Queen', 'King'];
         
         $this->color = $colors[array_rand($colors)];
