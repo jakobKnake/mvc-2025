@@ -19,6 +19,7 @@ html {
 body {
     margin: 0 auto;
     line-height: 1.4;
+    background-color: #d1ccc7;
 }
 
 h1,
@@ -53,7 +54,10 @@ p {
 }
 
 
-
+.site-header {
+    background-color: #403e3c;
+    height: 150px;
+}
 
 .site-header nav ul {
     display: flex;
@@ -61,13 +65,13 @@ p {
     align-items: center;
     justify-content: center;
     list-style-type: none;
-    
+    padding-top: 1.5rem;    
 }
 
 .site-header nav a {
     font-size: 1.1rem;
     text-decoration: none;
-    color: #000;
+    color: #fff;
     transition: all 0.3s ease;
 }
 
@@ -76,8 +80,7 @@ p {
 }
 
 .site-header nav a.active {
-    background-color: #0000ff;
-    color: #fff;
+    background-color: #ff8b6b;
 }
 
 .two-column {
@@ -165,6 +168,11 @@ p {
     flex: 2;
     min-width: 300px;
 
+}
+
+.profile-content h2, .profile-content p {
+    border-left: 1px solid #2e2e2e;
+    padding-left: 1rem;
 }
 
 .link-buttons {
