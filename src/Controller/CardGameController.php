@@ -39,10 +39,14 @@ class CardGameController extends AbstractController
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response
     {
-        $card = new CardGraphic;
-        $card->draw();
+        
         $hand = new CardHand;
-        $hand->add($card);
+        for ($i = 0; $i < 5; $i++) {
+            $card = new CardGraphic;
+            $card->draw();
+            $hand->add($card);
+        }
+
         $session->set('card', $card);
         $session->set('hand', $hand);
 
@@ -55,5 +59,24 @@ class CardGameController extends AbstractController
             'hand' => $handSession,
             'data' => $data
         ]);
+    }
+
+    /**
+     * @Route(
+     *      "/session/delete",
+     *      name="session_delete"
+     * )
+     */
+    #[Route("/session/delete", name: "session_delete")]
+    public function sessionDelete(SessionInterface $session): Response
+    {
+        $session->clear();
+
+        $this->addFlash(
+            'notice',
+            'Sessionen är nu raderad!'
+        );
+
+        return $this->redirectToRoute('session');
     }
 }

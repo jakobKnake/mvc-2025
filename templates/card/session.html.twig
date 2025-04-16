@@ -3,36 +3,37 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
-    <h1>Session Debug</h1>
-
-    <h2>Kort</h2>
-    {% if card is defined %}
-        <pre>{{ dump(card) }}</pre>
-    {% else %}
-        <p>Inget att visa. Card sessionen är tom.</p>
-    {% endif %}
-
-    <h2>Hand</h2>
-    {% if hand is defined and hand is not null %}
-        <p>Antal kort i handen: {{ hand.getNumberCards() }}</p>
-        {% for card in hand.getCards() %}
-            <div>{{ card.getCardAsString() }}</div>
-            <pre>{{ dump(card) }}</pre>
-        {% endfor %}
-        <pre>{{ dump(hand) }}</pre>
-    {% else %}
-        <p>Inget att visa. Hand sessionen är tom.</p>
-    {% endif %}
-
-    <h2>All data</h2>
-    {% if data is defined %}
-        {% if data is empty %}
-            <p>Finns men är tom</p>
+    <div class="bg-[#d1ccc7] p-20">
+    {{ include('flash.html.twig') }}
+        <h1>Session Debug</h1>
+      
+        <h2>Hand</h2>
+        {% if hand is defined and hand is not null %}
+            <p>Antal kort i handen: {{ hand.getNumberCards() }}</p>
+            {% for card in hand.getCards() %}
+                {% set cardInfo = card.getCard() %}
+                <div class="text-7xl 
+                    {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                        text-red-600
+                    {% endif %}">
+                    {{ card.getCardAsString() }}
+                </div>
+            {% endfor %}
+            <pre>{{ dump(hand) }}</pre>
         {% else %}
-            <pre>{{ dump(data) }}</pre>
+            <p>Inget att visa. Hand sessionen är tom.</p>
         {% endif %}
-    {% else %}
-        <p>Inget att visa. data är inte definierad.</p>
-    {% endif %}
+
+        <h2>All data</h2>
+        {% if data is defined %}
+            {% if data is empty %}
+                <p>Finns men är tom</p>
+            {% else %}
+                <pre>{{ dump(data) }}</pre>
+            {% endif %}
+        {% else %}
+            <p>Inget att visa. data är inte definierad.</p>
+        {% endif %}
+    </div>
 
 {% endblock %}
