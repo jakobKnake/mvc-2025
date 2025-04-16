@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %}
+    <h1>Session Debug</h1>
+
+    <h2>Kort</h2>
+    {% if card is defined %}
+        <pre>{{ dump(card) }}</pre>
+    {% else %}
+        <p>Inget att visa. Card sessionen är tom.</p>
+    {% endif %}
+
+    <h2>Hand</h2>
+    {% if hand is defined and hand is not null %}
+        <p>Antal kort i handen: {{ hand.getNumberCards() }}</p>
+        {% for card in hand.getCards() %}
+            <div>{{ card.getCardAsString() }}</div>
+            <pre>{{ dump(card) }}</pre>
+        {% endfor %}
+        <pre>{{ dump(hand) }}</pre>
+    {% else %}
+        <p>Inget att visa. Hand sessionen är tom.</p>
+    {% endif %}
+
+    <h2>All data</h2>
+    {% if data is defined %}
+        {% if data is empty %}
+            <p>Finns men är tom</p>
+        {% else %}
+            <pre>{{ dump(data) }}</pre>
+        {% endif %}
+    {% else %}
+        <p>Inget att visa. data är inte definierad.</p>
+    {% endif %}
+
+{% endblock %}
