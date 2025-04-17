@@ -55,8 +55,6 @@
                     <div class="text-9xl 
                         {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
                             text-red-600
-                        {% elseif cardInfo.color == null %}
-                            text-sky-700
                         {% endif %}">
                         {{ card.getCardAsString() }}
                     </div>

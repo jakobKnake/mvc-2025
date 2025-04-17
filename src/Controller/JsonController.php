@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
-
-
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 
 class JsonController
 {
@@ -59,7 +56,7 @@ class JsonController
     #[Route("/api/deck", methods: ['GET'])]
     public function getDeck(SessionInterface $session): Response
     {
-        $deck = new DeckOfCards;
+        $deck = new DeckOfCards();
         $session->set('json_deck', $deck);
         $data = [];
         foreach ($deck->getAllCards() as $card) {
@@ -79,7 +76,7 @@ class JsonController
     {
         $deck = $session->get('json_deck');
         if (!$deck) {
-            $deck = new DeckOfCards;
+            $deck = new DeckOfCards();
         }
         $deck->shuffleDeck();
         $session->set('json_deck', $deck);
@@ -102,7 +99,7 @@ class JsonController
     {
         $deck = $session->get('json_deck');
         if (!$deck) {
-            $deck = new DeckOfCards;
+            $deck = new DeckOfCards();
         }
         $drawnCard = $deck->drawCard();
 
@@ -125,7 +122,7 @@ class JsonController
     {
         $deck = $session->get('json_deck');
         if (!$deck) {
-            $deck = new DeckOfCards;
+            $deck = new DeckOfCards();
         }
         $amount = $deck->countCards();
         if ($number > $amount) {

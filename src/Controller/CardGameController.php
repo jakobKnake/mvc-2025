@@ -5,9 +5,6 @@ namespace App\Controller;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
-
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,8 +38,8 @@ class CardGameController extends AbstractController
      */
     #[Route("/card/deck", name: "deck")]
     public function deck(SessionInterface $session): Response
-    {   
-        $deck = new DeckOfCards;
+    {
+        $deck = new DeckOfCards();
         $session->set('deck', $deck);
 
         $deckObject = $session->get('deck');
@@ -68,7 +65,7 @@ class CardGameController extends AbstractController
         $deckObject = $session->get('deck');
         $deckObject->shuffleDeck();
         $session->set('deck', $deckObject);
-        
+
 
         $data = [
             'cards' => $deckObject->getAllCards(),
@@ -89,10 +86,10 @@ class CardGameController extends AbstractController
     public function drawDeck(SessionInterface $session): Response
     {
         $deckObject = $session->get('deck');
-        $faceDown = new CardGraphic;
+        $faceDown = new CardGraphic();
         $drawnCard = $session->get('drawn_card');
         $drawnCards = $session->get('drawn_cards');
-        
+
 
         $data = [
             'cards' => $deckObject->getAllCards(),
@@ -151,12 +148,12 @@ class CardGameController extends AbstractController
             );
             return $this->redirectToRoute('draw_deck');
         }
-        
+
         $drawnCards = $deckObject->drawCard($number);
 
         $session->set('deck', $deckObject);
         $session->set('drawn_cards', $drawnCards);
-        
+
 
         return $this->redirectToRoute('draw_deck');
     }
@@ -170,28 +167,21 @@ class CardGameController extends AbstractController
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response
     {
-        $cardNull = new CardGraphic;
-        $hand = new CardHand;
-        $hand->add($cardNull);
+        $hand = new CardHand();
         for ($i = 0; $i < 5; $i++) {
-            $card = new CardGraphic;
+            $card = new CardGraphic();
             $card->draw();
             $hand->add($card);
         }
 
-        $session->set('card', $card);
         $session->set('hand', $hand);
-        $session->set('null_card', $cardNull);
 
         $data = [
             'drawn_card' => $session->get('drawn_card'),
             'drawn_cards' => $session->get('drawn_cards'),
-            'card' => $session->get('card'),
             'hand' => $session->get('hand'),
             'deck' => $session->get('deck'),
-            'null_card' => $session->get('null_card'),
             'data' => $session->all()
-
         ];
 
         return $this->render('card/session.html.twig', $data);

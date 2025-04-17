@@ -40,7 +40,48 @@
         </div>
         <div class="kursmoment" id="kmom02">
             <h2>Kmom02</h2>
-            <p>Här visas redovsningstext för kursmomentet</p>
+            <p>Arv, en klass kan ärva från en annan klass. Med att ärva menas att den klass som ärver, 
+            ärver då den andre klassens metoder och egenskaper. Den klass som ärver kan även utöka/överskriva 
+            den andra klassens metoder. Basklassen, även kallat superklassen(parent::) är den klass man ärver ifrån, 
+            den andra kallas för subklass.<br>
+            Komposition är en typ av relation mellan två klasser. En komposition är en 'has-a' relation och det är en 
+            stark relation mellan klasserna. Som exempel så om CardHand förstörs så förstörs Card, alltså korten ägs av 
+            handen.<br>
+            En klass kan använda trait och flera trait. Trait är kod som kan återanvändas av den klass som använder den. 
+            Så en klass kan återanvända trait-koden utan arv.<br>
+            Interface är ett kontrakt som definierar vilka metoder en klass måste ha. Kontraktet, Interfacet berättar 
+            bara vad en klass ska göra men inte hur.</p>
+            <p>Uppgiften i detta kursmoment är jag nöjd med. Jag återanvände mycket kod ifrån övningen med pig 
+            spelet så att skapa hand-klassen och kort-klasserna tog inte så lång tid. Kravet med att dra ett 
+            kort och flera kort missförstod jag lite till en början. Jag blandade ihop det med kravet i JSON 
+            API där draw/:number skulle vara post därav blev det en route som hanterar 2 olika formulär. Jag 
+            fick då vara flexibel i drawCard-metoden så att den kan ta ett argument som på default är satt till 
+            null. Till nästa vecka ska jag uppdatera både metoden så den hanterar nullvärdet och 1 draget kort på samma sätt.<br>
+            Efter att ha fått feedback från förra kursmomentet och läst igenom den så valde jag att utmana mig själv. 
+            Jag valde alltså att lära mig hantera ramverket Tailwind. Aldrig arbetat med det innan och egentligen har 
+            jag knappt använt mig utav CSS ramverk tidigare. Väldigt lite bootstrap i oopython kursen och just därför 
+            valde jag att testa på ett helt nytt ramverk. Enkelt att följa deras dokumentation i hur man installerar 
+            det i Symfony, alla config-filer med mera. Jag har inte hunnit byta ut all tidigare CSS från kmom01 men en del. 
+            Just för att jag är helt ny i detta så tog designen otroligt lång tid och herregud vad svårt det var att 
+            stylea unicode-korten men till slut lyckades det bli snyggt (enligt mig). Så designen är jag nöjd med, 
+            min strukturering av koden är jag nöjd med och de metoder som jag implementerat är jag också nöjd med då de 
+            fungerar för kraven i detta kursmoment. Till senare del i kursen behövs fler metoder läggas in men det tar 
+            jag då. Jag skulle kunna lagt till en återställnings-metod i kortleks-klassen men än så länge funkar det att 
+            bara återställa sessionen istället. Jag skulle även kunna hantera sessionerna bättre och lägga till kontroller 
+            på dom, ifall dom är tomma till exempel och isåfall skapa nya objekt. Men överlag är jag nöjd med min 
+            inlämning och extra nöjd med designen över hela sidan eftersom det tog otroligt lång tid att ändra och testa 
+            på nya syntaxen för Tailwind.</p>
+            <p>Så här långt går det bra att jobba i Symfony. Tycker att materialet som erbjuds är lärande och de länkar 
+            som finns att klicka sig vidare på är väldigt givande. Tänkte testa på att skapa och arbeta med formulär med 
+            Symfonys inbyggda sätt men jag känner att jag måste hinna med den andra kursen också. Nu i detta kursmoment 
+            har det klarnat mer med Model, View och Controller och hur de används för det kändes väldigt rörigt i början 
+            när man precis satte upp sitt projekt med Symfony. Det känns som Symfony erbjuder en del builtIn funktioner 
+            som hade vart coolt att få lära sig men det känns lite tungt att försöka på det helt själv nu mitt i kursen. 
+            Som deras formulär som jag nämnde tidigare. Får väl skapa några egna projekt över sommaren för att testa på.</p>
+            <p>Min TIL för detta kursmoment är framförallt Tailwind CSS men även hur man skriver och tar in parametrar i URL 
+            på detta sätt({number<\d+>}). Jag håller även på att lära mig skriva bättre commit meddelanden och tagga rätt. 
+            Inser nu när jag kollar min logg att jag taggat lite fel på vissa ställen men framöver ska jag bli bättre på 
+            det. Men tycker ändå att jag pushat på rätt sätt om man kan säga så.</p>
         </div>
         <div class="kursmoment" id="kmom03">
             <h2>Kmom03</h2>

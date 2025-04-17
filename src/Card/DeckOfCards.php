@@ -38,7 +38,7 @@ class DeckOfCards
 
         foreach ($colors as $color) {
             foreach ($values as $value) {
-                $card = new CardGraphic;
+                $card = new CardGraphic();
                 $card->setCard($color, $value);
                 $this->cards[] = $card;
             }

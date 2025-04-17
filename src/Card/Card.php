@@ -37,20 +37,6 @@ class Card
     }
 
     /**
-     * Draw a random card.
-     */
-    public function draw(): void
-    {
-        $colors = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
-        $values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9',
-                    '10', 'Jack', 'Queen', 'King'];
-        
-        $this->color = $colors[array_rand($colors)];
-        $this->value = $values[array_rand($values)];
-    
-    }
-
-    /**
      * Get the protected value and color of the card.
      * @return array An array with 'color' and 'value.
      */

@@ -13,6 +13,24 @@
         <a href="{{ path('shuffle_deck') }}" class="link-button">Blanda kortleken</a>
         <a href="{{ path('draw_deck') }}" class="link-button">Dra kort</a>
     </div>
+    <div class="mt-5">
+        <p>De klasser som jag har skapat är:</p>
+        <ul>
+            <li>Card</li>
+            <li>CardGraphic</li>
+            <li>CardHand</li>
+            <li>DeckOfCards</li>
+        </ul>
+        <div class="mt-5">
+            <p>Card är en klass som representerar ett spelkort. CardGraphic har ärvt ifrån Card-klassen
+            och på så sätt överskrivit Card-klassens metod som visar upp kortet som en sträng. 
+            Alltså, istället för en beskrivande text utav kortet så visas en unicode av kortet.</p>
+            <p>CardHand representerar en spelhand, dvs en hand med kort(Card). Relationen mellan Card och CardHand är en komposition.</p>
+            <p>DeckOfCards är en klass som representerar en kortlek. DeckOfCards har en kompostionsrelation med CardGraphic</p>
+            <p>Nedan visas ett UML-diagram över klasserna innehållande deras egenskaper och metoder.</p>
+            <img src="{{ asset('img/uml.png') }}" alt="uml-diagram">
+        </div>
+    </div>
 </div>
 
 {% endblock %}
