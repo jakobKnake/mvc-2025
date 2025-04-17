@@ -22,6 +22,26 @@ class ApiController extends AbstractController
                 'path' => '/api/quote',
                 'method' => 'GET',
                 'description' => 'Retunerar slumpässig (bland 4) citat med dagens datum samt tidstämpel.'
+            ],
+            [
+                'path' => '/api/deck',
+                'method' => 'GET',
+                'description' => 'Retunerar en kortlek sorterad på färg och värde.'
+            ],
+            [
+                'path' => '/api/deck/shuffle',
+                'method' => 'POST',
+                'description' => 'Blandar kortleken.'
+            ],
+            [
+                'path' => '/api/deck/draw',
+                'method' => 'POST',
+                'description' => 'Drar ett kort från kortleken, visar upp det dragna kortet samt antal kort kvar i leken.'
+            ],
+            [
+                'path' => '/api/deck/draw/:number',
+                'method' => 'POST',
+                'description' => 'Drar specifikt antal kort från kortleken, visar upp dem samt antal kort kvar i leken.'
             ]
         ];
 

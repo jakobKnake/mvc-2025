@@ -40,7 +40,7 @@ class CardGameController extends AbstractController
      * )
      */
     #[Route("/card/deck", name: "deck")]
-    public function deck(sessionInterface $session): Response
+    public function deck(SessionInterface $session): Response
     {   
         $deck = new DeckOfCards;
         $session->set('deck', $deck);
@@ -63,7 +63,7 @@ class CardGameController extends AbstractController
      * )
      */
     #[Route("/card/deck/shuffle", name: "shuffle_deck")]
-    public function shuffleDeck(sessionInterface $session): Response
+    public function shuffleDeck(SessionInterface $session): Response
     {
         $deckObject = $session->get('deck');
         $deckObject->shuffleDeck();
@@ -86,7 +86,7 @@ class CardGameController extends AbstractController
      * )
      */
     #[Route("/card/deck/draw", name: "draw_deck", methods: ['GET'])]
-    public function drawDeck(sessionInterface $session): Response
+    public function drawDeck(SessionInterface $session): Response
     {
         $deckObject = $session->get('deck');
         $faceDown = new CardGraphic;
@@ -113,7 +113,7 @@ class CardGameController extends AbstractController
      * )
      */
     #[Route("/card/deck/draw", name: "draw_deck_post", methods: ['POST'])]
-    public function drawDeckPost(Request $request, sessionInterface $session): Response
+    public function drawDeckPost(Request $request, SessionInterface $session): Response
     {
         $deckObject = $session->get('deck');
 
@@ -138,9 +138,19 @@ class CardGameController extends AbstractController
      * )
      */
     #[Route("/card/deck/draw/{number<\d+>}", name: "draw_deck_more", methods: ['GET'])]
-    public function drawDeckMore(int $number, sessionInterface $session): Response
+    public function drawDeckMore(int $number, SessionInterface $session): Response
     {
+
         $deckObject = $session->get('deck');
+        $amount = $deckObject->countCards();
+
+        if ($number > $amount) {
+            $this->addFlash(
+                'warning',
+                'Du kan inte dra fler kort än vad som finns kvar i kortleken!'
+            );
+            return $this->redirectToRoute('draw_deck');
+        }
         
         $drawnCards = $deckObject->drawCard($number);
 
