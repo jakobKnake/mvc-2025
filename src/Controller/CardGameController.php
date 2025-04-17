@@ -175,6 +175,7 @@ class CardGameController extends AbstractController
 
         $data = [
             'drawn_card' => $session->get('drawn_card'),
+            'drawn_cards' => $session->get('drawn_cards'),
             'card' => $session->get('card'),
             'hand' => $session->get('hand'),
             'deck' => $session->get('deck'),

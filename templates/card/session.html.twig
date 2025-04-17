@@ -26,6 +26,25 @@
         {% else %}
         <p>Tomt här. dra kort!!</p>
         {% endif %}
+
+        <h2>Dragna kort</h2>
+        <div class="flex flex-wrap gap-4">
+            {% if drawn_cards is defined and drawn_cards is not null %}
+                {% for card in drawn_cards %}
+                    {% set cardInfo = card.getCard() %}
+                    <div class="text-9xl 
+                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                            text-red-600
+                        {% elseif cardInfo.color == null %}
+                            text-sky-700
+                        {% endif %}">
+                        {{ card.getCardAsString() }}
+                    </div>
+                {% endfor %}
+            {% else %}
+            <p>Tomt här. dra kort!!</p>
+            {% endif %}
+        </div>
       
         <h2>Hand</h2>
         {% if hand is defined and hand is not null %}
