@@ -50,7 +50,12 @@ class CardGraphic extends Card
     }
 
     /**
-     * 
+     * Make the card face down
+     * @return string The unicode for a facedown card.
      */
+    public function cardFaceDown(): string
+    {
+        return "🂠";
+    }
 
 }

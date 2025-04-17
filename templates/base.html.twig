@@ -20,19 +20,26 @@
             </a>
             <nav aria-label="Global navigation" class="w-full flex justify-center items-center">
                 <ul class="flex items-center gap-6 text-base py-6">
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('home') }}" {% if app.request.attributes.get('_route') == 'home' %}class="active"{% endif %}>Home</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('report') }}" {% if app.request.attributes.get('_route') == 'report' %}class="active"{% endif %}>Report</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('about') }}" {% if app.request.attributes.get('_route') == 'about' %}class="active"{% endif %}>About</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('lucky') }}" {% if app.request.attributes.get('_route') == 'lucky' %}class="active"{% endif %}>Lucky Casino</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('api_index') }}" {% if app.request.attributes.get('_route') == 'api_index' %}class="active"{% endif %}>API</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('pig_init_get') }}" {% if app.request.attributes.get('_route') == 'pig_init_get' %}class="active"{% endif %}>Pig Game</a></li>
-                    <li><a class="text-white transition hover:text-white/75" href="{{ path('card') }}" {% if app.request.attributes.get('_route') == 'card' %}class="active"{% endif %}>Kortleken</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'home' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('home') }}">Home</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'report' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('report') }}">Report</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'about' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('about') }}">About</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'lucky' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('lucky') }}">Lucky Casino</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'api_index' %}text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('api_index') }}">API</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'pig_init_get' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('pig_init_get') }}">Pig Game</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'card' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('card') }}">Kortleken</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'session' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('session') }}">Session</a></li>
                 </ul>
             </nav>
         </header>
+        {{ include('flash.html.twig') }}
         {% block body %}{% endblock %}
-        <footer class="footer">
-            <p>&copy; 2025 Jakob Holmström</p>
+        <footer class="footer flex justify-between p-8">
+            <div class="text-white">
+                <p>&copy; 2025 Jakob Holmström</p>
+            </div>
+            <div>
+                <a href="{{ path('session_delete') }}" class="text-5xl">&#128465;</a>
+            </div>
         </footer>
     </body>
 </html>

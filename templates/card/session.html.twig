@@ -6,19 +6,43 @@
     <div class="bg-[#d1ccc7] p-20">
     {{ include('flash.html.twig') }}
         <h1>Session Debug</h1>
+
+        <h2>Förstör sessionen</h2>
+        <div class="mb-2">
+            <a href="{{ path('session_delete') }}" class="text-5xl">&#128465;</a>
+        </div>
+
+        <h2>Draget kort</h2>
+        {% if drawn_card is defined and drawn_card is not null %}
+            {% set cardInfo = drawn_card.getCard() %}
+                    <div class="text-9xl 
+                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                            text-red-600
+                        {% elseif cardInfo.color == null %}
+                            text-sky-700
+                        {% endif %}">
+                        {{ drawn_card.getCardAsString() }}
+                    </div>
+        {% else %}
+        <p>Tomt här. dra kort!!</p>
+        {% endif %}
       
         <h2>Hand</h2>
         {% if hand is defined and hand is not null %}
             <p>Antal kort i handen: {{ hand.getNumberCards() }}</p>
-            {% for card in hand.getCards() %}
-                {% set cardInfo = card.getCard() %}
-                <div class="text-7xl 
-                    {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
-                        text-red-600
-                    {% endif %}">
-                    {{ card.getCardAsString() }}
-                </div>
-            {% endfor %}
+            <div class="flex gap-3 mb-3">
+                {% for card in hand.getCards() %}
+                    {% set cardInfo = card.getCard() %}
+                    <div class="text-9xl 
+                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                            text-red-600
+                        {% elseif cardInfo.color == null %}
+                            text-sky-700
+                        {% endif %}">
+                        {{ card.getCardAsString() }}
+                    </div>
+                {% endfor %}
+            </div>
             <pre>{{ dump(hand) }}</pre>
         {% else %}
             <p>Inget att visa. Hand sessionen är tom.</p>

@@ -4,7 +4,6 @@
 
 @import './slots.css';
 @import './pig.css';
-@import './cards.css';
 
 
 
@@ -193,4 +192,27 @@ p {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+}
+
+.card-game {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #eee;
+    margin-top: 1rem;
+}
+
+.deck-shadow {
+    box-shadow:
+    5px 5px 0 -2px white,
+    5px 5px 0 0 #e5e7eb,
+    10px 10px 0 -2px white,
+    10px 10px 0 0 #e5e7eb,
+    15px 15px 0 -2px white,
+    15px 15px 0 0 #e5e7eb,
+    20px 20px 0 -2px white,
+    20px 20px 0 0 #e5e7eb,
+    25px 25px 0 -2px white,
+    25px 25px 0 0 #e5e7eb,
+    2px 2px 5px rgba(0,0,0,0.15);
 }

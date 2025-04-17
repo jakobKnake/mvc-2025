@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck of cards{% endblock %}
+
+{% block body %}
+<div class="mt-3 p-8">
+    <h1>Kortleken</h1>
+    <p class="text-center mb-2">Antal kort i kortleken: {{ amount }}</p>
+    <div class="flex flex-wrap gap-2 bg-[#367A41] border-8 border-solid border-[#340C02] rounded-xl p-6">
+        {% for card in cards %}
+            {% set cardInfo = card.getCard() %}
+                    <div class="relative w-[80px] h-[120px] bg-white overflow-hidden
+                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                            text-red-600
+                        {% endif %}">
+                        <div class="absolute inset-0 flex items-center justify-center mb-4">
+                            <span class="text-[120px] scale-[1.1]">{{ card.getCardAsString() }}</span>
+                        </div>
+                    </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

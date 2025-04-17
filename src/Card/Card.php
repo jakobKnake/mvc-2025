@@ -26,6 +26,17 @@ class Card
     }
 
     /**
+     * Set color and value of card.
+     * @param string @color The color of the card.
+     * @param string $value The value of the card.
+     */
+    public function setCard(string $color, string $value): void
+    {
+        $this->color = $color;
+        $this->value = $value;
+    }
+
+    /**
      * Draw a random card.
      */
     public function draw(): void
@@ -53,7 +64,7 @@ class Card
 
     /**
      * Get the protected value and color of the card.
-     * Return it as a string.
+     * @return string Return it as a string.
      */
     public function getCardAsString(): string
     {
