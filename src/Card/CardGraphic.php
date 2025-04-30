@@ -9,7 +9,7 @@ namespace App\Card;
 class CardGraphic extends Card
 {
     /**
-     * @var array $cardsMap An array of graphic for each card.
+     * @var array<string, array<string|int, string>> $cardsMap An array of graphic for each card.
      */
     private $cardsMap = [
         "Spades" => [
@@ -43,10 +43,14 @@ class CardGraphic extends Card
      */
     public function getCardAsString(): string
     {
-        if ($this->value === null || $this->color === null) {
-            return "🂠";
+        $card = $this->getCard();
+        $color = $card['color'];
+        $value = $card['value'];
+
+        if ($value === null || $color === null) {
+            return $this->cardFaceDown();
         }
-        return $this->cardsMap[$this->color][$this->value];
+        return $this->cardsMap[$color][$value];
     }
 
     /**

@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use App\Card\CardGraphic;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Exception;
 
 class JsonController
 {
@@ -74,6 +76,7 @@ class JsonController
     #[Route("/api/deck/shuffle", name: "api_shuffle_deck", methods:['POST'])]
     public function getDeckShuffle(SessionInterface $session): Response
     {
+        /** @var DeckOfCards|null $deck */
         $deck = $session->get('json_deck');
         if (!$deck) {
             $deck = new DeckOfCards();
@@ -97,10 +100,12 @@ class JsonController
     #[Route("/api/deck/draw", name: "api_draw_deck", methods: ['POST'])]
     public function getDeckDraw(SessionInterface $session): Response
     {
+        /** @var DeckOfCards|null $deck */
         $deck = $session->get('json_deck');
         if (!$deck) {
             $deck = new DeckOfCards();
         }
+        /** @var CardGraphic $drawnCard */
         $drawnCard = $deck->drawCard();
 
         $session->set('json_deck', $deck);
@@ -120,15 +125,17 @@ class JsonController
     #[Route("/api/deck/draw/{number<\d+>}", name: "api_draw_multi", methods: ['POST'])]
     public function drawDeckNumber(int $number, SessionInterface $session): Response
     {
+        /** @var DeckOfCards|null $deck */
         $deck = $session->get('json_deck');
         if (!$deck) {
             $deck = new DeckOfCards();
         }
         $amount = $deck->countCards();
         if ($number > $amount) {
-            throw new \Exception("Kan inte dra mer kort är vad kortleken tillåter!");
+            throw new Exception("Kan inte dra mer kort är vad kortleken tillåter!");
         }
 
+        /** @var array<int, CardGraphic> $drawnCards */
         $drawnCards = $deck->drawCard($number);
         $session->set('json_deck', $deck);
 

@@ -16,32 +16,19 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  */
 class CardGameController extends AbstractController
 {
-    /**
-     * @Route(
-     *      "/card",
-     *      name="card",
-     *      methods=["GET"]
-     * )
-     */
     #[Route("/card", name: "card")]
     public function home(): Response
     {
         return $this->render('card/home.html.twig');
     }
 
-    /**
-     * @Route(
-     *      "/card/deck",
-     *      name="deck",
-     *      methods=["GET"]
-     * )
-     */
     #[Route("/card/deck", name: "deck")]
     public function deck(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
         $session->set('deck', $deck);
 
+        /** @var DeckOfCards $deckObject */
         $deckObject = $session->get('deck');
 
         $data = [
@@ -52,17 +39,12 @@ class CardGameController extends AbstractController
         return $this->render('card/deck.html.twig', $data);
     }
 
-    /**
-     * @Route(
-     *      "/card/deck/shuffle",
-     *      name="shuffle_deck",
-     *      methods=["GET"]
-     * )
-     */
     #[Route("/card/deck/shuffle", name: "shuffle_deck")]
     public function shuffleDeck(SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deckObject */
         $deckObject = $session->get('deck');
+
         $deckObject->shuffleDeck();
         $session->set('deck', $deckObject);
 
@@ -75,17 +57,12 @@ class CardGameController extends AbstractController
         return $this->render('card/shuffle.html.twig', $data);
     }
 
-    /**
-     * @Route(
-     *      "/card/deck/draw",
-     *      name="draw_deck",
-     *      methods=["GET"]
-     * )
-     */
     #[Route("/card/deck/draw", name: "draw_deck", methods: ['GET'])]
     public function drawDeck(SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deckObject */
         $deckObject = $session->get('deck');
+
         $faceDown = new CardGraphic();
         $drawnCard = $session->get('drawn_card');
         $drawnCards = $session->get('drawn_cards');
@@ -102,43 +79,34 @@ class CardGameController extends AbstractController
         return $this->render('card/draw.html.twig', $data);
     }
 
-    /**
-     * @Route(
-     *      "/card/deck/draw",
-     *      name="draw_deck_post",
-     *      methods=["POST"]
-     * )
-     */
     #[Route("/card/deck/draw", name: "draw_deck_post", methods: ['POST'])]
     public function drawDeckPost(Request $request, SessionInterface $session): Response
     {
+        /** @var DeckOfCards $deckObject */
         $deckObject = $session->get('deck');
 
         if ($request->request->has('number')) {
             $number = $request->request->get('number');
-            $drawnCards = $deckObject->drawCard($number);
+            $numberOfCards = $number !== null ? (int) $number : null;
+            $drawnCards = $deckObject->drawCard($numberOfCards);
             $session->set('drawn_cards', $drawnCards);
-        } else {
-            $drawnCard = $deckObject->drawCard();
-            $session->set('drawn_card', $drawnCard);
+            $session->set('deck', $deckObject);
+            return $this->redirectToRoute('draw_deck');
         }
+
+        $drawnCard = $deckObject->drawCard();
+        $session->set('drawn_card', $drawnCard);
         $session->set('deck', $deckObject);
 
         return $this->redirectToRoute('draw_deck');
     }
 
-    /**
-     * @Route(
-     *      "/card/deck/draw//{number<\d+>}",
-     *      name="draw_deck_more",
-     *      methods=["GET"]
-     * )
-     */
     #[Route("/card/deck/draw/{number<\d+>}", name: "draw_deck_more", methods: ['GET'])]
     public function drawDeckMore(int $number, SessionInterface $session): Response
     {
-
+        /** @var DeckOfCards $deckObject */
         $deckObject = $session->get('deck');
+
         $amount = $deckObject->countCards();
 
         if ($number > $amount) {
@@ -158,14 +126,8 @@ class CardGameController extends AbstractController
         return $this->redirectToRoute('draw_deck');
     }
 
-    /**
-     * @Route(
-     *      "/session",
-     *      name="session"
-     * )
-     */
     #[Route("/session", name: "session")]
-    public function session(Request $request, SessionInterface $session): Response
+    public function session(SessionInterface $session): Response
     {
 
         $data = [
@@ -178,12 +140,6 @@ class CardGameController extends AbstractController
         return $this->render('card/session.html.twig', $data);
     }
 
-    /**
-     * @Route(
-     *      "/session/delete",
-     *      name="session_delete"
-     * )
-     */
     #[Route("/session/delete", name: "session_delete")]
     public function sessionDelete(SessionInterface $session): Response
     {

@@ -9,10 +9,14 @@ namespace App\Card;
 class Card
 {
     /**
-     * @var string $color The color of the card.
-     * @var string $value The value of the card.
+     * @var string|null $color The color of the card.
      */
     protected $color;
+    
+    /**
+     * @var string|null $value The value of the card.
+     */
+    
     protected $value;
 
     /**
@@ -27,7 +31,7 @@ class Card
 
     /**
      * Set color and value of card.
-     * @param string @color The color of the card.
+     * @param string $color The color of the card.
      * @param string $value The value of the card.
      */
     public function setCard(string $color, string $value): void
@@ -38,7 +42,7 @@ class Card
 
     /**
      * Get the protected value and color of the card.
-     * @return array An array with 'color' and 'value.
+     * @return array<string, string|null> An array with 'color' and 'value.
      */
     public function getCard(): array
     {

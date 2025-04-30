@@ -11,7 +11,7 @@ use App\Card\CardGraphic;
 class DeckOfCards
 {
     /**
-     * @var array $cards An array of cards in the deck.
+     * @var array<int, CardGraphic> $cards An array of cards in the deck.
      */
     protected $cards;
 
@@ -55,7 +55,7 @@ class DeckOfCards
 
     /**
      * Get the cards in the deck.
-     * @return array Array with all the cards.
+     * @return array<int, CardGraphic> Array with all the cards.
      */
     public function getAllCards(): array
     {

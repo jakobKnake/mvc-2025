@@ -49,6 +49,7 @@ class HomeController extends AbstractController
     }
     /**
      * Beräkna vinst
+     * @return array<string, bool|int|string> $result
      */
     private function calculateWin(string $slot1, string $slot2, string $slot3): array
     {

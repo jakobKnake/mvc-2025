@@ -11,7 +11,7 @@ use App\Card\Card;
 class CardHand
 {
     /**
-     * @var array $cards Array of Card objects in the hand.
+     * @var array<int, Card> $hand Array of Card objects in the hand.
      */
     private $hand = [];
 
@@ -27,7 +27,7 @@ class CardHand
 
     /**
      * Get all cards in the hand.
-     * @return array Array of the cards in the hand.
+     * @return array<int, Card> Array of the cards in the hand.
      */
     public function getCards(): array
     {

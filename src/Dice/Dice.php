@@ -4,6 +4,9 @@ namespace App\Dice;
 
 class Dice
 {
+    /**
+     * @var int|null $value The number on the dice.
+     */
     protected $value;
 
     public function __construct()
@@ -17,7 +20,10 @@ class Dice
         return $this->value;
     }
 
-    public function getValue(): int
+    /**
+     * @returns int|null
+     */
+    public function getValue(): ?int
     {
         return $this->value;
     }
