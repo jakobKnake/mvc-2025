@@ -28,7 +28,7 @@
             <form method="POST" action="{{ path('api_draw_deck') }}">
                 <input type="submit" value="Dra 1 kort" class="cursor-pointer bg-[#3a3f44] py-2 px-4 rounded text-white mb-2">
             </form>
-            <form method="POST" action="/api/deck/draw/5">
+            <form method="POST" action="{{ path('api_draw_multi', {'number': 5}) }}">
                 <input type="submit" value="Dra 5 kort" class="cursor-pointer bg-[#3a3f44] py-2 px-4 rounded text-white">
             </form>
 

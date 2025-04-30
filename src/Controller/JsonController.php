@@ -117,7 +117,7 @@ class JsonController
         return $response;
     }
 
-    #[Route("/api/deck/draw/{number<\d+>}", methods: ['POST'])]
+    #[Route("/api/deck/draw/{number<\d+>}", name: "api_draw_multi", methods: ['POST'])]
     public function drawDeckNumber(int $number, SessionInterface $session): Response
     {
         $deck = $session->get('json_deck');

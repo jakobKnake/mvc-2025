@@ -167,19 +167,10 @@ class CardGameController extends AbstractController
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response
     {
-        $hand = new CardHand();
-        for ($i = 0; $i < 5; $i++) {
-            $card = new CardGraphic();
-            $card->draw();
-            $hand->add($card);
-        }
-
-        $session->set('hand', $hand);
 
         $data = [
             'drawn_card' => $session->get('drawn_card'),
             'drawn_cards' => $session->get('drawn_cards'),
-            'hand' => $session->get('hand'),
             'deck' => $session->get('deck'),
             'data' => $session->all()
         ];

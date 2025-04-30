@@ -45,25 +45,6 @@
             <p>Tomt här. dra kort!!</p>
             {% endif %}
         </div>
-      
-        <h2>Hand</h2>
-        {% if hand is defined and hand is not null %}
-            <p>Antal kort i handen: {{ hand.getNumberCards() }}</p>
-            <div class="flex gap-3 mb-3">
-                {% for card in hand.getCards() %}
-                    {% set cardInfo = card.getCard() %}
-                    <div class="text-9xl 
-                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
-                            text-red-600
-                        {% endif %}">
-                        {{ card.getCardAsString() }}
-                    </div>
-                {% endfor %}
-            </div>
-            <pre>{{ dump(hand) }}</pre>
-        {% else %}
-            <p>Inget att visa. Hand sessionen är tom.</p>
-        {% endif %}
 
         <h2>All data</h2>
         {% if data is defined %}
