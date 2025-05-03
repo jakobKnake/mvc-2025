@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Docs{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-2">Dokumentation för BlackJack</h1>
+    <div class="flex p-5 gap-5 justify-center content-center">
+        <div class="p-5">
+            <h2>Flödesschema</h2>
+            <p>Spelflödet för spelaren</p>
+            <img class="h-150 w-100 object-contain" src="{{ asset('/img/game/flowchart.png') }}" alt="Flödesschema för spelare i BlackJack">
+        </div>
+        <div class="p-5">
+            <h2>Pseudokod</h2>
+            <p>Pseudokod för lokigen bakom dealerns flöde:</p>
+            <img class="h-100 w-100 object-contain" src="{{ asset('/img/game/pseudocode.png') }}" alt="Bild på pseudokod">
+        </div>
+        <div class="p-5">
+            <h2>Klasser</h2>
+            <p><b>Card</b>. En klass som representerar ett kort.</p>
+            <p><b>CardGraphic</b>. En klass som ärver från Card-klassen som visualiserar kortet.</p>
+            <p><b>CardHand</b>. En klass som representerar en hand med kort.</p>
+            <p><b>DeckOfCards</b>. Klassen representerar kortleken.</p>
+            <p><b>BlackJackRules</b>. Hanterar reglerna i spelet.</p>
+            <p><b>Player</b>. En klass som representerar spelaren.</p>
+            <p><b>Dealer</b>. En klass som representerar dealern.</p>
+            <p><b>GameLogic</b>. En klass som hanterar flödet i spelet.</p>
+        </div>
+    
+        
+    </div>
+{% endblock %}
