@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-
 /**
  * Class representing the dealer in BlackJack.
  * Inheret from Player.

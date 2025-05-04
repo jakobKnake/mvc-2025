@@ -12,11 +12,11 @@ class Card
      * @var string|null $color The color of the card.
      */
     protected $color;
-    
+
     /**
      * @var string|null $value The value of the card.
      */
-    
+
     protected $value;
 
     /**

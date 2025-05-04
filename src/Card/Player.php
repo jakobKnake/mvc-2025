@@ -28,7 +28,7 @@ class Player implements PlayerInterface
      * @var bool $standing Whether the player is standing or not.
      */
     protected $standing = false;
-    
+
 
     /**
      * Constructor, initialize the player.

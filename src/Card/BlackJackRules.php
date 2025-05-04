@@ -17,7 +17,7 @@ class BlackJackRules
     {
         $value = 0;
         $countAce = 0;
-        
+
         foreach ($hand->getCards() as $card) {
             $cardInfo = $card->getCard();
             $cardValue = $cardInfo['value'];
@@ -77,7 +77,7 @@ class BlackJackRules
     public function isBusted(CardHand $hand): bool
     {
         $handValue = $this->calculateHand($hand);
-        
+
         if ($handValue > 21) {
             return true;
         }
