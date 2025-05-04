@@ -16,6 +16,7 @@ interface PlayerInterface
     /**
      * Draw and add a card for the player.
      * @param Card $card The card to add.
+     * @return void
      */
     public function addCard(Card $card);
 

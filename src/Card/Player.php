@@ -32,6 +32,8 @@ class Player implements PlayerInterface
 
     /**
      * Constructor, initialize the player.
+     * @param string $name The name of the player.
+     * @param BlackJackRules $rules The rules of the game.
      */
     public function __construct(string $name, BlackJackRules $rules)
     {
@@ -42,11 +44,11 @@ class Player implements PlayerInterface
 
     /**
      * Get and return the player hand.
-     * @return CardHand
+     * @return array<int, Card>
      */
-    public function getHand(): CardHand
+    public function getHand(): array
     {
-        return $this->hand;
+        return $this->hand->getCards();
     }
 
     /**

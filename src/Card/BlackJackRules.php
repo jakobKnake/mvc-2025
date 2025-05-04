@@ -41,17 +41,17 @@ class BlackJackRules
      * @param int $value The current value of the hand.
      * @return int The updated value.
      */
-    private function decideAceValue(int $count, int $value): int
-    {
+    // private function decideAceValue(int $count, int $value): int
+    // {
 
-        for ($i = 0; $i < $count; $i++) {
-            if ($value + 10 <= 21) {
-                $value += 10;
-            }
-        }
+    //    for ($i = 0; $i < $count; $i++) {
+    //        if ($value + 10 <= 21) {
+    //            $value += 10;
+    //        }
+    //    }
 
-        return $value;
-    }
+    //    return $value;
+    // }
 
     /**
      * Determine if the first 2 cards gives BlackJack.
@@ -89,7 +89,7 @@ class BlackJackRules
      * Following Unibet rules the dealer will always.
      * Draw a card up to value of 16 in hand.
      * Always stays on 17.
-     * @param $dealerHand The hand of the dealer.
+     * @param CardHand $dealerHand The hand of the dealer.
      * @return bool True or False.
      */
     public function canDealerDraw($dealerHand): bool
