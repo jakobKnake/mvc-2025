@@ -19,17 +19,12 @@ class Dealer extends Player
     }
 
     /**
-     * Decide the action of the dealer.
+     * Decide if the dealer should draw card.
      * Based on the rules.
-     * @return string The action made by dealer.
+     * @return bool True if dealer should draw.
      */
-    public function decideAction(): string
+    public function shouldDraw(): bool
     {
-        if ($this->rules->canDealerDraw($this->hand)) {
-            return "Hit";
-        }
-
-        return "Stand";
-
+        return $this->rules->canDealerDraw($this->hand);
     }
 }
