@@ -61,15 +61,4 @@ class Player implements PlayerInterface
         $this->hand->add($card);
     }
 
-    /**
-     * Decide the action of the player.
-     * Will return empty string. Indicates no action made.
-     * The logic of the decisions are mad ein GameLogic class.
-     * @return string The action made by the player.
-     */
-    public function decideAction(): string
-    {
-        return "";
-    }
-
 }
