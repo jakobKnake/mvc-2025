@@ -5,18 +5,18 @@
 {% block body %}
 <div class="bg-cover bg-center h-screen grid grid-cols-3 gap-4" style="background-image: url('{{ asset('img/game/lounge.jpg') }}')">
     <div class="flex flex-col items-center justify-center">
-        <a href="" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-black 
-        font-bold text-xl hover:text-amber-400 transition-colors duration-300 text-center w-40">Black Jack</a>
+        <a href="{{ path('init_game_get') }}" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-amber-400 
+        font-bold text-xl text-center w-40">Black Jack</a>
     </div>
     <div class="mt-10 flex flex-col items-center justify-center space-y-9">
-        <a href="{{ path('lucky') }}" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-black 
-        font-bold text-xl hover:text-amber-400 transition-colors duration-300 text-center w-40">Slots</a>
-        <a href="{{ path('game_doc') }}" class="glass-btn inline-block py-2.5 px-5 rounded-lg text-black 
-        font-bold text-xl hover:text-amber-400 transition-colors duration-300 text-center w-40">Docs</a>
+        <a href="{{ path('lucky') }}" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-amber-400 
+        font-bold text-xl text-center w-40">Slots</a>
+        <a href="{{ path('game_doc') }}" class="glass-btn inline-block py-2.5 px-5 rounded-lg text-amber-400 
+        font-bold text-xl text-center w-40">Docs</a>
     </div>
     <div class="flex flex-col items-center justify-center">
-        <a href="" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-black 
-        font-bold text-xl hover:text-amber-400 transition-colors duration-300 text-center w-40">Poker</a>
+        <a href="" class="glass-btn inline-block py-2.5 px-5 rounded-lg bg-blue-500 text-amber-400 
+        font-bold text-xl text-center w-40">Poker</a>
     </div>
 </div>
 {% endblock %}

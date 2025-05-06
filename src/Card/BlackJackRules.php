@@ -27,9 +27,9 @@ class BlackJackRules
                 $aces++;
             } elseif (in_array($cardValue, ['Jack', 'Queen', 'King'])) {
                 $value += 10;
-            } else {
-                $value += intval($cardValue);
             }
+
+            $value += intval($cardValue);
         }
 
         for ($i = 0; $i < $aces; $i++) {

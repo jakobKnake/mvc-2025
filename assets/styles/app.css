@@ -166,11 +166,9 @@ p {
 
 .footer {
     text-align: center;
-    margin-top: 3rem;
     padding: 2rem;
     color: #000;
     font-size: 0.3rem;
-    border-top: 2px solid #000;
 }
 
 .api-container {
@@ -332,4 +330,11 @@ input {
     backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transform: translateY(-6px);
 }

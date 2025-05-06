@@ -1,0 +1,108 @@
+{% extends "base.html.twig" %}
+
+{% block title %}BlackJack{% endblock %}
+
+{% block body %}
+    <div class="relative z-1 grid grid-rows-2 gap-6 min-h-screen bg-[#367A41] border-8 border-solid border-[#340C02] rounded-xl">
+        <div class="relative p-4">
+            <div class="flex flex-col gap-2 justify-center items-center p-4">
+                <div class="text-white">
+                    {{ dealer.name }}
+                    {% if not hideCard %}
+                        ({{ dealer.getScore() }})
+                    {% endif %}
+                </div>
+                <div class="flex gap-2 flex-wrap justify-center">
+                    {% for card in dealer.getHand() %}
+                        {% set cardInfo = card.getCard() %}
+                        <div class="relative w-[80px] h-[120px] 
+                                {% if loop.index == 2 and hideCard %}
+                                    bg-blue-700
+                                    text-white
+                                {% else %}
+                                    bg-white
+                                {% endif %} overflow-hidden
+                                {% if not (loop.index == 2 and hideCard) and (cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts') %}
+                                    text-red-600
+                                {% endif %}">
+                            <div class="absolute inset-0 flex items-center justify-center mb-4">
+                                <span class="text-[120px] scale-[1.1]">
+                                    {% if loop.index == 2 and hideCard %}
+                                        {{ card.cardFaceDown() }}
+                                    {% else %}
+                                        {{ card.getCardAsString() }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="absolute top-1/2 right-9 transform -translate-y-1/2">
+                <div class="relative deck-shadow w-[80px] h-[120px] bg-blue-700 text-white overflow-hidden">
+                    <div class="absolute inset-0 flex items-center justify-center mb-4">
+                        {% set dCard = dealer.getHand() %}
+                        {% set down = dCard[0] %}
+                        <span class="text-[120px] scale-[1.1]">{{ down.cardFaceDown() }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-2 justify-center items-center p-4">
+            <div class="flex gap-2 flex-wrap justify-center">
+                {% for card in player.getHand() %}
+                    {% set cardInfo = card.getCard() %}
+                    <div class="relative w-[80px] h-[120px] bg-white overflow-hidden
+                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                            text-red-600
+                        {% endif %}">
+                        <div class="absolute inset-0 flex items-center justify-center mb-4">
+                            <span class="text-[120px] scale-[1.1]">{{ card.getCardAsString() }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-white">
+                {{ player.name }}
+                ({{ player.getScore() }})
+            </div>
+            {% if not gameOver %}
+                <div class="flex gap-4 mt-3">
+                    <form action="{{ path('game_hit') }}" method="post">
+                        <input class="inline-block rounded-full bg-lime-300 text-black 
+                                font-bold text-xl hover:bg-lime-500 transition-colors duration-300 text-center h-16 w-16" 
+                        type="submit" name="do_it" value="Hit" 
+                        {% if player.isStanding() or player.isBusted() %}disabled{% endif %}>
+                    </form>
+                    <form action="{{ path('game_stand') }}" method="post">
+                        <input class="inline-block rounded-full bg-red-400 text-black 
+                                font-bold text-xl hover:bg-red-600 transition-colors duration-300 text-center h-16 w-16" 
+                        type="submit" name="do_it" value="Stand"
+                        {% if player.isStanding() or player.isBusted() %}disabled{% endif %}>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if gameOver %}
+            <div class="absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+            md:p-8 w-80 md:w-96 lg:w-[30rem] h-auto min-h-48 md:min-h-64 glass-btn text-center">
+                <h2>Spelet är över!</h2>
+                {% if outcome == "Win" %}
+                    <div class="bg-lime-600 rounded-sm border-lime-300 text-white p-4 text-xl font-bold text-center">Du vann!</div>
+                {% elseif outcome == "Black Jack" %}
+                    <div class="bg-lime-600 rounded-sm border-lime-300 text-white p-4 text-xl font-bold text-center">Black Jack! Du vann!</div>
+                {% elseif outcome == "Loss" %}
+                    <div class="bg-red-600 rounded-sm border-red-300 text-white p-4 text-xl font-bold text-center">Dealern vann!</div>
+                {% elseif outcome == "Bust" %}
+                    <div class="bg-red-600 rounded-sm border-red-300 text-white p-4 text-xl font-bold text-center">Bust! Dealern vinner!</div>
+                {% elseif outcome == "Push" %}
+                    <div class="bg-blue-600 rounded-sm border-blue-300 text-white p-4 text-xl font-bold text-center">Oavgjort!</div>
+                {% endif %}
+                <a href="{{ path('init_game_get') }}" class="link-button mt-2">Spela igen</a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

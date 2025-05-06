@@ -42,6 +42,11 @@ class ApiController extends AbstractController
                 'path' => '/api/deck/draw/:number',
                 'method' => 'POST',
                 'description' => 'Drar specifikt antal kort från kortleken, visar upp dem samt antal kort kvar i leken.'
+            ],
+            [
+                'path' => '/api/game',
+                'method' => 'GET',
+                'description' => 'Visar aktuella ställningen från Black Jack spelet.'
             ]
         ];
 

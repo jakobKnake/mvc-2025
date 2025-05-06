@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Card\DeckOfCards;
 use App\Card\CardGraphic;
+use App\Card\GameLogic;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -155,5 +156,47 @@ class JsonController
         );
         return $response;
     }
+    #[Route("/api/game", name: "api_game", methods: ['GET'])]
+    public function bjApi(SessionInterface $session): Response
+    {
+        /** @var GameLogic|null $game */
+        $game = $session->get("game");
+
+        if (!$game instanceof GameLogic) {
+            return new JsonResponse(['error' => 'Spelet har inte initierats'], 400);
+        }
+
+        $dealer = $game->getDealer();
+        $players = $game->getPlayers();
+        $player = $players[0];
+
+        $playerHand = $player->getHand();
+        $dealerHand = $dealer->getHand();
+
+        $playerCards = [];
+        foreach ($playerHand as $card) {
+            $playerCards[] = $card->getCardAsString();
+        }
+
+        $dealerCards = [];
+        foreach ($dealerHand as $card) {
+            $dealerCards[] = $card->getCardAsString();
+        }
+
+        $data = [
+            'playerCards' => $playerCards,
+            'playerScore' => $player->getScore(),
+            'dealerCards' => $dealerCards,
+            'dealerScore' => $dealer->getScore()
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        );
+        return $response;
+
+    }
+
 
 }
