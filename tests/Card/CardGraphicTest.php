@@ -11,8 +11,6 @@ class CardGraphicTest extends TestCase
 {
     /**
      * Construct the object.
-     * No need to test null default.
-     * Inherits from Card.
      */
     public function testGraphicConstruct()
     {
