@@ -12,6 +12,7 @@
 /tools/**/vendor/
 /tools/**/composer.lock
 .php-cs-fixer.cache
+.phpdoc/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
