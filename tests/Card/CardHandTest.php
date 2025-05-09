@@ -14,7 +14,7 @@ class CardHandTest extends TestCase
      * Add method returns void.
      * Can check results with the other methods.
      */
-    public function testCardHandMethods()
+    public function testCardHandMethods(): void
     {
         # Arrange
         $hand = new CardHand();

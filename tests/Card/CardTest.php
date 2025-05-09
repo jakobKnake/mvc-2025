@@ -14,7 +14,7 @@ class CardTest extends TestCase
      * Verify that the properties are null.
      * As default.
      */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         $card = new Card();
         $this->assertInstanceOf("\App\Card\Card", $card);
@@ -36,7 +36,7 @@ class CardTest extends TestCase
      * Test the method that returns the card as a string.
      * Also testing the setCard method to set the values.
      */
-    public function testCardAsString()
+    public function testCardAsString(): void
     {
         # Arrange
         $card = new Card();
@@ -55,7 +55,6 @@ class CardTest extends TestCase
 
         # Assert
         $this->assertEquals($exp, $res);
-        $this->assertIsString($resStr, 'is a string');
         $this->assertEquals("[10 of Spades]", $resStr);
 
     }

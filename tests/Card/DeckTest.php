@@ -13,7 +13,7 @@ class DeckTest extends TestCase
      * Construct the object.
      * Should be 52 cards in deck.
      */
-    public function testConstructDeck()
+    public function testConstructDeck(): void
     {
         # Arrange
         $deck = new DeckOfCards();
@@ -29,7 +29,7 @@ class DeckTest extends TestCase
     /**
      * Test shuffle desk.
      */
-    public function testShuffle()
+    public function testShuffle(): void
     {
         # Arrange
         $deck = new DeckOfCards();
@@ -38,8 +38,14 @@ class DeckTest extends TestCase
         # First card should be spades 10.
         # Last diamonds king.
         $res = $deck->getAllCards();
-        $first = $res[0]->getCardAsString();
-        $last = end($res)->getCardAsString();
+
+        /** @var CardGraphic $firstCard */
+        $firstCard = $res[0];
+        $first = $firstCard->getCardAsString();
+
+        /** @var CardGraphic $lastCard */
+        $lastCard = end($res);
+        $last = $lastCard->getCardAsString();
 
         # Assert
         $this->assertEquals("🂡", $first);
@@ -50,8 +56,14 @@ class DeckTest extends TestCase
 
         # Arrange
         $shuffled = $deck->getAllCards();
-        $shuffCard = $shuffled[0]->getCardAsString();
-        $shuffleCardSec = end($shuffled)->getCardAsString();
+
+        /** @var CardGraphic $firstShuffledCard */
+        $firstShuffledCard = $shuffled[0];
+        $shuffCard = $firstShuffledCard->getCardAsString();
+
+        /** @var CardGraphic $shuffleCard2 */
+        $shuffleCard2 = end($shuffled);
+        $shuffleCardSec = $shuffleCard2->getCardAsString();
 
         # Assert
         $this->assertNotSame($first, $shuffCard);
@@ -62,12 +74,13 @@ class DeckTest extends TestCase
      * Test draw card method with no parameter.
      * Should return 1 card as default.
      */
-    public function testDrawNoParam()
+    public function testDrawNoParam(): void
     {
         # Arrange
         $deck = new DeckOfCards();
         $cards = $deck->getAllCards();
 
+        /** @var CardGraphic $expCard */
         $expCard = $cards[0];
 
         # Act
@@ -81,16 +94,19 @@ class DeckTest extends TestCase
     /**
      * Test draw card method with parameters.
      */
-    public function testDrawMultiple()
+    public function testDrawMultiple(): void
     {
         # Arrange
         $deck = new DeckOfCards();
         $cards = $deck->getAllCards();
 
+        /** @var CardGraphic $expCard */
         $expCard = $cards[0];
+        /** @var CardGraphic $expCardTwo */
         $expCardTwo = $cards[1];
 
         # Act
+        /** @var array<int, CardGraphic> $res */
         $res = $deck->drawCard(2);
         $amount = $deck->countCards();
 
@@ -102,6 +118,7 @@ class DeckTest extends TestCase
 
         # Draw out of bound. Should automatically draw 50. Not 51.
         # Act
+        /** @var array<int, CardGraphic> $resTwo */
         $resTwo = $deck->drawCard(51);
         $amountTwo = $deck->countCards();
 
@@ -117,8 +134,6 @@ class DeckTest extends TestCase
 
         # Assert
         $this->assertNull($resThree);
-
-
 
     }
 

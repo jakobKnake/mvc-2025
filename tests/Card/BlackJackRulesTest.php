@@ -12,7 +12,7 @@ class BlackJackRulesTest extends TestCase
     /**
      * Test the calculateHand method.
      */
-    public function testCalculateHand()
+    public function testCalculateHand(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -69,7 +69,7 @@ class BlackJackRulesTest extends TestCase
     /**
      * Test calculate empty hand
      */
-    public function testCalculateEmptyHand()
+    public function testCalculateEmptyHand(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -88,7 +88,7 @@ class BlackJackRulesTest extends TestCase
     /**
      * Test if hand is blackjack.
      */
-    public function testIsBlackJackTrue()
+    public function testIsBlackJackTrue(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -114,7 +114,7 @@ class BlackJackRulesTest extends TestCase
     /**
      * Test if hand is not blackjack.
      */
-    public function testIsBlackJackFalse()
+    public function testIsBlackJackFalse(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -150,7 +150,7 @@ class BlackJackRulesTest extends TestCase
     /**
      * Test the busted method.
      */
-    public function testBusted()
+    public function testBusted(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -187,7 +187,7 @@ class BlackJackRulesTest extends TestCase
      * Test canDealerDraw
      * Bool.
      */
-    public function testCanDealerDraw()
+    public function testCanDealerDraw(): void
     {
         # Arrange
         $rules = new BlackJackRules();

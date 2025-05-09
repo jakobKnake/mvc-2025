@@ -9,11 +9,10 @@ use PHPUnit\Framework\TestCase;
  */
 class PlayerTest extends TestCase
 {
-    
     /**
      * Test the constructor.
      */
-    public function testPlayerConstruct()
+    public function testPlayerConstruct(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -27,7 +26,7 @@ class PlayerTest extends TestCase
      * Test method to add cards to player hand.
      * See if player is busted or not.
      */
-    public function testAddCardToPlayer()
+    public function testAddCardToPlayer(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -64,7 +63,7 @@ class PlayerTest extends TestCase
     /**
      * Test if player has black jack.
      */
-    public function testHasPlayerBlackJack()
+    public function testHasPlayerBlackJack(): void
     {
         $rules = new BlackJackRules();
         $player = new Player("jake", $rules);
@@ -93,7 +92,7 @@ class PlayerTest extends TestCase
     /**
      * Test getScore method.
      */
-    public function testGetPlayerScore()
+    public function testGetPlayerScore(): void
     {
         $rules = new BlackJackRules();
         $player = new Player("jake", $rules);
@@ -120,7 +119,7 @@ class PlayerTest extends TestCase
     /**
      * Test stand and isStanding method.
      */
-    public function testPlayerIsStanding()
+    public function testPlayerIsStanding(): void
     {
         # Arrange
         $rules = new BlackJackRules();

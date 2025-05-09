@@ -75,23 +75,28 @@ class DeckOfCards
      * Draw card from deck.
      * @param int|null $num Amount of cards to draw.
      * Null = 1 card.
-     * @return mixed Either return array with cards, one card or no card.
+     * @return CardGraphic|array<int, CardGraphic>|null Either return array with cards, one card or no card.
      */
-    public function drawCard(?int $num = null): mixed
+    public function drawCard(?int $num = null): CardGraphic|array|null
     {
         if ($this->countCards() <= 0) {
             return null;
         }
 
         if ($num === null) {
-            return array_shift($this->cards);
+            /** @var CardGraphic $card */
+            $card = array_shift($this->cards);
+            return $card;
         }
 
         $num = min($num, $this->countCards());
 
+        /** @var array<int, CardGraphic> $drawnCards */
         $drawnCards = [];
         for ($i = 0; $i < $num; $i++) {
-            $drawnCards[] = array_shift($this->cards);
+            /** @var CardGraphic $card */
+            $card = array_shift($this->cards);
+            $drawnCards[] = $card;
         }
 
         return $drawnCards;

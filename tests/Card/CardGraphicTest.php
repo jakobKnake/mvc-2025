@@ -12,7 +12,7 @@ class CardGraphicTest extends TestCase
     /**
      * Construct the object.
      */
-    public function testGraphicConstruct()
+    public function testGraphicConstruct(): void
     {
         # Arrange
         $card = new CardGraphic();
@@ -30,9 +30,9 @@ class CardGraphicTest extends TestCase
     * Test the method that returns the card as a string.
     * Should return as unicode.
     */
-    public function testGraphicAsString()
+    public function testGraphicAsString(): void
     {
-        # Arrange 
+        # Arrange
         $card = new CardGraphic();
 
         # Act
