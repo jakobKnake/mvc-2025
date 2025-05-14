@@ -15,36 +15,43 @@ class ApiController extends AbstractController
         $apiRoutes = [
             [
                 'path' => '/api/lucky/number',
+                'name' => 'api_lucky_num',
                 'method' => 'GET',
                 'description' => 'Retunerar ett slumpmässigt nummer mellan 0-100 med ett kort meddelande.'
             ],
             [
                 'path' => '/api/quote',
+                'name' => 'api_quote',
                 'method' => 'GET',
                 'description' => 'Retunerar slumpässig (bland 4) citat med dagens datum samt tidstämpel.'
             ],
             [
                 'path' => '/api/deck',
+                'name' => 'api_deck',
                 'method' => 'GET',
                 'description' => 'Retunerar en kortlek sorterad på färg och värde.'
             ],
             [
                 'path' => '/api/deck/shuffle',
+                'name' => 'api_shuffle_deck',
                 'method' => 'POST',
                 'description' => 'Blandar kortleken.'
             ],
             [
                 'path' => '/api/deck/draw',
+                'name' => 'api_draw_deck',
                 'method' => 'POST',
                 'description' => 'Drar ett kort från kortleken, visar upp det dragna kortet samt antal kort kvar i leken.'
             ],
             [
                 'path' => '/api/deck/draw/:number',
+                'name' => 'api_draw_multi',
                 'method' => 'POST',
                 'description' => 'Drar specifikt antal kort från kortleken, visar upp dem samt antal kort kvar i leken.'
             ],
             [
                 'path' => '/api/game',
+                'name' => 'api_game',
                 'method' => 'GET',
                 'description' => 'Visar aktuella ställningen från Black Jack spelet.'
             ]

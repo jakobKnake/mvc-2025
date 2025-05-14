@@ -11,7 +11,14 @@
                 {% for route in routes %}
                     <li>
                         <div class="api-route">
-                            {{ route.path }}
+                            {% if route.method == 'GET' %}
+                                <a href="{{ path(route.name) }}">
+                                    {{ route.path }}
+                                </a>
+                            {% else %}
+                                {{ route.path }} (Testa knapparna nedan)
+                            {% endif %}
+                            
                         </div>
                         <div class="api-description">
                             <b>{{ route.method }}</b> {{ route.description }}
@@ -31,8 +38,6 @@
             <form method="POST" action="{{ path('api_draw_multi', {'number': 5}) }}">
                 <input type="submit" value="Dra 5 kort" class="cursor-pointer bg-[#3a3f44] py-2 px-4 rounded text-white">
             </form>
-
-
         </div>
     </div>
     

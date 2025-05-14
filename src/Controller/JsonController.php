@@ -13,7 +13,7 @@ use Exception;
 
 class JsonController
 {
-    #[Route("/api/lucky/number", methods: ['GET'])]
+    #[Route("/api/lucky/number", name: "api_lucky_num", methods: ['GET'])]
     public function jsonNumber(): Response
     {
         $number = random_int(0, 100);
@@ -31,7 +31,7 @@ class JsonController
         return $response;
     }
 
-    #[Route("/api/quote", methods: ['GET'])]
+    #[Route("/api/quote", name: "api_quote", methods: ['GET'])]
     public function getQuote(): Response
     {
         $quotes = [
@@ -56,7 +56,7 @@ class JsonController
         return $response;
     }
 
-    #[Route("/api/deck", methods: ['GET'])]
+    #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function getDeck(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
