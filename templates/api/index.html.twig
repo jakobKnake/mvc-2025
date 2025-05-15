@@ -11,13 +11,17 @@
                 {% for route in routes %}
                     <li>
                         <div class="api-route">
-                            {% if route.method == 'GET' %}
-                                <a href="{{ path(route.name) }}">
-                                    {{ route.path }}
-                                </a>
-                            {% else %}
-                                {{ route.path }} (Testa knapparna nedan)
-                            {% endif %}
+                        {% if route.name == 'api_library_isbn' %}
+                            <a href="{{ path(route.name, {'isbn': '9789189897649'}) }}">
+                                {{ route.path }} (Exempel länk till Bibeln)
+                            </a>
+                        {% elseif route.method == 'GET' %}
+                            <a href="{{ path(route.name) }}">
+                                {{ route.path }}
+                            </a>
+                        {% else %}
+                            {{ route.path }} (Testa knapparna nedan)
+                        {% endif %}
                             
                         </div>
                         <div class="api-description">

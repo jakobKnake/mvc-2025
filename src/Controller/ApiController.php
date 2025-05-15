@@ -54,7 +54,20 @@ class ApiController extends AbstractController
                 'name' => 'api_game',
                 'method' => 'GET',
                 'description' => 'Visar aktuella ställningen från Black Jack spelet.'
+            ],
+            [
+                'path' => '/api/library/books',
+                'name' => 'api_library',
+                'method' => 'GET',
+                'description' => 'Visar samtliga böcker i bibliotekets databas.'
+            ],
+            [
+                'path' => '/api/library/book/<isbn>',
+                'name' => 'api_library_isbn',
+                'method' => 'GET',
+                'description' => 'Visar en av böckerna genom isbn nummer.'
             ]
+
         ];
 
 
