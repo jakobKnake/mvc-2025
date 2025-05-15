@@ -138,7 +138,32 @@
         </div>
         <div class="kursmoment" id="kmom05">
             <h2>Kmom05</h2>
-            <p>Här visas redovsningstext för kursmomentet</p>
+            <p>Det gick bra att jobba igenom övningen och följa med på föreläsningen. 
+            Det jag reagerade på under övningen var framförallt hur snabbare allt gick att skapa med 
+            hjälp av doctrine. Jämfört med att skapa allt med SQL-frågor. Fick en liten känsla av 
+            Workbench 'forward-engineering' av detta.</p>
+            <p>Jag tänkte på att det skulle vara enkelt och tydligt att navigera sig runt. 
+            Sedan tänkte jag även på naturliga navigationer. Och med det menar jag att knapparna 
+            sitter på logiska templates såsom update och delete. Eftersom det är så få böcker i 
+            databasen så valde jag att visa böckerna i en lista istället för i en tabell. 
+            Även för att jag omfamnade dem i en länk för att visa bok baserad på id. Då tänkte 
+            jag att det var onödigt att visa böckerna i en tabell med mer information när man 
+            endå kommer se samma information i 'book_by_id'.<br>
+            I uppdaterings-metoden så valde jag att ha ett formulär ifyllt med alla värden för att 
+            förenkla för användaren. Även för att förenkla request-get då man kanske inte vill uppdatera 
+            alla värden i en bok utan kanske bara en siffra i ISBN till exempel.</p>
+            <p>Jag tycker det gick bra. Väldigt skönt och förenklat att använda sig utav de inbyggda 
+            metoderna som till exempel 'remove()'. Då slapp man skriva massa kod och skapa procedurer 
+            m.m som i databaskursen. Som användningen av find() och findOneBy() istället för att skriva 
+            en SQL-where-sats. Men även att möjligheten att använda SQL finns.</p>
+            <p>Min uppfattning så här långt om ORM är positivt. Som jag skrev tidigare så jämfört med att skriva 
+            ren SQL som i Webtec och databaskursen så känns ORM enklare och naturligare nu när vi arbetar med 
+            Objektorienterar programmering. Eftersom vi tidigare har pratat om SQL-injections så känns detta 
+            sätt säkrare, speciellt nu när jag använder mig utav formulärer och användar inputs som i andra 
+            fall ökar risken för SQL-injections.</p>
+            <p>Min TIL för detta kmom är ORM. Det var enkelt att förstå och hänga med i dokumentationen. 
+            Samt en lättnad att slippa hoppa mellan olika språk. Kul att se hur mycket kod man sparar, 
+            samt tid genom att låta Doctrine generera schema och tabeller.</p>
         </div>
         <div class="kursmoment" id="kmom06">
             <h2>Kmom06</h2>

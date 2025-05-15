@@ -38,4 +38,6 @@
 
     <rule ref="rulesets/unusedcode.xml" />
 
+    <exclude-pattern>*/migrations/*</exclude-pattern>
+
 </ruleset>

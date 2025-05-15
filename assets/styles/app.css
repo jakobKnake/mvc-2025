@@ -338,3 +338,63 @@ input {
     border: 1px solid rgba(255, 255, 255, 0.4);
     transform: translateY(-6px);
 }
+
+.glas {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    display: block;
+    border-radius: 0.2rem;
+    padding: 0.6rem 0.6rem;
+    box-sizing: border-box;
+    width: 32rem;
+    margin-bottom: 1.4rem;
+}
+
+.input:valid {
+    border: 1px solid #08d720;
+}
+
+.input:invalid {
+    border: 1px solid #ff0000;
+}
+
+@media (max-width: 667px) {
+    .input {
+        width: 100%;
+    }
+}
+
+.input-label {
+    font-weight: bold;
+    margin: 2rem 0 0 0;
+    display: block;
+}
+
+.input-label:first-of-type {
+    margin: 1rem 0 0 0;
+}
+
+.input-label::after {
+    content: ":";
+}
+
+
+.form {
+    border-radius: 5px;
+    padding: 1.4rem;
+    background-color: #fff;
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}

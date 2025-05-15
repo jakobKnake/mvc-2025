@@ -30,9 +30,9 @@ final class BookController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
 
-        $title = $request->request->get('book_title');
-        $isbn = $request->request->get('book_isbn');
-        $author = $request->request->get('book_author');
+        $title = (string) $request->request->get('book_title');
+        $isbn = (string) $request->request->get('book_isbn');
+        $author = (string) $request->request->get('book_author');
 
         $book = new Book();
 
@@ -126,9 +126,9 @@ final class BookController extends AbstractController
             );
         }
 
-        $newTitle = $request->request->get('book_title');
-        $newIsbn = $request->request->get('book_isbn');
-        $newAuthor = $request->request->get('book_author');
+        $newTitle = (string) $request->request->get('book_title');
+        $newIsbn = (string) $request->request->get('book_isbn');
+        $newAuthor = (string) $request->request->get('book_author');
 
         $book->setTitle($newTitle)
             ->setIsbn($newIsbn)
@@ -144,6 +144,7 @@ final class BookController extends AbstractController
     #[Route('/library/reset', name: 'library_reset')]
     public function setUpLibrary(ManagerRegistry $doctrine): Response
     {
+        /** @var \Doctrine\ORM\EntityManager $entityManager */
         $entityManager = $doctrine->getManager();
 
         $query = $entityManager->createQuery('DELETE FROM App\Entity\Book b');
