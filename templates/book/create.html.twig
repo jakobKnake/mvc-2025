@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliotek{% endblock %}
+
+{% block body %}
+
+<div class="mt-3 flex flex-col items-center justify-center">
+    <h1 class="text-center">Lilla StadsBibblan</h1>
+    <p class="text-center">Lägg till en bok i Biblioteket.</p>
+
+    <form class="form" method="POST" action="{{ path('book_create_post') }}">
+        <label class="input-label" for="title">Titel</label>
+        <input class="input" required type="text" id="title" name="book_title">
+        <label class="input-label" for="isbn">ISBN</label>
+        <input class="input" required type="text" id="isbn" name="book_isbn">
+        <label class="input-label" for="author">Författare</label>
+        <input class="input" required type="text" id="author" name="book_author">
+        <input class="link-button" type="submit" value="Lägg till bok">
+    </form>
+
+    <div class="flex justify-center items-center mt-4">
+        <a class="link-button" href="{{ path('book_show_all') }}">Visa alla böcker</a>
+    </div>
+</div>
+{% endblock %}

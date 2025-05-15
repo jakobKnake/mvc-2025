@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BookController!{% endblock %}
+{% block title %}Bibliotek{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="text-center">
+    <h1>Lilla StadsBibblan</h1>
+    <p>Här samlas böcker som är värda att ta en titt på.</p>
+    <p>Varsågod och kika runt!</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/knake/dbwebb-kurser/mvc/me/report/src/Controller/BookController.php</code></li>
-        <li>Your template at <code>/home/knake/dbwebb-kurser/mvc/me/report/templates/book/index.html.twig</code></li>
-    </ul>
+    <div class="flex justify-center items-center gap-4">
+        <a class="link-button" href="{{ path('book_show_all') }}">Visa alla böcker</a>
+        <a class="link-button" href="{{ path('book_create_get') }}">Lägg till bok</a>
+        <a class="link-button" href="{{ path('library_reset') }}">Återställ Bibblan</a>
+    </div>
 </div>
 {% endblock %}

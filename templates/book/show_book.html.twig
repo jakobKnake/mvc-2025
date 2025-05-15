@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliotek{% endblock %}
+
+{% block body %}
+
+<div class="mt-3 flex flex-col items-center justify-center">
+    <h1 class="text-center">Lilla StadsBibblan</h1>
+    <p class="text-center">Visar bok med id: '{{ book.getId() }}'</p>
+
+    {% if book.getImage() %}
+        <div class="mt-2 mb-2 w-64 h-auto border border-solid border-black">
+            <img src="{{ asset('img/books/' ~ book.getImage()) }}" alt="Omslag till {{ book.getTitle() }}"
+                class="h-auto w-full object-contain">
+        </div>
+    {% else %}
+        <div class="flex items-center justify-content mt-2 mb-2">
+            <p class="font-extrabold">Ingen bild tillgänglig</p>
+        </div>
+    {% endif %}
+
+    <form class="form" method="POST" action="">
+        <label class="input-label" for="title">Titel</label>
+        <input class="input border border-solid border-black" readonly type="text" id="title" name="book_title" value="{{ book.getTitle() }}">
+        <label class="input-label" for="isbn">ISBN</label>
+        <input class="input border border-solid border-black" readonly type="text" id="isbn" name="book_isbn" value="{{ book.getIsbn() }}">
+        <label class="input-label" for="author">Författare</label>
+        <input class="input border border-solid border-black" readonly type="text" id="author" name="book_author" value="{{ book.getAuthor() }}">
+    </form>
+
+    <div class="flex gap-3 items-center justify-center mt-2">
+        <a class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold rounded-sm py-[0.8rem] px-[1.5rem] " href="{{ path('book_update_get', {'id': book.getId()}) }}">Uppdatera bok</a>
+        <a class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold rounded-sm py-[0.8rem] px-[1.5rem] " href="{{ path('book_delete_by_id', {'id': book.getId()}) }}">Radera bok</a>
+        <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-sm py-[0.8rem] px-[1.5rem] " href="{{ path('book_show_all') }}">Tillbaka till alla böcker</a>
+    </div>
+</div>
+{% endblock %}
