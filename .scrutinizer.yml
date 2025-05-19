@@ -6,6 +6,9 @@ filter:
 
 build:
     image: default-bionic
+    environment:
+        node:
+            version: 16
 
     nodes:
         my-tests:
