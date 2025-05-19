@@ -18,11 +18,17 @@ build:
                 node:
                     version: 16
         analysis:
+            environment:
+                node:
+                    version: 16
             tests:
                 override:
                     - php-scrutinizer-run
                     #- phpcs-run # Not used, missing config file
     tests:
+        environment:
+                node:
+                    version: 16
         override:
             -   command: "composer phpunit"
                 # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
