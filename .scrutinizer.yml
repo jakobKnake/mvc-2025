@@ -11,6 +11,7 @@ build:
             version: 16
     dependencies:
         before:
+            - composer install
             - npm install
             - npm run build
             - php bin/console doctrine:database:create --env=test
