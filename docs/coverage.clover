@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747935795">
-  <project timestamp="1747935795">
+<coverage generated="1747936361">
+  <project timestamp="1747936361">
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/BlackJackRules.php">
       <class name="App\Card\BlackJackRules" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
@@ -12,14 +12,14 @@
       <line num="22" type="stmt" count="13"/>
       <line num="23" type="stmt" count="13"/>
       <line num="25" type="stmt" count="13"/>
-      <line num="26" type="stmt" count="4"/>
-      <line num="27" type="stmt" count="4"/>
+      <line num="26" type="stmt" count="6"/>
+      <line num="27" type="stmt" count="6"/>
       <line num="28" type="stmt" count="13"/>
       <line num="29" type="stmt" count="2"/>
       <line num="32" type="stmt" count="13"/>
       <line num="35" type="stmt" count="15"/>
-      <line num="36" type="stmt" count="4"/>
-      <line num="37" type="stmt" count="4"/>
+      <line num="36" type="stmt" count="6"/>
+      <line num="37" type="stmt" count="6"/>
       <line num="41" type="stmt" count="15"/>
       <line num="49" type="method" name="isBlackJack" visibility="public" complexity="3" crap="3" count="5"/>
       <line num="51" type="stmt" count="5"/>
@@ -32,7 +32,7 @@
       <line num="78" type="method" name="canDealerDraw" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="80" type="stmt" count="4"/>
       <line num="82" type="stmt" count="4"/>
-      <line num="83" type="stmt" count="4"/>
+      <line num="83" type="stmt" count="3"/>
       <line num="86" type="stmt" count="4"/>
       <metrics loc="90" ncloc="63" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
     </file>
@@ -162,7 +162,7 @@
       <line num="105" type="method" name="playDealer" visibility="public" complexity="3" crap="3" count="2"/>
       <line num="107" type="stmt" count="2"/>
       <line num="109" type="stmt" count="2"/>
-      <line num="110" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="1"/>
       <line num="113" type="stmt" count="2"/>
       <line num="120" type="method" name="playerStand" visibility="public" complexity="2" crap="2" count="3"/>
       <line num="122" type="stmt" count="3"/>
@@ -832,12 +832,12 @@
       <line num="53" type="stmt" count="1"/>
       <line num="54" type="stmt" count="1"/>
       <line num="55" type="stmt" count="2"/>
-      <line num="56" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="1"/>
-      <line num="59" type="stmt" count="1"/>
-      <line num="60" type="stmt" count="1"/>
-      <line num="61" type="stmt" count="1"/>
-      <line num="62" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="58" type="stmt" count="2"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="60" type="stmt" count="2"/>
+      <line num="61" type="stmt" count="2"/>
+      <line num="62" type="stmt" count="2"/>
       <line num="64" type="stmt" count="2"/>
       <line num="71" type="method" name="getSymbols" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="73" type="stmt" count="3"/>
