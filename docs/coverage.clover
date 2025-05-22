@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747934076">
-  <project timestamp="1747934076">
+<coverage generated="1747935795">
+  <project timestamp="1747935795">
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/BlackJackRules.php">
       <class name="App\Card\BlackJackRules" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
@@ -12,14 +12,14 @@
       <line num="22" type="stmt" count="13"/>
       <line num="23" type="stmt" count="13"/>
       <line num="25" type="stmt" count="13"/>
-      <line num="26" type="stmt" count="5"/>
-      <line num="27" type="stmt" count="5"/>
+      <line num="26" type="stmt" count="4"/>
+      <line num="27" type="stmt" count="4"/>
       <line num="28" type="stmt" count="13"/>
-      <line num="29" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="2"/>
       <line num="32" type="stmt" count="13"/>
       <line num="35" type="stmt" count="15"/>
-      <line num="36" type="stmt" count="5"/>
-      <line num="37" type="stmt" count="5"/>
+      <line num="36" type="stmt" count="4"/>
+      <line num="37" type="stmt" count="4"/>
       <line num="41" type="stmt" count="15"/>
       <line num="49" type="method" name="isBlackJack" visibility="public" complexity="3" crap="3" count="5"/>
       <line num="51" type="stmt" count="5"/>
@@ -33,7 +33,7 @@
       <line num="80" type="stmt" count="4"/>
       <line num="82" type="stmt" count="4"/>
       <line num="83" type="stmt" count="4"/>
-      <line num="86" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="4"/>
       <metrics loc="90" ncloc="63" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
     </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
@@ -769,25 +769,25 @@
       <class name="App\Entity\Book" namespace="global">
         <metrics complexity="9" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="22" coveredelements="22"/>
       </class>
-      <line num="54" type="method" name="getId" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="56" type="stmt" count="2"/>
-      <line num="63" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="65" type="stmt" count="3"/>
-      <line num="73" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="75" type="stmt" count="2"/>
-      <line num="77" type="stmt" count="2"/>
-      <line num="84" type="method" name="getIsbn" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="86" type="stmt" count="2"/>
-      <line num="94" type="method" name="setIsbn" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="96" type="stmt" count="2"/>
-      <line num="98" type="stmt" count="2"/>
-      <line num="105" type="method" name="getAuthor" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="107" type="stmt" count="2"/>
-      <line num="115" type="method" name="setAuthor" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="117" type="stmt" count="2"/>
-      <line num="119" type="stmt" count="2"/>
-      <line num="126" type="method" name="getImage" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="128" type="stmt" count="2"/>
+      <line num="54" type="method" name="getId" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="56" type="stmt" count="3"/>
+      <line num="63" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="65" type="stmt" count="4"/>
+      <line num="73" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="75" type="stmt" count="3"/>
+      <line num="77" type="stmt" count="3"/>
+      <line num="84" type="method" name="getIsbn" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="86" type="stmt" count="3"/>
+      <line num="94" type="method" name="setIsbn" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="96" type="stmt" count="3"/>
+      <line num="98" type="stmt" count="3"/>
+      <line num="105" type="method" name="getAuthor" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="107" type="stmt" count="3"/>
+      <line num="115" type="method" name="setAuthor" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="117" type="stmt" count="3"/>
+      <line num="119" type="stmt" count="3"/>
+      <line num="126" type="method" name="getImage" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="128" type="stmt" count="3"/>
       <line num="136" type="method" name="setImage" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="138" type="stmt" count="2"/>
       <line num="140" type="stmt" count="2"/>
@@ -803,8 +803,8 @@
       <class name="App\Repository\BookRepository" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="16" type="stmt" count="3"/>
+      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="16" type="stmt" count="4"/>
       <metrics loc="44" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Slot/SlotMachine.php">
@@ -832,12 +832,12 @@
       <line num="53" type="stmt" count="1"/>
       <line num="54" type="stmt" count="1"/>
       <line num="55" type="stmt" count="2"/>
-      <line num="56" type="stmt" count="2"/>
-      <line num="58" type="stmt" count="2"/>
-      <line num="59" type="stmt" count="2"/>
-      <line num="60" type="stmt" count="2"/>
-      <line num="61" type="stmt" count="2"/>
-      <line num="62" type="stmt" count="2"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
       <line num="64" type="stmt" count="2"/>
       <line num="71" type="method" name="getSymbols" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="73" type="stmt" count="3"/>

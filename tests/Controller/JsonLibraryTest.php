@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Book;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -12,18 +14,44 @@ class JsonLibraryTest extends WebTestCase
     /**
      * Test that all routes works.
      */
-    public function testControllerRoutes(): void
+    public function testControllerGetRoute(): void
     {
         # Arrange
         $client = static::createClient();
-        $routes = ['/api/library/books', '/api/library/book/9789189897649'];
 
-        # Act / Assert
-        foreach ($routes as $route) {
-            $client->request('GET', $route);
-            $this->assertResponseIsSuccessful();
-        }
+        # Act
+        $client->request('GET', '/api/library/books');
 
+        # Assert            
+        $this->assertResponseIsSuccessful();
+
+    }
+
+    /**
+     * Test route with isbn.
+     * Create Book with EntityManager.
+     */
+    public function testIsbnRoute(): void
+    {
+        # Arrange
+        $client = static::createClient();
+
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $client->getContainer()->get(EntityManagerInterface::class);
+
+        $book = new Book();
+        $book->setIsbn('12345');
+        $book->setTitle('Test Book Title');
+        $book->setAuthor('Test Author');
+
+        $entityManager->persist($book);
+        $entityManager->flush();
+
+        # Act
+        $client->request('GET', '/api/library/book/12345');
+
+        # Assert
+        $this->assertResponseIsSuccessful();
     }
 
     /**
