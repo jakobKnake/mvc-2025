@@ -1,0 +1,202 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+
+    <div class="mt-4 p-5">
+        <div class="flex flex-col justify-center items-center p-8 text-center">
+            <h1>Metric Analys</h1>
+            <p>På denna sida analyserar jag kodkvaliteten i min PHP-applikation 
+                med fokus på mätning, förbättring och "clean-code" principerna. Med hjälp av
+                <strong>phpmetrics</strong> och <strong>Scrutinizer</strong> undersöker jag min kods kvalitet
+                och gör förbättringar och ändringar baserat på resultaten.
+            </p>
+        </div>
+
+        <div>
+            <h2>Introduktion</h2>
+                <p>I denna analys kommer jag att utgå från dessa 6 mättal:</p>
+                <ul>
+                    <li class="m-3">Codestyle</li>
+                    <li class="m-3">Coverage</li>
+                    <li class="m-3">Complexity</li>
+                    <li class="m-3">Cohesion</li>
+                    <li class="m-3">Coupling</li>
+                    <li class="m-3">CRAP</li>
+                </ul>
+                <p class="mt-4">De sex C:na kan ses som 6 steg till snyggare och bättre kod, därav kommer jag
+                    gå efter de mättalen när jag ska förbättra min kod i min PHP-applikation.
+                </p>
+                <p><strong>Codestyle</strong> mäter hur väl koden följer etablerade standarder för formatering och struktur.
+                    Man kan titta på värden i 'CLOC' (Comment Lines Of Code) där en bra balans kan peka på en välskriven kod 
+                    med lämpliga kommentarer då koden är självförklarande.
+                    En bra kodstil innebär konsekvent indentering, tydliga namnkonventioner och en kodlayout som följer en röd tråd.
+                    Det gör koden lättläst och enklare att underhålla. I mitt projekt använder jag mig utav PHP CS Fixer. Deta verktyg
+                     körs regelbundet vilket ska säkerställa att min kod följer kodstandard.
+                </p>
+                <p><strong>Coverage</strong>, kodtäckning, mäter hur mycket av koden som täcks av tester.
+                    Hög kodtäckning är viktigt då otestad kod kan innehålla dolda buggar som kan upptäckas för sent.
+                    Man bör sträva efter så hög kodtäckning som möjligt eftersom det visar att man gått igenom koden och testat den,
+                    även om 100% kodtäckning inte alltid är nödvändigt.
+                </p>
+                <p><strong>Complexity</strong> mäter hur komplicerad koden är. Man kan tänka på indenteringar
+                    i koden som beslutvägar. Fler indenteringar är fler beslut att ta och därav mer komplicerad.
+                    Högre värden i complexity kan resultera i att koden är svårare att underhålla.
+                </p>
+                <p><strong>Cohesion</strong>, sammanhållning, mäter hur relaterade elementen i en modul hör ihop.
+                    Det innebär alltså att en klass ska ha ett tydligt ansvar (Single responsibility) och de metoder
+                    i klassen ska ha en koppling till det gemensamma ansvaret. Man mäter detta med 'LCOM', Lack of Cohesion of Methods
+                    där ett lågt LCOM-värde är bra cohesion medan ett högt LCOM-värde är dålig cohesion och klassen bör då delas upp.
+                </p>
+                <p><strong>Coupling</strong> är hur mycket kopplingar våra moduler och klasser har med varandra.
+                    Alltså hur beroende våra klasser är av andra klasser. Med löst kopplade klasser menas
+                    klasser som har få beroenden till andra klasser och som andra klasser inte är starkt 
+                    beroende av. Löst koppling är bra att eftersträva då det gör koden mer flexibel, testbar och enklare
+                    att underhålla. Stark koppling är svårare att ändra och testa isolerat. Coupling
+                    mäts genom mätvärdena 'AC' (Afferent Coupling) och 'EC' (Efferent Coupling), där AC är
+                    antal klasser som påverkas av en given klass och EC är antal klasser som given klass tar emot effekter från.
+                </p>
+                <p><strong>CRAP</strong>, Change Risk Anti-Patterns är ett mått som kombinerar två av de sex C:na,
+                    nämligen complexity och coverage. Den kollar alltså hur 'jobbigt' det kommer att vara att ändra på koden 
+                    och det beror på hur komplexiteten är och hur många tester som täcker metoden. Man kan skapa fler tester 
+                    för de metoder med hög CRAP värden för att få ner värdena. Så en metod kan vara komplex men den täcks av flera tester.
+                </p>
+
+            <h2>Phpmetrics</h2>
+                <p>Phpmetrics-rapporten visualiserar mätvärden för min kod vilket ger en bild av kodens kvalitet.
+                    Jag använder mätvärderna för att hitta flaskhalsar och svaga punkter i min kod.
+                </p>
+                <img src="{{ asset('img/metrics/overview.png') }}" alt="En översikt från Phpmetrics rapporten"
+                class="h-auto w-full object-contain mb-4">
+
+            <h3>Förbättringsområden</h3>
+
+            <h4>Errors & Violations</h4>
+            <p>I översiktsbilden visas 8st violations varav 1 är error och 7 är warnings. 
+                Dessa representerara avvikelser från kodstandarder och best practices (Codestyle).
+                Att eliminera dessa är ett bra första steg att förbättra kodkvaliteten då de kan påverka
+                codestyle negativt. Error meddelandet är pågrund av en controller som blivit 'blob/god object', 
+                vilket betyder att den inte följer 'single-responsibility' principen. Detta kan även göra så att 
+                LCOM visar sämre siffror.
+            </p>
+
+            <h4>Begränsad testtäckning</h4>
+            <p>Phpmetrics visar att endast 10 av 22 klasser testas i testmiljön. Det betyder alltså att mer än hälften 
+                inte testas vilket betyder en ökad risk för dolda buggar. Att sikta på en högre coverage kan även 
+                få ner siffrorna i complexity delen.
+            </p>
+
+            <h4>Complexity</h4>
+            <p>Den genomsnittliga cyklomatiska komplexiteten är 4.55 per klass vilket är under den kritiska gränsen (10) som 
+                Tom McCabe introducerat. Trots en hyffsad låg cyklomatisk komplexitet visar maintainability-visualiseringen 
+                flera röda och gula cirklar. Stora röda cirklar indikerar att klassen är svår att underhålla.
+            </p>
+            <img src="{{ asset('img/metrics/complexity.png') }}" alt="Complexity visualisering från Phpmetrics"
+                class="h-auto w-full object-contain mb-4">
+
+            <h4>Rapportens mätvärden</h4>
+            <div class="flex flex-col gap-2 mb-8">
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics1.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics2.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+            </div>
+
+            <h2>Scrutinizer</h2>
+            <p>Scrutinizer-analysen visar kodens styrkor och förbättringsområden. Verktyget gav ett högt
+                betyg på 9.93/10, dock framkommer vissa områden där förbättringar bör göras. När det kommer till 
+                kodtäckning på 25% är det otroligt lågt. Scrutinizer verktyget visar mer detaljerat angående 
+                coverage jämfört med Phpmetrics. Även här visas issues som är kopplade till 'Best Practices' och 
+                codestyle. Men ett högt betyg på kodkvaliteten, tror jag, är resultatet av att regelbundet använda 
+                våra linters under kursens gång.
+            </p>
+            <img src="{{ asset('img/metrics/scrutinizer.png') }}" alt="En översikt från Scrutinizer"
+                class="h-auto w-full object-contain mb-4">
+
+            <h3>Badges</h3>
+                <div class="flex gap-2 mb-8">
+                    <a href="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/quality-score.png?b=main">
+                        <img src="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality">
+                    </a>
+
+                    <a href="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/coverage.png?b=main">
+                        <img src="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/coverage.png?b=main" alt="Scrutinizer Code Coverage">
+                    </a>
+
+                    <a href="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/build.png?b=main">
+                        <img src="https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/build.png?b=main" alt="Scrutinizer Build Status">
+                    </a>
+                </div>
+
+            <h3>Förbättringsområden</h3>
+
+            <h4>Coverage</h4>
+            <p>Som synligt i märket och översiktsbilden är kodens testtäckning endast 25%, vilket är lågt och under rekommendationen.
+                Fler tester behövs och framförallt för min apps controllers som har 0% coverage. Vi har dock inte gått 
+                igenom tester för controllers i denna kurs men dokumentation finns att följa. Risken för dolda buggar ökar 
+                vid låg coverage så det är något jag helts vill undvika då buggar kan bli dyrare ju senare de hittas.
+            </p>
+            
+
+            <h4>CRAP score</h4>
+            <p>Scrutinizer visar att flera av mina metoder och controllers har höga CRAP värden. En kombination
+                av hög komplexitet och låg testning ger högre CRAP Score vilket gör att dessa metoder är
+                riskområden för framtiden när ändringar ska göras. Att välja att flytta ut kod och göra till 
+                klasser istället och då testa klassen kan förbättra coverage och komplexiteten.
+            </p>
+
+            <img src="{{ asset('img/metrics/crap.png') }}" alt="Scrutinizer CRAP Score"
+                class="h-96 w-full object-contain mb-4">
+
+            <h4>Issues</h4>
+            <p>Även Scrutinizer har identifierat 6 issues. Trots att mitt projekt fick höga kvalitetspoäng så 
+            bör dessa issues vara en prioritet att åtgärda.
+            </p>
+
+            <h2>Förbättringar</h2>
+            <p>Baserat på resultaten samt analyserna av Phpmetrics och Scrutinizer har jag kommit fram till 
+                att förbättra dessa områden:
+            </p>
+
+            <h3>Coverage</h3>
+            <p>Både Phpmetrics och Scrutinizer visar att min coverage är låg. Jag planerar att utöka den procenten genom att 
+                skriva fler tester. Vissa av klasserna har 0% täckning eller väldigt låg. Genom att göra detta så förväntar 
+                jag mig ökad coverage samt bättre CRAP Score utan att behöva ändra komplexiteten. Förväntar mig även att 
+                några gula/röda cirklar i Phpmetrics förhoppningsvis blir gröna.
+            </p>
+
+            <h3>Blob/God-object</h3>
+            <p>Jag kommer att fokusera på felmeddelandet från Phpmetrics angående Blob/God-objeketet. Jag planerar att extrahera 
+                kod från den controllern och göra till en egen klass där det går. Jag kanske delar upp controllern till flera mindre 
+                då den innehåller alla Json-uppgifter under kursens gång. Detta kommer förbättra LCOM-värdet, minska komplexiteten samt 
+                ta bort felmeddelandet.
+            </p>
+
+            <h3>Korrigera issues</h3>
+            <p>Jag tänker ta mig itu med de issues och violations som både Phpmetrics och Scrutinizer rapporterade om. I 
+                Scrutinizer handlar det om best practices och några buggar som behöver åtgärdas. Kanske behöver förbättra 
+                kodstilen där det behövs. De violations som Phpmetrics pekar på kan nog åtgärdas genom testning. 
+                Jag förväntar mig att jag kommer eliminera alla felmeddelanden samt kanske ökar kodkvalitetsbetyget något.
+            </p>
+
+            <h3>Komplexitet</h3>
+            <p>Jag kommer även fokusera på komplexiteten i min HomeController. Jag planerar att extrahera kod och skapa 
+                en klass utav min slot maskin. Skapa tester för den klassen och sedan låta controllern hantera klassen på 
+                det sättet istället för att skapa allt i controllern. En controller ska inte innehålla så mycket kod. Jag 
+                förväntar mig en grön cirkel på HomeController, bättre komplexitet värden och ökad coverage.
+            </p>
+
+        </div>
+
+
+    </div>
+
+    
+{% endblock %}

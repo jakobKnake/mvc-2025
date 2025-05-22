@@ -28,8 +28,9 @@
                     <li><a class="{% if app.request.attributes.get('_route') == 'pig_init_get' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('pig_init_get') }}">Pig Game</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'card' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('card') }}">Kortleken</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'game' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('game') }}">Casino Lounge</a></li>
-                    <li><a class="{% if app.request.attributes.get('_route') == 'session' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('session') }}">Session</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'metrics' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('metrics') }}">Metrics Analys</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'library' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('library') }}">Bibliotek</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'session' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('session') }}">Session</a></li>
                 </ul>
             </nav>
         </header>

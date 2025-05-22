@@ -616,25 +616,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-HomeController.html#method_slotMachine"
         },                {
-            "fqsen": "\\App\\Controller\\HomeController\u003A\u003AcalculateWin\u0028\u0029",
-            "name": "calculateWin",
-            "summary": "Ber\u00E4kna\u0020vinst",
-            "url": "classes/App-Controller-HomeController.html#method_calculateWin"
+            "fqsen": "\\App\\Controller\\HomeController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-HomeController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\JsonController",
             "name": "JsonController",
             "summary": "",
             "url": "classes/App-Controller-JsonController.html"
-        },                {
-            "fqsen": "\\App\\Controller\\JsonController\u003A\u003AjsonNumber\u0028\u0029",
-            "name": "jsonNumber",
-            "summary": "",
-            "url": "classes/App-Controller-JsonController.html#method_jsonNumber"
-        },                {
-            "fqsen": "\\App\\Controller\\JsonController\u003A\u003AgetQuote\u0028\u0029",
-            "name": "getQuote",
-            "summary": "",
-            "url": "classes/App-Controller-JsonController.html#method_getQuote"
         },                {
             "fqsen": "\\App\\Controller\\JsonController\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
@@ -661,15 +651,35 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-JsonController.html#method_bjApi"
         },                {
-            "fqsen": "\\App\\Controller\\JsonController\u003A\u003AapiLibrary\u0028\u0029",
+            "fqsen": "\\App\\Controller\\JsonLibrary",
+            "name": "JsonLibrary",
+            "summary": "",
+            "url": "classes/App-Controller-JsonLibrary.html"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonLibrary\u003A\u003AapiLibrary\u0028\u0029",
             "name": "apiLibrary",
             "summary": "",
-            "url": "classes/App-Controller-JsonController.html#method_apiLibrary"
+            "url": "classes/App-Controller-JsonLibrary.html#method_apiLibrary"
         },                {
-            "fqsen": "\\App\\Controller\\JsonController\u003A\u003AapiBookByIsbn\u0028\u0029",
+            "fqsen": "\\App\\Controller\\JsonLibrary\u003A\u003AapiBookByIsbn\u0028\u0029",
             "name": "apiBookByIsbn",
             "summary": "",
-            "url": "classes/App-Controller-JsonController.html#method_apiBookByIsbn"
+            "url": "classes/App-Controller-JsonLibrary.html#method_apiBookByIsbn"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonLucky",
+            "name": "JsonLucky",
+            "summary": "",
+            "url": "classes/App-Controller-JsonLucky.html"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonLucky\u003A\u003AjsonNumber\u0028\u0029",
+            "name": "jsonNumber",
+            "summary": "",
+            "url": "classes/App-Controller-JsonLucky.html#method_jsonNumber"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonLucky\u003A\u003AgetQuote\u0028\u0029",
+            "name": "getQuote",
+            "summary": "",
+            "url": "classes/App-Controller-JsonLucky.html#method_getQuote"
         },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
@@ -846,6 +856,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method___construct"
         },                {
+            "fqsen": "\\App\\Slot\\SlotMachine",
+            "name": "SlotMachine",
+            "summary": "Class\u0020representing\u0020the\u0020Slot\u0020machine.",
+            "url": "classes/App-Slot-SlotMachine.html"
+        },                {
+            "fqsen": "\\App\\Slot\\SlotMachine\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initialize",
+            "url": "classes/App-Slot-SlotMachine.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Slot\\SlotMachine\u003A\u003Aspin\u0028\u0029",
+            "name": "spin",
+            "summary": "Spin\u0020the\u0020machine.\u0020Randomize\u0020the\u0020output.",
+            "url": "classes/App-Slot-SlotMachine.html#method_spin"
+        },                {
+            "fqsen": "\\App\\Slot\\SlotMachine\u003A\u003AcalculateWin\u0028\u0029",
+            "name": "calculateWin",
+            "summary": "Calculate\u0020the\u0020win\u0020of\u0020the\u0020slots\u0020spinned.",
+            "url": "classes/App-Slot-SlotMachine.html#method_calculateWin"
+        },                {
+            "fqsen": "\\App\\Slot\\SlotMachine\u003A\u003AgetSymbols\u0028\u0029",
+            "name": "getSymbols",
+            "summary": "Get\u0020the\u0020slot\u0020symbols.",
+            "url": "classes/App-Slot-SlotMachine.html#method_getSymbols"
+        },                {
+            "fqsen": "\\App\\Slot\\SlotMachine\u003A\u003A\u0024symbols",
+            "name": "symbols",
+            "summary": "",
+            "url": "classes/App-Slot-SlotMachine.html#property_symbols"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -880,5 +920,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Slot",
+            "name": "Slot",
+            "summary": "",
+            "url": "namespaces/app-slot.html"
         }            ]
 );

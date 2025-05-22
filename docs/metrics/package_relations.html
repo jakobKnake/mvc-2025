@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-05-19 11:13:04        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-05-22 13:15:03        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -262,6 +262,11 @@
 
     var relations = [
     {
+        "name": "App\\Slot",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "App",
         "size": 3000,
         "relations": [
@@ -312,13 +317,14 @@
         "relations": [
             "Symfony\\Bundle\\FrameworkBundle\\Controller",
             "Symfony\\Component\\HttpFoundation",
+            "App\\Repository",
             "Symfony\\Component\\HttpFoundation\\Session",
             "App\\Card",
             "global",
-            "App\\Repository",
             "Doctrine\\Persistence",
             "App\\Entity",
-            "App\\Dice"
+            "App\\Dice",
+            "App\\Slot"
         ]
     },
     {
