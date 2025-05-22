@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747938463">
-  <project timestamp="1747938463">
+<coverage generated="1747939812">
+  <project timestamp="1747939812">
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/BlackJackRules.php">
       <class name="App\Card\BlackJackRules" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
@@ -12,14 +12,14 @@
       <line num="22" type="stmt" count="14"/>
       <line num="23" type="stmt" count="14"/>
       <line num="25" type="stmt" count="14"/>
-      <line num="26" type="stmt" count="6"/>
-      <line num="27" type="stmt" count="6"/>
+      <line num="26" type="stmt" count="5"/>
+      <line num="27" type="stmt" count="5"/>
       <line num="28" type="stmt" count="14"/>
-      <line num="29" type="stmt" count="3"/>
+      <line num="29" type="stmt" count="5"/>
       <line num="32" type="stmt" count="14"/>
       <line num="35" type="stmt" count="16"/>
-      <line num="36" type="stmt" count="6"/>
-      <line num="37" type="stmt" count="6"/>
+      <line num="36" type="stmt" count="5"/>
+      <line num="37" type="stmt" count="5"/>
       <line num="41" type="stmt" count="16"/>
       <line num="49" type="method" name="isBlackJack" visibility="public" complexity="3" crap="3" count="5"/>
       <line num="51" type="stmt" count="5"/>
@@ -214,19 +214,19 @@
     </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/Player.php">
       <class name="App\Card\Player" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="10" coveredelements="8"/>
+        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
       </class>
-      <line num="32" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
-      <line num="34" type="stmt" count="21"/>
-      <line num="35" type="stmt" count="21"/>
-      <line num="36" type="stmt" count="21"/>
+      <line num="32" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="22"/>
+      <line num="34" type="stmt" count="22"/>
+      <line num="35" type="stmt" count="22"/>
+      <line num="36" type="stmt" count="22"/>
       <line num="43" type="method" name="getHand" visibility="public" complexity="1" crap="1" count="6"/>
       <line num="45" type="stmt" count="6"/>
       <line num="53" type="method" name="addCard" visibility="public" complexity="1" crap="1" count="13"/>
       <line num="55" type="stmt" count="13"/>
-      <line num="62" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <metrics loc="68" ncloc="38" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="10" coveredelements="8"/>
+      <line num="62" type="method" name="getName" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <metrics loc="68" ncloc="38" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
     </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/PlayerInterface.php">
       <metrics loc="31" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -826,12 +826,12 @@
       <line num="45" type="stmt" count="2"/>
       <line num="46" type="stmt" count="2"/>
       <line num="48" type="stmt" count="2"/>
-      <line num="50" type="stmt" count="2"/>
-      <line num="51" type="stmt" count="2"/>
-      <line num="52" type="stmt" count="2"/>
-      <line num="53" type="stmt" count="2"/>
-      <line num="54" type="stmt" count="2"/>
-      <line num="55" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="2"/>
       <line num="56" type="stmt" count="1"/>
       <line num="58" type="stmt" count="1"/>
       <line num="59" type="stmt" count="1"/>
@@ -843,6 +843,6 @@
       <line num="73" type="stmt" count="3"/>
       <metrics loc="76" ncloc="55" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="26" elements="30" coveredelements="30"/>
     </file>
-    <metrics files="23" loc="2040" ncloc="1585" classes="20" methods="96" coveredmethods="84" conditionals="0" coveredconditionals="0" statements="614" coveredstatements="502" elements="710" coveredelements="586"/>
+    <metrics files="23" loc="2040" ncloc="1585" classes="20" methods="96" coveredmethods="85" conditionals="0" coveredconditionals="0" statements="614" coveredstatements="503" elements="710" coveredelements="588"/>
   </project>
 </coverage>

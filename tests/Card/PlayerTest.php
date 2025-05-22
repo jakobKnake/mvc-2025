@@ -135,4 +135,23 @@ class PlayerTest extends TestCase
         # Assert
         $this->assertTrue($res);
     }
+
+    /**
+     * Test getName method
+     */
+    public function testGetName(): void
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+        $player = new Player("jake", $rules);
+
+        $exp = 'jake';
+
+        # Act
+        $res = $player->getName();
+
+        # Assert
+        $this->assertSame($exp, $res);
+        $this->assertEquals($exp, $res);
+    }
 }
