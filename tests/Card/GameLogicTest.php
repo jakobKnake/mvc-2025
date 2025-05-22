@@ -247,27 +247,27 @@ class GameLogicTest extends TestCase
         $dealer->method('isBusted')->willReturn(false);
         $dealer->method('hasBlackJack')->willReturn(false);
 
-        $player1->name = 'Player1';
+        $player1->method('getName')->willReturn('Player1');
         $player1->method('getScore')->willReturn(20);
         $player1->method('isBusted')->willReturn(false);
         $player1->method('hasBlackJack')->willReturn(false);
 
-        $player2->name = 'Player2';
+        $player2->method('getName')->willReturn('Player2');
         $player2->method('getScore')->willReturn(17);
         $player2->method('isBusted')->willReturn(false);
         $player2->method('hasBlackJack')->willReturn(false);
 
-        $player3->name = 'Player3';
+        $player3->method('getName')->willReturn('Player3');
         $player3->method('getScore')->willReturn(21);
         $player3->method('isBusted')->willReturn(false);
         $player3->method('hasBlackJack')->willReturn(true);
 
-        $player4->name = 'Player4';
+        $player4->method('getName')->willReturn('Player4');
         $player4->method('getScore')->willReturn(24);
         $player4->method('isBusted')->willReturn(true);
         $player4->method('hasBlackJack')->willReturn(false);
 
-        $player5->name = 'Player5';
+        $player5->method('getName')->willReturn('Player5');
         $player5->method('getScore')->willReturn(19);
         $player5->method('isBusted')->willReturn(false);
         $player5->method('hasBlackJack')->willReturn(false);
@@ -306,7 +306,7 @@ class GameLogicTest extends TestCase
         $dealer->method('isBusted')->willReturn(true);
         $dealer->method('hasBlackJack')->willReturn(false);
 
-        $player1->name = 'Player1';
+        $player1->method('getName')->willReturn('Player1');
         $player1->method('getScore')->willReturn(20);
         $player1->method('isBusted')->willReturn(false);
         $player1->method('hasBlackJack')->willReturn(false);

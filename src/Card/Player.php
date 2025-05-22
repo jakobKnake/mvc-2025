@@ -25,12 +25,6 @@ class Player implements PlayerInterface
     public $name;
 
     /**
-     * @var bool $standing Whether the player is standing or not.
-     */
-    protected $standing = false;
-
-
-    /**
      * Constructor, initialize the player.
      * @param string $name The name of the player.
      * @param BlackJackRules $rules The rules of the game.
@@ -59,6 +53,15 @@ class Player implements PlayerInterface
     public function addCard(Card $card): void
     {
         $this->hand->add($card);
+    }
+
+    /**
+     * Get the name of the player.
+     * @return string The name of the player.
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
 }

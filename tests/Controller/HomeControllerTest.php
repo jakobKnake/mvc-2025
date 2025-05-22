@@ -19,10 +19,10 @@ class HomeControllerTest extends WebTestCase
         $routes = ['/', '/about', '/report', '/lucky', '/metrics'];
 
         # Act / Assert
-        foreach($routes as $route) {
+        foreach ($routes as $route) {
             $client->request('GET', $route);
             $this->assertResponseIsSuccessful();
         }
-        
+
     }
 }

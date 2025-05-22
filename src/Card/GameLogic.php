@@ -189,7 +189,7 @@ class GameLogic implements GameInterface
         $players = $this->getPlayers();
 
         foreach ($players as $player) {
-            $playerName = $player->name;
+            $playerName = $player->getName();
             $playerScore = $player->getScore();
             $playerBusted = $player->isBusted();
             $playerBlackJack = $player->hasBlackJack();

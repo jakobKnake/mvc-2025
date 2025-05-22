@@ -19,11 +19,11 @@ class BlackJackControllerTest extends WebTestCase
         $routes = ['/game', '/game/doc', '/game/init'];
 
         # Act / Assert
-        foreach($routes as $route) {
+        foreach ($routes as $route) {
             $client->request('GET', $route);
             $this->assertResponseIsSuccessful();
         }
-        
+
     }
 
     /**
@@ -36,7 +36,7 @@ class BlackJackControllerTest extends WebTestCase
         $client->request('GET', '/game/init');
 
         # Act
-        $crawler = $client->submitForm('do_it', [
+        $client->submitForm('do_it', [
             'name' => 'tester',
         ]);
 
@@ -55,14 +55,15 @@ class BlackJackControllerTest extends WebTestCase
 
         $client->request('GET', '/game/play');
         # Act
-        $crawler = $client->submitForm('Hit');
+        $client->submitForm('Hit');
 
         $response = $client->getResponse();
         $location = $response->headers->get('Location');
 
         # Assert
         $this->assertTrue(
-            $location === '/game/play' || $location === '/game/dealer');
+            $location === '/game/play' || $location === '/game/dealer'
+        );
     }
 
     /**
@@ -77,7 +78,7 @@ class BlackJackControllerTest extends WebTestCase
         $client->request('GET', '/game/play');
 
         # Act
-        $crawler = $client->submitForm('Stand');
+        $client->submitForm('Stand');
 
         # Assert
         $this->assertResponseRedirects('/game/dealer');

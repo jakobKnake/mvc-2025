@@ -8,6 +8,11 @@ namespace App\Card;
 trait StatusTrait
 {
     /**
+     * @var bool $standing Whether the player is standing or not.
+     */
+    protected $standing = false;
+
+    /**
      * Check if the hand is busted (more than 21).
      * @return bool True or False.
      */

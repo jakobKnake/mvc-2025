@@ -19,10 +19,10 @@ class CardGameControllerTest extends WebTestCase
         $routes = ['/card', '/card/deck', '/card/deck/shuffle', '/card/deck/draw', '/session'];
 
         # Act / Assert
-        foreach($routes as $route) {
+        foreach ($routes as $route) {
             $client->request('GET', $route);
             $this->assertResponseIsSuccessful();
         }
-        
+
     }
 }
