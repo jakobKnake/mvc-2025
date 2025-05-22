@@ -25,7 +25,6 @@
                     <li><a class="{% if app.request.attributes.get('_route') == 'about' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('about') }}">About</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'lucky' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('lucky') }}">Lucky Casino</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'api_index' %}text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('api_index') }}">API</a></li>
-                    <li><a class="{% if app.request.attributes.get('_route') == 'pig_init_get' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('pig_init_get') }}">Pig Game</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'card' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('card') }}">Kortleken</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'game' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('game') }}">Casino Lounge</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'metrics' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('metrics') }}">Metrics Analys</a></li>
