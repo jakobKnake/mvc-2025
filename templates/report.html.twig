@@ -167,7 +167,40 @@
         </div>
         <div class="kursmoment" id="kmom06">
             <h2>Kmom06</h2>
-            <p>Här visas redovsningstext för kursmomentet</p>
+            <p>Jag tycker att Phpmetrics rapport i terminalen var bra och enkel att följa i en tydlig 
+            tabell. Jag uppskattade även den visuella rapporten i docs/metrics med den tydliga menyn och 
+            de färgglada cirklarna. Det var intressant att se att ungefär hälften av alla rader är 
+            kommentarer, jag tror det är en godkänd nivå ändå men kanske öka lite till. Dock vill man 
+            nog inte har alltför många rader kommentarer eftersom man vill att koden man skriver 
+            förklarar sig självt, möjligen. Sen förstod jag inte riktigt varför tabellen visar topp 10 
+            commitade filerna, är det kanske någon indikation på att just den modulen är komplicerad och 
+            att man arbetar mycket på den?</p>
+
+            <p>Det gick bra att integrera Scrutinizer, jag följde med i genomgången vilket underlättade. 
+            Dock fick jag en del tester som failades i början vilket var frustrerande. Men genom att läsa i 
+            forumet och hitta andra med liknande fel samt läsa error-loggen i Scrutinizer så gick det bra. 
+            Ju fler tester jag skapade och pushade mot mitt repo desto fler inspektioner failades. Det var 
+            på grund av att jag hade missat lägga in dependecies i scrutinizer config-filen. Men jag tycker 
+            Scrutinizer visade datan tydligt, gav förslag i de issues som visades och man kunde enkelt sortera 
+            hur datan skulle visas. Jag tycker det är bra att verktyget ger en badges och framförallt att de 
+            uppdateras efter varje push. Efter första bygget fick jag 9.93 i kodkvalitet och en otroligt låg 
+            kodtäckning på 25%. Den ökades markant efter denna uppgift (ca 60% ökning).</p>
+
+            <p>Min syn på kodkvalitet har utvecklats mycket efter detta kursmoment. Innan kopplade jag 
+            kodkvalitet med att koden skulle fungera typ men nu inser jag att det är mycket mer än så. Så 
+            som underhållbarhet, testbarhet och läsbarhet där komplex kod försvårar underhållsarbete och att 
+            skriva kod som är enkel att testa.  Jag tror man kan påvisa en viss kodkvalitet med hjälp av badges. 
+            De där fungerar i princip som en recesion på ett hotell, en massörs diplom på väggen eller sin 
+            advokats examensbevis med mera. Det är som ett minimum garanti på att det i alla fall inte kommer 
+            vara helt galet. Men de bör inte ses som hela bilden utan bara en del.</p>
+
+            <p>Min TIL för detta kursmoment är phpmetrics och Scrutinizer. Väldigt trevliga verktyg, 
+            enkla att följa samt tydliga error meddelanden i Scrutinizer vilket uppskattas. Jag skulle 
+            även vilja tillägga att jag i detta kursmoment provade på att testa mina Controllers. Det 
+            gick bra och symfonys dokumentation var tydlig att följa med. Till framtiden kommer jag att 
+            testa dem mer noggrant då alla inte fick en kodtäckning på 100%. Så även att testa mot 
+            controllers är en TIL för mig detta kmom.</p>
+
         </div>
         <div class="kursmoment" id="kmom10">
             <h2>Kmom10</h2>

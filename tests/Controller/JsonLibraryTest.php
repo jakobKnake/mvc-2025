@@ -22,7 +22,7 @@ class JsonLibraryTest extends WebTestCase
         # Act
         $client->request('GET', '/api/library/books');
 
-        # Assert            
+        # Assert
         $this->assertResponseIsSuccessful();
 
     }

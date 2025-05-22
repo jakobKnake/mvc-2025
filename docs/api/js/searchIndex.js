@@ -321,6 +321,11 @@ Search.appendIndex(
             "summary": "Add\u0020a\u0020card\u0020to\u0020the\u0020player.",
             "url": "classes/App-Card-Player.html#method_addCard"
         },                {
+            "fqsen": "\\App\\Card\\Player\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "Get\u0020the\u0020name\u0020of\u0020the\u0020player.",
+            "url": "classes/App-Card-Player.html#method_getName"
+        },                {
             "fqsen": "\\App\\Card\\Player\u003A\u003A\u0024hand",
             "name": "hand",
             "summary": "",
@@ -335,11 +340,6 @@ Search.appendIndex(
             "name": "name",
             "summary": "",
             "url": "classes/App-Card-Player.html#property_name"
-        },                {
-            "fqsen": "\\App\\Card\\Player\u003A\u003A\u0024standing",
-            "name": "standing",
-            "summary": "",
-            "url": "classes/App-Card-Player.html#property_standing"
         },                {
             "fqsen": "\\App\\Card\\PlayerInterface",
             "name": "PlayerInterface",
@@ -390,6 +390,11 @@ Search.appendIndex(
             "name": "isStanding",
             "summary": "Check\u0020if\u0020the\u0020player\u0020is\u0020standing.",
             "url": "classes/App-Card-StatusTrait.html#method_isStanding"
+        },                {
+            "fqsen": "\\App\\Card\\StatusTrait\u003A\u003A\u0024standing",
+            "name": "standing",
+            "summary": "",
+            "url": "classes/App-Card-StatusTrait.html#property_standing"
         },                {
             "fqsen": "\\App\\Controller\\ApiController",
             "name": "ApiController",
@@ -541,56 +546,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardGameController.html#method_sessionDelete"
         },                {
-            "fqsen": "\\App\\Controller\\DiceGameController",
-            "name": "DiceGameController",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Ahome\u0028\u0029",
-            "name": "home",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_home"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestRollDice\u0028\u0029",
-            "name": "testRollDice",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testRollDice"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestRollDices\u0028\u0029",
-            "name": "testRollDices",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testRollDices"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestDiceHand\u0028\u0029",
-            "name": "testDiceHand",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testDiceHand"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Ainit\u0028\u0029",
-            "name": "init",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_init"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AinitCallback\u0028\u0029",
-            "name": "initCallback",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_initCallback"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Aplay\u0028\u0029",
-            "name": "play",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_play"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Aroll\u0028\u0029",
-            "name": "roll",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_roll"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Asave\u0028\u0029",
-            "name": "save",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_save"
-        },                {
             "fqsen": "\\App\\Controller\\HomeController",
             "name": "HomeController",
             "summary": "",
@@ -680,91 +635,6 @@ Search.appendIndex(
             "name": "getQuote",
             "summary": "",
             "url": "classes/App-Controller-JsonLucky.html#method_getQuote"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice",
-            "name": "Dice",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
-            "name": "roll",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#method_roll"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetValue\u0028\u0029",
-            "name": "getValue",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#method_getValue"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
-            "name": "getAsString",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#method_getAsString"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
-            "name": "value",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#property_value"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceGraphic",
-            "name": "DiceGraphic",
-            "summary": "",
-            "url": "classes/App-Dice-DiceGraphic.html"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-Dice-DiceGraphic.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AgetAsString\u0028\u0029",
-            "name": "getAsString",
-            "summary": "",
-            "url": "classes/App-Dice-DiceGraphic.html#method_getAsString"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A\u0024representation",
-            "name": "representation",
-            "summary": "",
-            "url": "classes/App-Dice-DiceGraphic.html#property_representation"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand",
-            "name": "DiceHand",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aadd\u0028\u0029",
-            "name": "add",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#method_add"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aroll\u0028\u0029",
-            "name": "roll",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#method_roll"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetNumberDices\u0028\u0029",
-            "name": "getNumberDices",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#method_getNumberDices"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetValues\u0028\u0029",
-            "name": "getValues",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#method_getValues"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetString\u0028\u0029",
-            "name": "getString",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#method_getString"
-        },                {
-            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003A\u0024hand",
-            "name": "hand",
-            "summary": "",
-            "url": "classes/App-Dice-DiceHand.html#property_hand"
         },                {
             "fqsen": "\\App\\Entity\\Book",
             "name": "Book",
@@ -900,11 +770,6 @@ Search.appendIndex(
             "name": "Controller",
             "summary": "",
             "url": "namespaces/app-controller.html"
-        },                {
-            "fqsen": "\\App\\Dice",
-            "name": "Dice",
-            "summary": "",
-            "url": "namespaces/app-dice.html"
         },                {
             "fqsen": "\\App\\Entity",
             "name": "Entity",

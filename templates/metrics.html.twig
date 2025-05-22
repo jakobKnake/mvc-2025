@@ -193,6 +193,85 @@
                 förväntar mig en grön cirkel på HomeController, bättre komplexitet värden och ökad coverage.
             </p>
 
+            <h2>Resultat av ändringar</h2>
+            <p>Efter att ha implimenterat de fötbättringar och ändringar jag nämnde ovan så har jag ökat min coverage 
+            med ca 60%. Det måste jag säga är en otrolig förbättring och jag har nu fått min badge ändrad från röd till grön.
+            Dock har poängen för kodkvaliteten inte ändrats så som jag hade trott att det skulle göra. Men 
+            med ett så högt betyg redan från början så vill jag inte sitta för länge eftersom man verkligen 
+            kan sitta länge med detta. Jag fick även ner CRAP värdena markant, jag har nu inget CRAP värde över 12.
+            Jag fick även ner mina issues i Scrutinizer och error i Phpmetrics. Jag gick från 6 issues till 1 issue i Scrutinizer 
+            men det påverkade inte Code Quality värdet något tyvärr. I Phpmetrics finns det kvar 6st Violations som jag inte riktigt 
+            förstod hur jag skulle åtgärda dem men jag tror inte de påverkar särskilt mycket i min applikation. Jag fick även ner LCOM-värdena,
+            i coupling och den cyklomatiska komplexiteten. Man kan även titta på värdena i 'Bugs' där det är förbättrat efter åtgärden.
+            </p>
+
+            <h3>Scrutinizer</h3>
+
+            <h4>Före:</h4>
+
+            <img src="{{ asset('img/metrics/issues.png') }}" alt="Issues från Scrutinizer"
+                class="h-auto w-full object-contain mb-4">
+
+            <img src="{{ asset('img/metrics/coverage.png') }}" alt="Coverage från Scrutinizer"
+                class="h-auto w-full object-contain mb-4">
+
+
+            <h4>Efter:</h4>
+
+            <img src="{{ asset('img/metrics/issue2.png') }}" alt="Issues från Scrutinizer"
+                class="h-auto w-full object-contain mb-4">
+
+            <img src="{{ asset('img/metrics/coverage2.png') }}" alt="Coverage från Scrutinizer"
+                class="h-auto w-full object-contain mb-4">
+
+            <img src="{{ asset('img/metrics/crap2.png') }}" alt="Scrutinizer CRAP Score"
+                class="h-96 w-full object-contain mb-4">
+
+            <h3>Phpmetrics</h3>
+
+            <h4>Före:</h4>
+
+            <div class="flex flex-col gap-2 mb-8">
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics1.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics2.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+            </div>
+
+            <h4>Efter:</h4>
+
+            <div class="flex flex-col gap-2 mb-8">
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics3.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+                <div class="h-auto w-xl">
+                    <img src="{{ asset('img/metrics/metrics4.png') }}" alt="Mätvärden från Phpmetrics"
+                        class="h-full w-full object-contain">
+                </div>
+
+            </div>
+
+            <h2>Diskussion</h2>
+
+            <p>Jag tror att man bör jobba aktivt med kodkvaliteten och 'clean code' men att man får in det 
+                som en rutin när man skriver sin kod. Förhoppningsvis ger det minimala buggar/issues samt 
+                bättre mätvärden på de 6 C:na. Så som jag gjort denna gång, att försöka förbättra efteråt 
+                kan vara jobbigt och kräver en hel del tid. Därför tror jag att om man får in det som en rutin 
+                att aktivt jobba på kodkvalitet, 'clean code', kommentarer och coverage med tester så kommer ens applikationer 
+                vara enklare att underhålla, felsöka och underlättar för andra personer som läser ens kod.<br>
+            </p>
+
+
+
+
         </div>
 
 
