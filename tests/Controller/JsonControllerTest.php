@@ -57,4 +57,36 @@ class JsonControllerTest extends WebTestCase
 
     }
 
+    /**
+     * Test method the game api route without game.
+     */
+    public function testBjApiNoGame(): void
+    {
+        # Arrange
+        $client = static::createClient();
+
+        $client->request('GET', '/api/game');
+
+        # Assert
+        $this->assertResponseStatusCodeSame(400);
+
+    }
+
+    /**
+     * Test method the game api route.
+     */
+    public function testBjApi(): void
+    {
+        # Arrange
+        $client = static::createClient();
+
+        $client->request('POST', '/game/init', ['name' => 'tester']);
+
+        # Act
+        $client->request('GET', '/api/game');
+
+        # Assert
+        $this->assertResponseIsSuccessful();
+    }
+
 }
