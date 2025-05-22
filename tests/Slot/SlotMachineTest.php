@@ -83,9 +83,6 @@ class SlotMachineTest extends TestCase
         $this->assertSame($res2['message'], $expMsg2);
         $this->assertEquals(10, $res2['amount']);
 
-
-
-
     }
 
 }
