@@ -6,6 +6,12 @@ MVC Course README
 ## About
 Detta repo kommer att användas av mig 'Jakob Holmström' i kursen MVC på programmet 'Webbprogrammering 120hp', Blekinge Tekniska Högskola. Kommer att arbeta med objektorienterad PHP-programmering i Symfony, enhetstestning, kodkvalitet och databaskopplingar med ORM (objekt relational mapping).
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/?branch=main)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/?branch=main)
+
+[![Build Status](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/badges/build.png?b=main)](https://scrutinizer-ci.com/g/jakobKnake/mvc-2025/build-status/main)
+
 ## Kom igång
 För att klona och köra detta repo lokalt så kan du följa dessa steg:
 
