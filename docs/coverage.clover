@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747954063">
-  <project timestamp="1747954063">
+<coverage generated="1748421324">
+  <project timestamp="1748421324">
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/BlackJackRules.php">
       <class name="App\Card\BlackJackRules" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
@@ -32,8 +32,8 @@
       <line num="78" type="method" name="canDealerDraw" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="80" type="stmt" count="4"/>
       <line num="82" type="stmt" count="4"/>
-      <line num="83" type="stmt" count="4"/>
-      <line num="86" type="stmt" count="3"/>
+      <line num="83" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="4"/>
       <metrics loc="90" ncloc="63" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
     </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
@@ -162,7 +162,7 @@
       <line num="105" type="method" name="playDealer" visibility="public" complexity="3" crap="3" count="2"/>
       <line num="107" type="stmt" count="2"/>
       <line num="109" type="stmt" count="2"/>
-      <line num="110" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="1"/>
       <line num="113" type="stmt" count="2"/>
       <line num="120" type="method" name="playerStand" visibility="public" complexity="2" crap="2" count="3"/>
       <line num="122" type="stmt" count="3"/>
@@ -765,6 +765,14 @@
       <line num="54" type="stmt" count="1"/>
       <metrics loc="58" ncloc="57" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="30" coveredelements="30"/>
     </file>
+    <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Controller/ProjController.php">
+      <class name="App\Controller\ProjController" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </class>
+      <line num="17" type="method" name="homeBet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <metrics loc="24" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+    </file>
     <file name="/home/knake/dbwebb-kurser/mvc/me/report/src/Entity/Book.php">
       <class name="App\Entity\Book" namespace="global">
         <metrics complexity="9" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="22" coveredelements="22"/>
@@ -832,17 +840,17 @@
       <line num="53" type="stmt" count="1"/>
       <line num="54" type="stmt" count="1"/>
       <line num="55" type="stmt" count="2"/>
-      <line num="56" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="1"/>
-      <line num="59" type="stmt" count="1"/>
-      <line num="60" type="stmt" count="1"/>
-      <line num="61" type="stmt" count="1"/>
-      <line num="62" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="58" type="stmt" count="2"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="60" type="stmt" count="2"/>
+      <line num="61" type="stmt" count="2"/>
+      <line num="62" type="stmt" count="2"/>
       <line num="64" type="stmt" count="2"/>
       <line num="71" type="method" name="getSymbols" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="73" type="stmt" count="3"/>
       <metrics loc="76" ncloc="55" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="26" elements="30" coveredelements="30"/>
     </file>
-    <metrics files="23" loc="2040" ncloc="1585" classes="20" methods="96" coveredmethods="85" conditionals="0" coveredconditionals="0" statements="614" coveredstatements="503" elements="710" coveredelements="588"/>
+    <metrics files="24" loc="2064" ncloc="1606" classes="21" methods="97" coveredmethods="86" conditionals="0" coveredconditionals="0" statements="615" coveredstatements="504" elements="712" coveredelements="590"/>
   </project>
 </coverage>
