@@ -28,8 +28,17 @@
                 </ul>
             </nav>
             <nav aria-label="Log in navigation" class="flex justify-end gap-3">
-                <a href="{{ path('logg_in') }}" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
-                <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
+                {% if app.session.get('logged_in') and app.session.get('user') %}
+                    <a href="" class="w-[40px] h-[40px]"><img src="{{ asset('img/proj/' ~ user.getProfilePic()) }}" alt="Profil Avatar för {{ user.getUsername() }}"></a>
+
+                    <div class="whitespace-nowrap text-white">Saldo: {{ user.getBalance }}</div>
+
+                    <a href="{{ path('log_out') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Logga Ut</a>
+
+                {% else %}
+                    <a href="{{ path('logg_in') }}" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
+                    <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
+                {% endif %}
             </nav>
         </header>
         {{ include('./flash.html.twig') }}

@@ -2,19 +2,19 @@
 
 namespace App\Repository;
 
-use App\Entity\History;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Project\History;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityRepository;
 
 /**
- * @extends ServiceEntityRepository<History>
+ * @extends EntityRepository<History>
  */
-class HistoryRepository extends ServiceEntityRepository
+class HistoryRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, History::class);
-    }
+    // public function __construct(ManagerRegistry $registry)
+    // {
+    //    parent::__construct($registry, History::class);
+    // }
 
     //    /**
     //     * @return History[] Returns an array of History objects

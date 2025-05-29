@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Project;
 
 use App\Repository\HistoryRepository;
 use Doctrine\DBAL\Types\Types;

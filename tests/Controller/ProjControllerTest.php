@@ -12,17 +12,16 @@ class ProjControllerTest extends WebTestCase
     /**
      * Test that all GET routes have successful response.
      */
-    public function testProjControllerRoute(): void
+    public function testProjControllerRoutes(): void
     {
         # Arrange
         $client = static::createClient();
-        $routes = ['/proj', '/proj/loggin'];
+        $routes = ['/proj', '/proj/loggin', '/proj/create'];
 
         # Act / Assert
         foreach ($routes as $route) {
             $client->request('GET', $route);
             $this->assertResponseIsSuccessful();
-
         }
 
     }
