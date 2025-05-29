@@ -19,5 +19,10 @@ class ProjController extends AbstractController
     {
         return $this->render('proj/home.html.twig');
     }
+    #[Route("/proj/loggin", name: "logg_in", methods:['GET'])]
+    public function logInGet(): Response
+    {
+        return $this->render('proj/log_in.html.twig');
+    }
 
 }

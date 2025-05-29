@@ -1,0 +1,17 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Logga In{% endblock %}
+
+{% block body %}
+<div>
+    <form action="" method="post">
+        <label for="user_name">Användarnamn:</label>
+        <input id="user_name" type="text" name="username">
+        <label for="user_password">Lösenord:</label>
+        <input type="password" id="user_password" name="password">
+        <input type="submit" value="Logga in">
+    </form>
+    <p>Har du inget konto än?</p>
+    <a href="">Skapa Konto</a>
+</div>
+{% endblock %}
