@@ -28,8 +28,8 @@
                 </ul>
             </nav>
             <nav aria-label="Log in navigation" class="flex justify-end gap-3">
-                <a href="" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
-                <a href="" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
+                <a href="{{ path('logg_in') }}" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
+                <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
             </nav>
         </header>
         {{ include('./flash.html.twig') }}
