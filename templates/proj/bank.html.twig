@@ -1,0 +1,30 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Bank{% endblock %}
+
+{% block body %}
+<div class="bg-white p-6">
+    <div class="flex p-4 gap-2 justify-center items-center p-6">
+        <div class="flex flex-col justify-center items-center">
+            <h3>Gör en insättning</h3>
+            <form action="{{ path('bank_post') }}" method="post">
+                <input class="border-2 rounded-sm border-black py-[0.6rem] px-[0.6rem]" id="set_balance" required type="text" name="set_balance">
+                <input class="bg-[#147B45] text-white border-2 rounded-sm border-black 
+                    py-[0.6rem] px-[0.6rem] hover:bg-[#0f5e35] block mt-3" type="submit" value="Sätt In">
+            </form>
+        </div>
+        <div class="flex flex-col justify-center items-center ml-2">
+            <h3>Gör ett uttag</h3>
+            <form action="{{ path('bank_post') }}" method="post">
+                <input class="border-2 rounded-sm border-black py-[0.6rem] px-[0.6rem]" id="withdraw" required type="text" name="withdraw">
+                <input class="bg-[#FFE71F] text-black border-2 rounded-sm border-black 
+                    py-[0.6rem] px-[0.6rem] block mt-3 
+                    hover:bg-[#F0CD0E]" type="submit" value="Ta Ut">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

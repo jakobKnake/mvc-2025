@@ -23,7 +23,7 @@ class History
      */
     #[ORM\ManyToOne(inversedBy: 'histories')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user_id = null;
+    private ?User $user_id = null;
 
     /**
      * The action type.
@@ -63,7 +63,7 @@ class History
      * Get the user id to connect histories.
      * @return User The Id of the user.
      */
-    public function getUserId(): ?user
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
@@ -73,7 +73,7 @@ class History
      * @param User|Null $user_id
      * @return static $this.
      */
-    public function setUserId(?user $user_id): static
+    public function setUserId(?User $user_id): static
     {
         $this->user_id = $user_id;
 

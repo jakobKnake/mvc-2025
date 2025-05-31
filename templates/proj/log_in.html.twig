@@ -14,9 +14,9 @@
             py-[0.6rem] px-[0.6rem] hover:bg-[#0f5e35]" type="submit" value="Logga in">
     </form>
     <div class="mt-3 text-center">
-        <p class="text-white">Har du inget konto än?</p>
+        Har du inget konto än?
         <a class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black 
-        font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E] block mt-3" href="">Skapa Konto</a>
+        font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E] block mt-3" href="{{ path('create_user') }}">Skapa Konto</a>
     </div>
 </div>
 {% endblock %}

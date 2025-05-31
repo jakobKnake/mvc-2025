@@ -29,9 +29,9 @@
             </nav>
             <nav aria-label="Log in navigation" class="flex justify-end gap-3">
                 {% if app.session.get('logged_in') and app.session.get('user') %}
-                    <a href="" class="w-[40px] h-[40px]"><img src="{{ asset('img/proj/' ~ user.getProfilePic()) }}" alt="Profil Avatar för {{ user.getUsername() }}"></a>
+                    <a href="{{ path('show_user') }}" class="w-[40px] h-[40px]"><img src="{{ asset('img/proj/' ~ user.getProfilePic()) }}" alt="Profil Avatar för {{ user.getUsername() }}"></a>
 
-                    <div class="whitespace-nowrap text-white">Saldo: {{ user.getBalance }}</div>
+                    <div class="whitespace-nowrap">Saldo: {{ user.getBalance }}</div>
 
                     <a href="{{ path('log_out') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Logga Ut</a>
 

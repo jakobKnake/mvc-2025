@@ -1,0 +1,101 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Historik{% endblock %}
+
+{% block body %}
+
+<div class="bg-white p-6">
+<h1>Historik</h1>
+    <div>
+        <h2>Insättningar & Uttag</h2>
+        <div class="mb-5">
+            Total insättningssumma: {{ total_in }}kr
+            <table class="border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 px-4 py-2"></th>
+                        <th class="border border-gray-300 px-4 py-2">Datum</th>
+                        <th class="border border-gray-300 px-4 py-2">Belopp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if deposits is not empty %}
+                        {% for deposit in deposits %}
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2">{{ deposit.getActionType }}</t>
+                                <td class="border border-gray-300 px-4 py-2">{{ deposit.getCreated|date('Y-m-d H:i:s') }}</td>
+                                <td class="border border-gray-300 px-4 py-2">+{{ deposit.getAmount }}kr</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Inga insättningar ännu</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-5">
+            Total uttagssumma: {{ total_ut }}kr
+            <table class="border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 px-4 py-2"></th>
+                        <th class="border border-gray-300 px-4 py-2">Datum</th>
+                        <th class="border border-gray-300 px-4 py-2">Belopp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if withdrawls is not empty %}
+                        {% for uttag in withdrawls %}
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2">{{ uttag.getActionType }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ uttag.getCreated|date('Y-m-d H:i:s') }}</td>
+                                <td class="border border-gray-300 px-4 py-2">-{{ uttag.getAmount }}kr</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Inga uttag ännu</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h2>Spelhistorik</h2>
+        Total insatser: kr<br>
+        Total vinst: kr
+        <table class="border border-gray-300">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="border border-gray-300 px-4 py-2">Typ</th>
+                    <th class="border border-gray-300 px-4 py-2">Datum</th>
+                    <th class="border border-gray-300 px-4 py-2">Belopp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if bets is not empty %}
+                    {% for bet in bets %}
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">{{ bet.getActionType }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ bet.getCreated|date('Y-m-d H:i:s') }}</td>
+                            <td class="border border-gray-300 px-4 py-2">-{{ bet.getAmount }}kr</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Inga bet ännu</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

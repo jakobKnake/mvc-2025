@@ -1,0 +1,88 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Din Profil{% endblock %}
+
+{% block body %}
+<div class="mt-3 flex justify-center items-center flex-col">
+    {% if user and inloggad %}
+        <h1>Din Profil</h1>
+
+        <div class="flex gap-3 mb-3">
+            <a href="{{ path('user_history') }}" class="bg-[#147B45] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white font-medium text-sm whitespace-nowrap hover:bg-[#0f5e35]">Visa historik</a>
+            <a href="{{ path('bank') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap hover:bg-[#F0CD0E]">Bank</a>
+        </div>
+        <div class="bg-white rounded-md p-6">
+            <div class="w-auto h-auto flex items-center justify-center">
+                <img src="{{ asset('img/proj/' ~ user.getProfilePic) }}" alt="Profilbild för {{ user.getUsername }}">
+            </div>
+            <div class="flex items-center justify-center">
+                <input class="border-2 rounded-sm border-black py-[0.6rem] px-[0.6rem]" id="user_name" readonly type="text" name="username" value="{{ user.getUsername() }}">
+            </div>
+            {% if registrering %}
+                <div class="text-xs mt-1 mb-4 flex items-center justify-center">Medlem sedan: <b>{{ registrering.created|date('Y-m-d H:i:s') }}</b></div>
+            {% endif %}
+            <h2 class="mt-4 text-center">Välj profilbild</h2>
+            <form class="bg-white mt-5" action="{{ path('update_user') }}" method="post">
+                <div class="grid grid-cols-4 gap-2">
+                    <label for="jerry">
+                        <input type="radio" name="profile_pic"  value="jerry" id="jerry" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/jerry.png') }}" alt="Jerry Avatar">
+                        </div>
+                    </label>
+
+                    <label for="luigi">
+                        <input type="radio" name="profile_pic"  value="luigi" id="luigi" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/luigi.png') }}" alt="luigi Avatar">
+                        </div>
+                    </label>
+
+                    <label for="mario">
+                        <input type="radio" name="profile_pic"  value="mario" id="mario" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/mario.png') }}" alt="mario Avatar">
+                        </div>
+                    </label>
+
+                    <label for="pumba">
+                        <input type="radio" name="profile_pic"  value="pumba" id="pumba" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/pumba.png') }}" alt="pumba Avatar">
+                        </div>
+                    </label>
+
+                    <label for="spiderman">
+                        <input type="radio" name="profile_pic" value="spiderman" id="spiderman" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/spiderman.png') }}" alt="spiderman Avatar">
+                        </div>
+                    </label>
+
+                    <label for="timon">
+                        <input type="radio" name="profile_pic" value="timon" id="timon" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/timon.png') }}" alt="timon Avatar">
+                        </div>
+                    </label>
+
+                    <label for="tom">
+                        <input type="radio" name="profile_pic" value="tom" id="tom" class="sr-only peer">
+                        <div class="w-auto h-auto border-2 border-gray-400 peer-checked:border-amber-400">
+                            <img src="{{ asset('img/proj/tom.png') }}" alt="tom Avatar">
+                        </div>
+                    </label>
+                </div>
+                <input class="bg-[#147B45] text-white border-2 rounded-sm border-black 
+                    py-[0.6rem] px-[0.6rem] hover:bg-[#0f5e35] block mt-3" type="submit" value="Uppdatera Profil">
+            </form>
+            <div class="mt-4">
+                Spelar du för mycket?
+                <a href="{{ path('delete_user') }}" class="bg-red-600 inline-block py-1.5 px-4 rounded-sm 
+                    cursor-pointer text-white font-medium text-sm whitespace-nowrap transition 
+                    hover:bg-red-800">Radera Konto</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -43,7 +43,7 @@ class ProjController extends AbstractController
     ManagerRegistry $doctrine, SessionInterface $session): Response
     {
         $projEntityManager = $doctrine->getManager('project');
-         $userRepo = $projEntityManager->getRepository(User::class);
+        $userRepo = $projEntityManager->getRepository(User::class);
 
         $username = $request->request->get('username');
         $password = $request->request->get('password');
@@ -55,7 +55,6 @@ class ProjController extends AbstractController
             $isLoggedIn = true;
 
             $session->set('user', $user);
-            $session->set('username', $user->getUsername());
             $session->set('logged_in', $isLoggedIn);
 
             $this->addFlash('success', 'Du är inloggad!');
@@ -82,7 +81,7 @@ class ProjController extends AbstractController
 
         $username = $request->request->get('username');
         $password = $request->request->get('password');
-        $bonus = $request->request->get('bonus-offer');
+        $bonus = $request->request->get('bonus_offer');
 
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
