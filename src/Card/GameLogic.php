@@ -335,7 +335,7 @@ class GameLogic implements GameInterface
                 }
             }
             
-            $result[$playerName] = "Dina händer: W:$wins L:$losses B:$busts BJ:$blackjacks P:$pushes";
+            $result[$playerName] = "Dina händer:\nWin: $wins\nLoss: $losses\nBust: $busts\nBlackJack: $blackjacks\nPush: $pushes";
 
         }
 
