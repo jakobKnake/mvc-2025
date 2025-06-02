@@ -115,6 +115,36 @@ class GameLogicTest extends TestCase
     }
 
     /**
+     * Test start project game.
+     * Handle more hands for one player.
+     */
+    public function testStartProjGame(): void
+    {
+        # Arrange
+        $game = new GameLogic();
+
+        $game->addPlayer("jake");
+
+        $player = $game->getPlayers()[0];
+
+        $cardHand2 = new CardHand();
+        $cardHand3 = new CardHand();
+        $cardHand4 = new CardHand();
+
+        $player->addHand($cardHand2);
+        $player->addHand($cardHand3);
+        $player->addHand($cardHand4);
+
+        # Act
+        $game->startProjGame();
+
+        # Assert
+        # Assert
+        $this->assertSame(4, $player->getNumbersHands()); // 4 as one hand is initialized in player construct.
+
+    }
+
+    /**
      * Test to play dealer turn
      */
     public function testPlayDealer(): void
@@ -221,6 +251,43 @@ class GameLogicTest extends TestCase
 
         # Assert
         $this->assertTrue($res);
+
+        # Arrange
+        $game = new GameLogic();
+
+        $game->addPlayer("jake2");
+        $player2 = $game->getPlayers()[0];
+        $currentHand = $player2->getCurrentHand();
+        $cardHand2 = new CardHand();
+
+        $card1 = new Card();
+        $card2 = new Card();
+        $card3 = new Card();
+        $card1->setCard('Spades', '10');
+        $card2->setCard('Spades', '10');
+        $card3->setCard('Spades', 'Ace');
+        $currentHand->add($card1);
+        $currentHand->add($card2);
+        $currentHand->add($card3);
+
+        $cardHand2->add($card1);
+
+        $player2->addHand($cardHand2);
+
+        $rules = new BlackJackRules();
+
+        # Act
+        $res3 = $game->playerHit();
+        $handsamount = $player2->getHands();
+        $index = $player2->getCurrentHandIndex();
+        $value = $player2->getScore();
+
+
+        # Assert
+        $this->assertCount(2, $handsamount);
+        $this->assertTrue($res3);
+        $this->assertEquals(1, $index);
+        
     }
 
     /**

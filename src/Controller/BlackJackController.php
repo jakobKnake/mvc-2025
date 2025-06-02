@@ -145,5 +145,4 @@ class BlackJackController extends AbstractController
         return $this->redirectToRoute("game_play");
     }
 
-
 }

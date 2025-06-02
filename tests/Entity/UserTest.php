@@ -129,6 +129,8 @@ class UserTest extends TestCase
         # Arrange
         $user = new User();
         $history = $this->createMock(History::class);
+
+        $history->method('getUserId')->willReturn($user);
         
 
         # Act

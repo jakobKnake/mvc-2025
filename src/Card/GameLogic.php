@@ -64,6 +64,29 @@ class GameLogic implements GameInterface
     }
 
     /**
+     * Start a new game with other features.
+     * This is used in kmom10.
+     * Handles multiple hands.
+     */
+    public function startProjGame(): void
+    {
+        $this->deck->shuffleDeck();
+
+        for ($i = 0; $i < 2; $i++) {
+            foreach ($this->players as $player) {
+                $hands = $player->getHands();
+
+                foreach ($hands as $handIndex => $hand) {
+                    $this->dealToHand($player, $handIndex);
+                }
+            }
+            $this->dealCardTo($this->dealer);
+        }
+
+    }
+    
+
+    /**
      * Deal card to either player or dealer.
      * @param PlayerInterface $dealTo The one to deal to.
      * @return mixed The dealt card.
@@ -74,6 +97,27 @@ class GameLogic implements GameInterface
 
         if ($card instanceof Card) {
             $dealTo->addCard($card);
+        }
+
+        return $card;
+    }
+
+    /**
+     * Deal card to hand.
+     * @param Player $player The player.
+     * @param int $handIndex The hand to deal to.
+     * @return mixed The dealt card.
+     */
+    public function dealToHand(Player $player, int $handIndex): mixed
+    {
+        $card = $this->deck->drawCard();
+
+        if ($card instanceof Card) {
+            $hands = $player->getHands();
+
+            if (isset($handIndex)) {
+                $hands[$handIndex]->add($card);
+            }
         }
 
         return $card;
@@ -159,12 +203,13 @@ class GameLogic implements GameInterface
         }
 
         $currentHand = $player->getCurrentHand();
+        $handIndex = $player->getCurrentHandIndex();
         if ($currentHand->isHandStanding()) {
             return false;
         }
 
-        $card = $this->deck->drawCard();
-        $currentHand->add($card);
+
+        $this->dealToHand($player, $handIndex);
 
         if ($this->rules->busted($currentHand)) {
             $player->nextHand();
