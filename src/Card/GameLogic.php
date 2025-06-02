@@ -124,9 +124,19 @@ class GameLogic implements GameInterface
         if (empty($players)) {
             return false;
         }
-        $players[0]->stand();
+        $currentHand = $players[0]->getCurrentHand();
+        $currentHand->standHand();
 
-        return $players[0]->isStanding();
+        $players[0]->nextHand();
+
+        $numberOfHands = count($players[0]->getHands());
+
+        if ($players[0]->getCurrentHandIndex() >= $numberOfHands) {
+            $players[0]->stand();
+            return $players[0]->isStanding();
+        }
+
+        return false;
 
     }
 
@@ -148,10 +158,61 @@ class GameLogic implements GameInterface
             return false;
         }
 
-        $this->dealCardTo($player);
+        $currentHand = $player->getCurrentHand();
+        if ($currentHand->isHandStanding()) {
+            return false;
+        }
+
+        $card = $this->deck->drawCard();
+        $currentHand->add($card);
+
+        if ($this->rules->busted($currentHand)) {
+            $player->nextHand();
+        }
 
         return true;
 
+    }
+
+    /**
+     * Player decides to split his cards.
+     * @return bool False if player is busted true if split.
+     */
+    public function playerSplit(): bool
+    {
+        $players = $this->getPlayers();
+
+        if (empty($players)) {
+            return false;
+        }
+
+        $player = $players[0];
+
+        if ($player->isBusted()) {
+            return false;
+        }
+
+        $currentHand = $player->getCurrentHand();
+
+        if (!$this->rules->canPlayerSplit($currentHand)) {
+            return false;
+        }
+
+        $cards = $currentHand->getCards();
+        $card1 = $cards[0];
+        $card2 = $cards[1];
+
+        $currentHand->clearHand();
+        $currentHand->add($card1);
+
+        $newHand = new CardHand();
+        $newHand->add($card2);
+        $player->addHand($newHand);
+
+        $currentHand->add($this->deck->drawCard());
+        $newHand->add($this->deck->drawCard());
+
+        return true;
     }
 
     /**
@@ -168,8 +229,19 @@ class GameLogic implements GameInterface
         }
 
         $player = $players[0];
+        $numberOfHands = $player->getNumbersHands();
 
-        return !($player->isStanding() || $player->isBusted());
+        if ($player->getCurrentHandIndex() >= $numberOfHands) {
+            return false;
+        }
+
+        if ($player->isStanding() || $player->isBusted()) {
+            return false;
+        }
+
+        $currentHand = $player->getCurrentHand();
+
+        return !($currentHand->isHandStanding() || $this->rules->busted($currentHand));
     }
 
     /**
@@ -190,25 +262,35 @@ class GameLogic implements GameInterface
 
         foreach ($players as $player) {
             $playerName = $player->getName();
-            $playerScore = $player->getScore();
-            $playerBusted = $player->isBusted();
-            $playerBlackJack = $player->hasBlackJack();
+            $hands = $player->getHands();
 
-            $playerOutcome = "Push";
+            $wins = 0;
+            $losses = 0;
+            $busts = 0;
+            $blackjacks = 0;
+            $pushes = 0;
 
-            if ($playerBusted) {
-                $playerOutcome = "Bust";
-            } elseif ($dealerBusted) {
-                $playerOutcome = "Win";
-            } elseif ($playerBlackJack && !$dealerBlackJack) {
-                $playerOutcome = "Black Jack";
-            } elseif ($playerScore > $dealerScore) {
-                $playerOutcome = "Win";
-            } elseif ($playerScore < $dealerScore) {
-                $playerOutcome = "Loss";
+            foreach ($hands as $hand) {
+                $handScore = $this->rules->calculateHand($hand);
+                $handBust = $this->rules->busted($hand);
+                $handBj = $this->rules->isBlackJack($hand);
+
+                if ($handBust) {
+                    $busts++;
+                } elseif ($dealerBusted) {
+                    $wins++;
+                } elseif ($handBj && !$dealerBlackJack) {
+                    $blackjacks++;
+                } elseif ($handScore > $dealerScore) {
+                    $wins++;
+                } elseif ($handScore < $dealerScore) {
+                    $losses++;
+                } else {
+                    $pushes++;
+                }
             }
-
-            $result[$playerName] = $playerOutcome;
+            
+            $result[$playerName] = "Dina händer: W:$wins L:$losses B:$busts BJ:$blackjacks P:$pushes";
 
         }
 

@@ -25,5 +25,18 @@ class ProjControllerTest extends WebTestCase
         }
 
     }
+
+    /**
+     * Test the logout route
+     */
+    public function testLogOutRoute(): void
+    {
+        # Arrange
+        $client = static::createClient();
+        $client->request('GET', '/proj/logout');
+
+        # Assert
+        $this->assertResponseRedirects('/proj');
+    }
     
 }

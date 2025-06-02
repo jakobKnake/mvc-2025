@@ -75,7 +75,7 @@ class BlackJackRules
      * @param CardHand $dealerHand The hand of the dealer.
      * @return bool True or False.
      */
-    public function canDealerDraw($dealerHand): bool
+    public function canDealerDraw(CardHand $dealerHand): bool
     {
         $dealerValue = $this->calculateHand($dealerHand);
 
@@ -84,6 +84,30 @@ class BlackJackRules
         }
 
         return false;
+    }
+
+    /**
+     * Function that checks if player can split.
+     * @param CardHand $playerHand The hand of the player.
+     * @return bool True or False.
+     */
+    public function canPlayerSplit(CardHand $playerHand): bool
+    {
+        if ($playerHand->getNumberCards() != 2) {
+            return false;
+        }
+
+        $cards = $playerHand->getCards();
+        
+        $card1 = $cards[0]->getCard();
+        $card2 = $cards[1]->getCard();
+
+        if ($card1['value'] === $card2['value']) {
+            return true;
+        }
+
+        return false;
+        
     }
 
 }

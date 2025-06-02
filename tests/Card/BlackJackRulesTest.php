@@ -217,4 +217,56 @@ class BlackJackRulesTest extends TestCase
         $this->assertTrue($res); # 14 < 17 can draw.
         $this->assertFalse($res2); # 20 > 17 can not draw.
     }
+
+    /**
+     * Test canPlayerSplit method.
+     */
+    public function testCanPlayerSplit(): void
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+
+        $hand = new CardHand();
+        $hand2 = new CardHand();
+        $hand3 = new CardHand();
+        $hand4 = new CardHand();
+
+        $card1 = new Card();
+        $card2 = new Card();
+        $card3 = new Card();
+        $card4 = new Card();
+        $card5 = new Card();
+
+        $card1->setCard("Spades", "10");
+        $card2->setCard("Diamonds", "4");
+        $card3->setCard("Diamonds", "10");
+        $card4->setCard("Hearts", "King");
+        $card5->setCard("Spades", "King");
+
+        $hand->add($card1);
+        $hand->add($card3);
+
+        $hand2->add($card4);
+        $hand2->add($card5);
+
+        $hand3->add($card2);
+        $hand3->add($card3);
+
+        $hand4->add($card1);
+        $hand4->add($card2);
+        $hand4->add($card3);
+
+        # Act
+        $res = $rules->canPlayerSplit($hand);
+        $res2 = $rules->canPlayerSplit($hand2);
+        $res3 = $rules->canPlayerSplit($hand3);
+        $res4 = $rules->canPlayerSplit($hand4);
+
+        # Assert
+        $this->assertTrue($res);
+        $this->assertTrue($res2);
+        $this->assertFalse($res3);
+        $this->assertFalse($res4);
+
+    }
 }

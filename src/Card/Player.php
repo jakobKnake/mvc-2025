@@ -25,6 +25,16 @@ class Player implements PlayerInterface
     public $name;
 
     /**
+     * @var array<int, CardHand> $hands The hands the player holds.
+     */
+    protected $hands;
+
+    /**
+     * @var int $currentHand The index of which hand is active in hands of player.
+     */
+    protected $currentHandIndex;
+
+    /**
      * Constructor, initialize the player.
      * @param string $name The name of the player.
      * @param BlackJackRules $rules The rules of the game.
@@ -34,6 +44,8 @@ class Player implements PlayerInterface
         $this->name = $name;
         $this->hand = new CardHand();
         $this->rules = $rules;
+        $this->hands = [$this->hand];
+        $this->currentHandIndex = 0;
     }
 
     /**
@@ -62,6 +74,66 @@ class Player implements PlayerInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * Get multiple hands from the player
+     * @return array<int, CardHand>
+     */
+    public function getHands(): array
+    {
+        return $this->hands;
+    }
+
+    /**
+     * Get the current hand of the player.
+     * The active one.
+     * @return CardHand The active hand.
+     */
+    public function getCurrentHand(): CardHand
+    { 
+        if ($this->getCurrentHandIndex() >= $this->getNumbersHands()) {
+            return $this->hands[$this->getNumbersHands() - 1];
+        }
+        return $this->hands[$this->currentHandIndex];
+    }
+
+    /**
+     * Get the current hand index.
+     * @return int The current hand index.
+     */
+    public function getCurrentHandIndex(): int
+    {
+        return $this->currentHandIndex;
+    }
+
+    /**
+     * Count the hands the player got.
+     * @return int The number of hands.
+     */
+    public function getNumbersHands(): int
+    {
+        return count($this->getHands());
+    }
+
+
+    /**
+     * Add a new hand to the player.
+     * @param CardHand $newHand A new hand.
+     * @return void
+     */
+    public function addHand(CardHand $newHand): void
+    {
+        $this->hands[] = $newHand;
+    }
+
+    /**
+     * Move the index one hand.
+     * @return void
+     */
+    public function nextHand(): void
+    {
+        $this->currentHandIndex += 1;
     }
 
 }

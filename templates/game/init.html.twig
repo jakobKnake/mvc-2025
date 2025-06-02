@@ -3,17 +3,32 @@
 {% block title %}Black Jack{% endblock %}
 
 {% block body %}
-<div class="bg-cover bg-center min-h-screen flex flex-col justify-center items-center" style="background-image: url('{{ asset('img/game/blackjack.jpg') }}');">
-    <div class="glass-btn p-8 text-center">
+{% if app.session.get('logged_in') and app.session.get('user') %}
+    <div class="p-6 text-white bg-cover bg-center h-screen flex flex-col items-center" 
+    style="background-image: url('{{ asset('img/proj/bakgrundspel.jpg') }}')">
+    <div class="glass-btn p-8 text-center text-shadow-lg/60">
         <h1>Välkommen till Black Jack bordet!</h1>
-        <p class="!text-black">Single-player Black Jack. Skriv in ditt namn ock kör!</p>
+        <p class="!text-white">Single-player Black Jack. Skriv in ditt namn ock kör!</p>
         <form method="post" action="">
             <input class="border border-black border-solid p-4" type="text" name="name" required>
             <input class="inline-block py-2.5 px-5 rounded-lg bg-white text-black 
-        font-bold text-xl hover:text-red-600 transition-colors duration-300 text-center w-40" type="submit" name="do_it" value="Start playing">
+                font-bold text-xl hover:text-red-600 transition-colors duration-300 text-center w-40" type="submit" name="do_it" value="Start playing">
         </form>
     </div>
-    
 </div>
+
+{% else %}
+    <div class="bg-cover bg-center min-h-screen flex flex-col justify-center items-center" style="background-image: url('{{ asset('img/game/blackjack.jpg') }}');">
+        <div class="glass-btn p-8 text-center">
+            <h1>Välkommen till Black Jack bordet!</h1>
+            <p class="!text-black">Single-player Black Jack. Skriv in ditt namn ock kör!</p>
+            <form method="post" action="">
+                <input class="border border-black border-solid p-4" type="text" name="name" required>
+                <input class="inline-block py-2.5 px-5 rounded-lg bg-white text-black 
+            font-bold text-xl hover:text-red-600 transition-colors duration-300 text-center w-40" type="submit" name="do_it" value="Start playing">
+            </form>
+        </div>     
+    </div>
+{% endif %}
 
 {% endblock %}

@@ -60,4 +60,59 @@ class CardHandTest extends TestCase
         $this->assertEquals(2, $expThree);
 
     }
+
+    /**
+     * Test the stand method to stand hand and that.
+     * Is hand standing returning correct.
+     */
+    public function testStandHand(): void
+    {
+        # Arrange
+        $hand = new CardHand();
+
+        $card = new Card();
+        $cardTwo = new Card();
+        $card->setCard('Spades', '10');
+        $cardTwo->setCard('Hearts', '10');
+
+        $hand->add($card);
+        $hand->add($cardTwo);
+
+        # Act
+        $hand->standHand();
+
+        # Assert
+        $this->assertTrue($hand->isHandStanding());
+    }
+
+    /**
+     * Test clear hand method.
+     * Clear the hand.
+     */
+    public function testClearHand(): void
+    {
+        # Arrange
+        $hand = new CardHand();
+
+        $card = new Card();
+        $cardTwo = new Card();
+        $card->setCard('Spades', '10');
+        $cardTwo->setCard('Hearts', '10');
+
+        $hand->add($card);
+        $hand->add($cardTwo);
+
+        # Act
+        $res = $hand->getCards();
+
+        $hand->clearHand();
+
+        $res2 = $hand->getCards();
+
+        # Assert
+        $this->assertSame([], $res2);
+        $this->assertCount(2, $res);
+
+    }
+
 }

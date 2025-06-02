@@ -15,6 +15,35 @@
         {% endblock %}
     </head>
     <body class= "bg-[#d1ccc7]">
+    {% if app.session.get('logged_in') and app.session.get('user') %}
+    {% set user = app.session.get('user') %}
+        <header class="bg-[#147B45] flex items-center p-4">
+            <a href="{{ path('home_bet') }}" class="justify-start text-white text-4xl font-extrabold cursor-pointer">
+                bet<span class="text-[#FFE71F]">BTH</span>
+            </a>
+            <nav aria-label="Global navigation" class="w-full flex justify-center items-center">
+                <ul class="flex items-center gap-6 text-base py-6">
+                    <li><a class="{% if app.request.attributes.get('_route') == 'home' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('home') }}">Home</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'about' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('about') }}">About</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'api_index' %}text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('api_index') }}">API</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'game' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('game') }}">Casino Lounge</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Log in navigation" class="flex justify-end gap-3">
+                {% if app.session.get('logged_in') and app.session.get('user') %}
+                    <a href="{{ path('show_user') }}" class="w-[40px] h-[40px]"><img src="{{ asset('img/proj/' ~ user.getProfilePic()) }}" alt="Profil Avatar för {{ user.getUsername() }}"></a>
+
+                    <div class="whitespace-nowrap">Saldo: {{ user.getBalance }}</div>
+
+                    <a href="{{ path('log_out') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Logga Ut</a>
+
+                {% else %}
+                    <a href="{{ path('logg_in') }}" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
+                    <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
+                {% endif %}
+            </nav>
+        </header>
+    {% else %}
         <header class="bg-gray-900 flex justify-center items-center p-4">
             <a href="{{ path('home') }}" class="text-white text-4xl font-extrabold">
                 <span class="text-red-400">M</span>VC
@@ -30,19 +59,37 @@
                     <li><a class="{% if app.request.attributes.get('_route') == 'game' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('game') }}">Casino Lounge</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'metrics' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('metrics') }}">Metrics Analys</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'library' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('library') }}">Bibliotek</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'home_bet' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('home_bet') }}">Projektet</a></li>
                     <li><a class="{% if app.request.attributes.get('_route') == 'session' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('session') }}">Session</a></li>
                 </ul>
             </nav>
         </header>
+    {% endif %}
         {{ include('flash.html.twig') }}
         {% block body %}{% endblock %}
-        <footer class="footer flex justify-between p-8">
-            <div class="text-white">
-                <p>&copy; 2025 Jakob Holmström</p>
-            </div>
-            <div>
-                <a href="{{ path('session_delete') }}" class="text-5xl">&#128465;</a>
-            </div>
-        </footer>
+        {% if app.session.get('logged_in') and app.session.get('user') %}
+            <footer class="p-6 border-t-2 border-black">
+                <div>
+                    <span class="text-4xl">&#128286;</span>Spel kan vara beroendeframkallande. Spela ansvarsfullt.
+                    <div class="flex flex-col gap-4 mt-3 underline">
+                        <a href="https://stodlinjen.se/">Stödlinjen</a>
+                        <a href="https://spelberoende.se/">Spelberoende</a>
+                    </div>
+                    <div class="text-center p-4">
+                        <p>&copy; Bet BTH</p>
+                    </div>
+                </div>
+            </footer>
+        {% else %}
+
+            <footer class="footer flex justify-between p-8">
+                <div class="text-white">
+                    <p>&copy; 2025 Jakob Holmström</p>
+                </div>
+                <div>
+                    <a href="{{ path('session_delete') }}" class="text-5xl">&#128465;</a>
+                </div>
+            </footer>
+        {% endif %}
     </body>
 </html>

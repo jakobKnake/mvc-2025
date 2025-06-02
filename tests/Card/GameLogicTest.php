@@ -186,6 +186,24 @@ class GameLogicTest extends TestCase
         $this->assertFalse($res);
         $this->assertFalse($res2);
 
+        # Arrange
+        $game = new GameLogic();
+
+        $game->addPlayer("jake2");
+        $player2 = $game->getPlayers()[0];
+        $currentHand2 = $player2->getCurrentHand();
+        
+        $card1 = new Card();
+        $card1->setCard('Spades', '7');
+        $currentHand2->add($card1);
+        $currentHand2->standHand();
+
+        # Act
+        $res2 = $game->playerHit();
+
+        # Assert
+        $this->assertFalse($res2);
+
     }
 
     /**
@@ -213,14 +231,31 @@ class GameLogicTest extends TestCase
     {
         # Arrange
         $game = new GameLogic();
-
         $game->addPlayer("jake");
+
+        $player = $game->getPlayers()[0];
+        $currentHand = $player->getCurrentHand();
+        $card1 = new Card();
+        $card2 = new Card();
+        $card1->setCard('Spades', '7');
+        $card2->setCard('Hearts', '7');
+        $currentHand->add($card1);
+        $currentHand->add($card2);
+
+        $game->playerSplit();
 
         # Act
         $res = $game->playerStand();
 
         # Assert
-        $this->assertTrue($res);
+        $this->assertFalse($res);
+
+        # Act
+        $res2 = $game->playerStand();
+
+        # Assert
+        $this->assertTrue($res2);
+        $this->assertTrue($player->isStanding());
 
     }
 
@@ -232,60 +267,62 @@ class GameLogicTest extends TestCase
     {
         # Arrange
         $game = $this->getMockBuilder(GameLogic::class)
-            ->disableOriginalConstructor()
             ->onlyMethods(['getDealer', 'getPlayers'])
             ->getMock();
 
         $dealer = $this->createMock(Dealer::class);
         $player1 = $this->createMock(Player::class);
-        $player2 = $this->createMock(Player::class);
-        $player3 = $this->createMock(Player::class);
-        $player4 = $this->createMock(Player::class);
-        $player5 = $this->createMock(Player::class);
 
         $dealer->method('getScore')->willReturn(19);
         $dealer->method('isBusted')->willReturn(false);
         $dealer->method('hasBlackJack')->willReturn(false);
 
         $player1->method('getName')->willReturn('Player1');
-        $player1->method('getScore')->willReturn(20);
-        $player1->method('isBusted')->willReturn(false);
-        $player1->method('hasBlackJack')->willReturn(false);
+        $cardHand1 = new CardHand();
+        $cardHand2 = new CardHand();
+        $cardHand3 = new CardHand();
+        $cardHand4 = new CardHand();
+        $cardHand5 = new CardHand();
 
-        $player2->method('getName')->willReturn('Player2');
-        $player2->method('getScore')->willReturn(17);
-        $player2->method('isBusted')->willReturn(false);
-        $player2->method('hasBlackJack')->willReturn(false);
+        $card1 = new Card();
+        $card2 = new Card();
+        $card3 = new Card();
+        $card4 = new Card();
+        $card5 = new Card();
+        $card6 = new Card();
+        $card1->setCard('Spades', '7');
+        $card2->setCard('Hearts', '7');
+        $card3->setCard('Spades', '10');
+        $card4->setCard('Hearts', 'Ace');
+        $card5->setCard('Spades', '10');
+        $card6->setCard('Hearts', '9');
 
-        $player3->method('getName')->willReturn('Player3');
-        $player3->method('getScore')->willReturn(21);
-        $player3->method('isBusted')->willReturn(false);
-        $player3->method('hasBlackJack')->willReturn(true);
+        $cardHand1->add($card1);
+        $cardHand1->add($card2);
 
-        $player4->method('getName')->willReturn('Player4');
-        $player4->method('getScore')->willReturn(24);
-        $player4->method('isBusted')->willReturn(true);
-        $player4->method('hasBlackJack')->willReturn(false);
+        $cardHand2->add($card3);
+        $cardHand2->add($card4);
 
-        $player5->method('getName')->willReturn('Player5');
-        $player5->method('getScore')->willReturn(19);
-        $player5->method('isBusted')->willReturn(false);
-        $player5->method('hasBlackJack')->willReturn(false);
+        $cardHand3->add($card5);
+        $cardHand3->add($card6);
+        
+        $cardHand4->add($card3);
+        $cardHand4->add($card5);
+        $cardHand4->add($card1);
+
+        $cardHand5->add($card3);
+        $cardHand5->add($card5);
+        $player1->method('getHands')->willReturn([$cardHand1, $cardHand2, $cardHand3, $cardHand4, $cardHand5]);
 
 
         $game->method('getDealer')->willReturn($dealer);
-        $game->method('getPlayers')->willReturn([$player1, $player2, $player3, $player4, $player5]);
+        $game->method('getPlayers')->willReturn([$player1]);
 
         # Act
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Win", $res['Player1']);
-        $this->assertEquals("Loss", $res['Player2']);
-        $this->assertEquals("Black Jack", $res['Player3']);
-        $this->assertEquals("Bust", $res['Player4']);
-        $this->assertEquals("Push", $res['Player5']);
-
+        $this->assertEquals("Dina händer: W:1 L:1 B:1 BJ:1 P:1", $res['Player1']);
     }
 
     /**
@@ -295,7 +332,6 @@ class GameLogicTest extends TestCase
     {
         # Arrange
         $game = $this->getMockBuilder(GameLogic::class)
-            ->disableOriginalConstructor()
             ->onlyMethods(['getDealer', 'getPlayers'])
             ->getMock();
 
@@ -306,10 +342,17 @@ class GameLogicTest extends TestCase
         $dealer->method('isBusted')->willReturn(true);
         $dealer->method('hasBlackJack')->willReturn(false);
 
+        $cardHand = new CardHand();
+        $card1 = new Card();
+        $card2 = new Card();
+        $card1->setCard('Spades', '10');
+        $card2->setCard('Hearts', '10');
+        $cardHand->add($card1);
+        $cardHand->add($card2);
+    
+        $player1->method('getHands')->willReturn([$cardHand]);
+
         $player1->method('getName')->willReturn('Player1');
-        $player1->method('getScore')->willReturn(20);
-        $player1->method('isBusted')->willReturn(false);
-        $player1->method('hasBlackJack')->willReturn(false);
 
         $game->method('getDealer')->willReturn($dealer);
         $game->method('getPlayers')->willReturn([$player1]);
@@ -318,8 +361,90 @@ class GameLogicTest extends TestCase
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Win", $res['Player1']);
+        $this->assertEquals("Dina händer: W:1 L:0 B:0 BJ:0 P:0", $res['Player1']);
     }
 
+
+    /**
+     * Test playersplit method returning true and false.
+     */
+    public function testPlayerSplitTrue(): void
+    {
+        # Arrange
+        $game = new GameLogic();
+
+        # Utan spelare
+        # Assert
+        $this->assertFalse($game->playerSplit());
+
+
+        $game->addPlayer("jake");
+
+        $players = $game->getPlayers();
+        $player = $players[0];
+
+        $card1 = new Card();
+        $card2 = new Card();
+        $card1->setCard('Spades', '10');
+        $card2->setCard('Hearts', '10');
+
+        $currentHand = $player->getCurrentHand();
+        $currentHand->add($card1);
+        $currentHand->add($card2);
+
+        # Act
+        $res = $game->playerSplit();
+        $yes = $game->canPlayerContinue();
+
+        # Lyckad split
+        # Assert
+        $this->assertTrue($res);
+        $this->assertTrue($yes);
+        $this->assertEquals(2, $player->getNumbersHands());
+
+
+        # Arrange
+        $currentHand->clearHand();
+
+        $card3 = new Card();
+        $card2->setCard('Diamonds', '5');
+
+        $currentHand->add($card1);
+        $currentHand->add($card2);
+        $currentHand->add($card3);
+
+        # Act
+        $res2 = $game->playerSplit();
+
+        # Failed split, för många kort
+        # Assert
+        $this->assertFalse($res2);
+    }
+
+    /**
+     * Test split method false.
+     */
+    public function testPlayerSplitFalse(): void
+    {
+        # Arrange
+        $game = $this->getMockBuilder(GameLogic::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['getPlayers'])
+            ->getMock();
+
+        $player = $this->createMock(Player::class);
+        $player->method('isBusted')->willReturn(true);
+        $player->method('getCurrentHandIndex')->willReturn(10);
+
+        $game->method('getPlayers')->willReturn([$player]);
+
+        # Act
+        $res = $game->playerSplit();
+        $res2 = $game->canPlayerContinue();
+
+        # Assert
+        $this->assertFalse($res);
+        $this->assertFalse($res2);
+    }
 
 }

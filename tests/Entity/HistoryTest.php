@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Project;
 
 use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\Collection;

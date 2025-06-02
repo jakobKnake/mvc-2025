@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/knake/dbwebb-kurser/mvc/me/report/src/Slot</title>
+  <title>Dashboard for /home/knake/dbwebb-kurser/mvc/me/report/src/Entity/Project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
-  <link href="../_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
-  <link href="../_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
-  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
  </head>
  <body>
   <header>
@@ -16,8 +16,9 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../index.html">/home/knake/dbwebb-kurser/mvc/me/report/src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Slot</a></li>
+         <li class="breadcrumb-item"><a href="../../index.html">/home/knake/dbwebb-kurser/mvc/me/report/src</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Entity</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Project</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -140,9 +141,9 @@
     </p>
    </footer>
   </div>
-  <script src="../_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
-  <script src="../_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
-  <script src="../_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../../_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
   <script type="text/javascript">
 $(document).ready(function() {
   nv.addGraph(function() {
@@ -155,7 +156,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,1,1], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -173,7 +174,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,4], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,1,0,0,23], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -223,7 +224,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,11,"<a href=\"SlotMachine.php.html#8\">App\\Slot\\SlotMachine<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,11,"<a href=\"History.php.html#9\">App\\Entity\\Project\\History<\/a>"],[95.65217391304348,16,"<a href=\"User.php.html#11\">App\\Entity\\Project\\User<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -247,7 +248,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"SlotMachine.php.html#18\">App\\Slot\\SlotMachine::__construct<\/a>"],[100,1,"<a href=\"SlotMachine.php.html#27\">App\\Slot\\SlotMachine::spin<\/a>"],[100,8,"<a href=\"SlotMachine.php.html#40\">App\\Slot\\SlotMachine::calculateWin<\/a>"],[100,1,"<a href=\"SlotMachine.php.html#71\">App\\Slot\\SlotMachine::getSymbols<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"History.php.html#57\">App\\Entity\\Project\\History::getId<\/a>"],[100,1,"<a href=\"History.php.html#66\">App\\Entity\\Project\\History::getUserId<\/a>"],[100,1,"<a href=\"History.php.html#76\">App\\Entity\\Project\\History::setUserId<\/a>"],[100,1,"<a href=\"History.php.html#87\">App\\Entity\\Project\\History::getActionType<\/a>"],[100,1,"<a href=\"History.php.html#97\">App\\Entity\\Project\\History::setActionType<\/a>"],[100,1,"<a href=\"History.php.html#108\">App\\Entity\\Project\\History::getAmount<\/a>"],[100,1,"<a href=\"History.php.html#118\">App\\Entity\\Project\\History::setAmount<\/a>"],[100,1,"<a href=\"History.php.html#129\">App\\Entity\\Project\\History::getDescription<\/a>"],[100,1,"<a href=\"History.php.html#139\">App\\Entity\\Project\\History::setDescription<\/a>"],[100,1,"<a href=\"History.php.html#150\">App\\Entity\\Project\\History::getCreated<\/a>"],[100,1,"<a href=\"History.php.html#160\">App\\Entity\\Project\\History::setCreated<\/a>"],[100,1,"<a href=\"User.php.html#56\">App\\Entity\\Project\\User::__construct<\/a>"],[100,1,"<a href=\"User.php.html#65\">App\\Entity\\Project\\User::getId<\/a>"],[100,1,"<a href=\"User.php.html#74\">App\\Entity\\Project\\User::getUsername<\/a>"],[100,1,"<a href=\"User.php.html#84\">App\\Entity\\Project\\User::setUsername<\/a>"],[100,1,"<a href=\"User.php.html#95\">App\\Entity\\Project\\User::getPassword<\/a>"],[100,1,"<a href=\"User.php.html#105\">App\\Entity\\Project\\User::setPassword<\/a>"],[100,1,"<a href=\"User.php.html#116\">App\\Entity\\Project\\User::getBalance<\/a>"],[100,1,"<a href=\"User.php.html#126\">App\\Entity\\Project\\User::setBalance<\/a>"],[100,1,"<a href=\"User.php.html#137\">App\\Entity\\Project\\User::getProfilePic<\/a>"],[100,1,"<a href=\"User.php.html#147\">App\\Entity\\Project\\User::setProfilePic<\/a>"],[100,1,"<a href=\"User.php.html#159\">App\\Entity\\Project\\User::getHistories<\/a>"],[100,2,"<a href=\"User.php.html#170\">App\\Entity\\Project\\User::addHistory<\/a>"],[75,3,"<a href=\"User.php.html#185\">App\\Entity\\Project\\User::removeHistory<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

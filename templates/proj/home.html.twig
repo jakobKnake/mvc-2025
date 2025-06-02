@@ -4,6 +4,27 @@
 
 {% block body %}
 
-<p>se att det funkar hejhej</p>
+<div class="p-6 text-white bg-cover bg-center h-screen flex flex-col items-center" 
+    style="background-image: url('{{ asset('img/proj/bakgrundspel.jpg') }}')">
+    <h1 class="text-shadow-lg/30 mt-7">Välkommen till Sveriges minsta nätcasino!</h1>
+    {% if not user %}
+        <div class="glas p-3 w-fit text-center">
+            <h2>Låt det roliga börja!</h2>
+            <p class="!text-white">Just nu matchar vi din första insättning med <strong>100%</strong>
+            upp till 1000kr!<br> Missa inte den chansen</p>
+            <a href="{{ path('create_user') }}" class="mt-2 bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm 
+                cursor-pointer text-black font-medium text-sm whitespace-nowrap
+                hover:bg-[#F0CD0E]">Join betBTH</a>
+        </div>
+    {% else %}
+        <div class="glas p-3 w-fit text-center">
+            <h2>Låt det roliga börja!</h2>
+            <p class="!text-white text-shadow-lg/30">Testa lyckan på vårat BlackJack bord</p>
+            <a href="{{ path('init_game_get') }}" class="mt-2 bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm 
+                cursor-pointer text-black font-medium text-sm whitespace-nowrap
+                hover:bg-[#F0CD0E]">Spela</a>
+        </div>
+    {% endif %}
+</div>
 
 {% endblock %}

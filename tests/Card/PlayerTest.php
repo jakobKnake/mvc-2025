@@ -154,4 +154,54 @@ class PlayerTest extends TestCase
         $this->assertSame($exp, $res);
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Test handling more hands.
+     */
+    public function testAddingHands(): void
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+        $player = new Player("jake", $rules);
+
+        $currentHand = $player->getCurrentHand();
+
+        $numbersOfHands = $player->getNumbersHands();
+        $hands = $player->getHands();
+
+        # Assert
+        $this->assertSame(1, $numbersOfHands);
+        $this->assertCount(1, $hands);
+
+        # Act
+        $newHand = new CardHand();
+        $player->addHand($newHand);
+        $res = $player->getNumbersHands();
+        $hands = $player->getHands();
+
+        # Assert
+        $this->assertSame(2, $res);
+        $this->assertCount(2, $hands);
+
+    }
+
+    /**
+     * Test the get current hand method when.
+     * Index is more than amount of hands.
+     */
+    public function testGetCurrentHandWithBigIndex(): void 
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+        $player = new Player("jake", $rules);
+
+        $currentHand = $player->getCurrentHand();
+
+        # Act
+        $player->nextHand();
+        $isTheSameHand = $player->getCurrentHand();
+
+        # Assert
+        $this->assertSame($currentHand, $isTheSameHand);
+    }
 }
