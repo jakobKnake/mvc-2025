@@ -50,7 +50,6 @@ class ProjController extends AbstractController
         $username = strval($username);
         $password = $request->request->get('password');
         $password = strval($password);
-        $isLoggedIn = $session->get('logged_in');
 
         $user = $userRepo->findOneBy(['username' => $username]);
 
