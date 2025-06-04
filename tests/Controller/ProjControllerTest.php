@@ -43,13 +43,19 @@ class ProjControllerTest extends WebTestCase
 
     /**
      * Test loggin with POST successful.
+     * First create user then loggin.
      */
     public function testUserLogin(): void
     {
         $client = static::createClient();
 
+        $client->request('POST', '/proj/create', [
+            'username' => 'test',
+            'password' => 'test123'
+        ]);
+
         $client->request('POST', '/proj/loggin', [
-            'username' => 'testKonto',
+            'username' => 'test',
             'password' => 'test123'
         ]);
 
