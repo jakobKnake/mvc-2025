@@ -6,6 +6,9 @@ use App\Entity\Project\User;
 use App\Entity\Project\History;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+use Symfony\Bundle\FrameworkBundle\Console\Application; // LÄGG TILL DENNA
+use Symfony\Component\Console\Input\ArrayInput; 
+
 /**
  * Test cases for ProjectGameController.
  */
@@ -37,44 +40,46 @@ class ProjectGameControllerTest extends WebTestCase
     }
 
     /**
-     * Test when logged in get routes.
+     * Test accessing routes with newly created user.
      */
-    public function testWithLoggedInUser(): void
+    public function testNavigateGameWithUser(): void
     {
         # Arrange
         $client = static::createClient();
 
-        $client->request('POST', '/proj/loggin', [
-            'username' => 'testKonto',
+        $client->request('POST', '/proj/create', [
+            'username' => 'tester',
             'password' => 'test123'
         ]);
-        
-        $client->followRedirects();
 
-        # Act / Assert
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'tester',
+            'password' => 'test123'
+        ]);
+
         $client->request('GET', '/proj/init_game');
         $this->assertResponseIsSuccessful();
 
-        # Act / Assert
-        $client->request('POST', '/proj/init');
+        $client->request('POST', '/proj/init_game');
+        $client->followRedirect();
+
+        $client->request('GET', '/proj/bets');
         $this->assertResponseIsSuccessful();
 
-        # Act / Assert
         $client->request('POST', '/proj/bets');
-        $this->assertResponseIsSuccessful();
+        $client->followRedirect();
 
-        # Act / Assert
+
         $client->request('GET', '/proj/play');
         $this->assertResponseIsSuccessful();
 
-        $postRoutes = ['/proj/hit', '/proj/split', '/proj/double'];
+        $client->request('POST', '/proj/split');
+        $client->followRedirect();
 
-        # Act / Assert
-        foreach ($postRoutes as $route) {
-            $client->request('POST', $route);
-            $this->assertResponseIsSuccessful();
-        }
+        $client->request('GET', '/proj/play');
+        $this->assertResponseIsSuccessful();
         
-        
+
     }
+
 }

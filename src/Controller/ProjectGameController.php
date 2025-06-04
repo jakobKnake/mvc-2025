@@ -39,7 +39,7 @@ class ProjectGameController extends AbstractController
         return $this->render('game/init.html.twig', $data);
     }
 
-    #[Route("/proj/init", name: "proj_init_post", methods: ['POST'])]
+    #[Route("/proj/init_game", name: "proj_init_post", methods: ['POST'])]
     public function initGameCallback(
         Request $request,
         SessionInterface $session

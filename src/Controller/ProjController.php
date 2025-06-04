@@ -7,7 +7,6 @@ use App\Entity\Project\History;
 use App\Entity\Project\User;
 use Doctrine\Persistence\ManagerRegistry;
 use DateTime;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;

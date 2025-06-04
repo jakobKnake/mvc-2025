@@ -5,10 +5,22 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         users_in_memory: { memory: null }
+
+        project_user_provider:
+            entity:
+                class: App\Entity\Project\User
+                property: username
+                manager_name: project
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        project:
+            pattern: ^/proj
+            lazy: true
+            provider: project_user_provider
+
         main:
             lazy: true
             provider: users_in_memory
@@ -22,6 +34,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # - { path: ^/proj, roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 

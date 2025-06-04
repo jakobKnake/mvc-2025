@@ -38,24 +38,48 @@ class ProfileControllerTest extends WebTestCase
     /**
      * Test logging in and display user, bank and history
      */
-    public function testRoutesWhileLoggedIn(): void
+    public function testRoutesFailedLoggedIn(): void
+    {
+        # Arrange
+        $client = static::createClient();
+        $projectEntityManager = static::getContainer()->get('doctrine')->getManager('project');
+        $userRepository = $projectEntityManager->getRepository(User::class);
+
+        $testUser = $userRepository->findOneBy(['username' => 'testKonto']);
+
+        $client->loginUser($testUser);
+
+        $client->request('GET', '/proj/show_user');
+        $this->assertResponseRedirects('/proj/loggin');
+
+    }
+
+
+    /**
+     * Test routees with created user and logged in.
+     */
+    public function testCreateUserAndNavigate(): void
     {
         # Arrange
         $client = static::createClient();
 
-        $client->request('POST', '/proj/loggin', [
-            'username' => 'testKonto',
+        $client->request('POST', '/proj/create', [
+            'username' => 'testa',
             'password' => 'test123'
         ]);
 
-        $routes = ['/proj/show_user', '/proj/bank', '/proj/history'];
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'testa',
+            'password' => 'test123'
+        ]);
 
-       # Act / Assert
-        foreach ($routes as $route) {
-            $client->request('GET', $route);
-            $this->assertResponseIsSuccessful();
-        }
+        $client->request('GET', '/proj/show_user');
+        $this->assertResponseIsSuccessful();
 
+        $client->request('GET', '/proj/bank');
+        $this->assertResponseIsSuccessful();
 
+        $client->request('GET', '/proj/history');
+        $this->assertResponseIsSuccessful();
     }
 }
