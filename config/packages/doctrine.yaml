@@ -59,6 +59,9 @@ when@test:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            connections:
+                project:
+                    url: 'sqlite:///%kernel.project_dir%/var/test-project.db'
 
 when@prod:
     doctrine:
