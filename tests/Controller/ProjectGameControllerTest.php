@@ -66,15 +66,17 @@ class ProjectGameControllerTest extends WebTestCase
         $client->request('GET', '/proj/bets');
         $this->assertResponseIsSuccessful();
 
+        $client->followRedirects();
         $client->request('POST', '/proj/bets');
-        $client->followRedirect();
+        
 
 
         $client->request('GET', '/proj/play');
         $this->assertResponseIsSuccessful();
 
+        $client->followRedirects();
         $client->request('POST', '/proj/split');
-        $client->followRedirect();
+        
 
         $client->request('GET', '/proj/play');
         $this->assertResponseIsSuccessful();
