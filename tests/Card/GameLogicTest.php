@@ -274,14 +274,10 @@ class GameLogicTest extends TestCase
 
         $player2->addHand($cardHand2);
 
-        $rules = new BlackJackRules();
-
         # Act
         $res3 = $game->playerHit();
         $handsamount = $player2->getHands();
         $index = $player2->getCurrentHandIndex();
-        $value = $player2->getScore();
-
 
         # Assert
         $this->assertCount(2, $handsamount);
@@ -389,7 +385,7 @@ class GameLogicTest extends TestCase
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Dina händer: W:1 L:1 B:1 BJ:1 P:1", $res['Player1']);
+        $this->assertEquals("Dina händer:<br>Win: 1<br>Loss: 1<br>Bust: 1<br>BlackJack: 1<br>Push: 1", $res['Player1']);
     }
 
     /**
@@ -404,31 +400,62 @@ class GameLogicTest extends TestCase
 
         $dealer = $this->createMock(Dealer::class);
         $player1 = $this->createMock(Player::class);
+        $player2 = $this->createMock(Player::class);
+        $player3 = $this->createMock(Player::class);
 
         $dealer->method('getScore')->willReturn(24);
         $dealer->method('isBusted')->willReturn(true);
         $dealer->method('hasBlackJack')->willReturn(false);
 
         $cardHand = new CardHand();
+        $cardHand2 = new CardHand();
+        $cardHand3 = new CardHand();
         $card1 = new Card();
         $card2 = new Card();
+        $card3 = new Card();
+        $card4 = new Card();
+        $card5 = new Card();
         $card1->setCard('Spades', '10');
         $card2->setCard('Hearts', '10');
+        $card3->setCard('Diamonds', '10');
+        $card4->setCard('Hearts', 'Ace');
+        $card5->setCard('Hearts', '2');
+
         $cardHand->add($card1);
         $cardHand->add($card2);
+        $cardHand2->add($card3);
+        $cardHand2->add($card4);
+        $cardHand3->add($card1);
+        $cardHand3->add($card2);
+        $cardHand3->add($card5);
+
+        $player1->addHand($cardHand);
+        $player2->addHand($cardHand2);
+        $player3->addHand($cardHand3);
     
         $player1->method('getHands')->willReturn([$cardHand]);
-
         $player1->method('getName')->willReturn('Player1');
+        $player1->method('getNumbersHands')->willReturn(1);
+
+        $player2->method('getHands')->willReturn([$cardHand2]);
+        $player2->method('getName')->willReturn('Player2');
+        $player2->method('getNumbersHands')->willReturn(1);
+
+        $player3->method('getHands')->willReturn([$cardHand3]);
+        $player3->method('getName')->willReturn('Player3');
+        $player3->method('getNumbersHands')->willReturn(1);
 
         $game->method('getDealer')->willReturn($dealer);
-        $game->method('getPlayers')->willReturn([$player1]);
+        $game->method('getPlayers')->willReturn([$player1, $player2, $player3]);
 
         # Act
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Dina händer: W:1 L:0 B:0 BJ:0 P:0", $res['Player1']);
+        $this->assertEquals("Win", $res['Player1']);
+        $this->assertEquals("BlackJack", $res['Player2']);
+        $this->assertEquals("Bust", $res['Player3']);
+        
     }
 
 

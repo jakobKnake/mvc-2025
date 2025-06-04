@@ -16,7 +16,7 @@
     </head>
     <body class= "bg-[#d1ccc7]">
         <header class="bg-[#147B45] flex items-center p-4">
-            <a href="" class="justify-start text-white text-4xl font-extrabold cursor-pointer">
+            <a href="{{ path('home_bet') }}" class="justify-start text-white text-4xl font-extrabold cursor-pointer">
                 bet<span class="text-[#FFE71F]">BTH</span>
             </a>
             <nav aria-label="Global navigation" class="w-full flex justify-center items-center">
@@ -33,11 +33,11 @@
 
                     <div class="whitespace-nowrap">Saldo: {{ user.getBalance }}</div>
 
-                    <a href="{{ path('log_out') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Logga Ut</a>
+                    <a href="{{ path('log_out') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap hover:bg-[#F0CD0E]">Logga Ut</a>
 
                 {% else %}
                     <a href="{{ path('logg_in') }}" class="inline-block py-1.5 px-4 rounded-sm cursor-pointer text-white border-2 border-white font-medium text-sm whitespace-nowrap">Logga in</a>
-                    <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap transition hover:bg-[#F0CD0E]">Skapa Konto</a>
+                    <a href="{{ path('create_user') }}" class="bg-[#FFE71F] inline-block py-1.5 px-4 rounded-sm cursor-pointer text-black font-medium text-sm whitespace-nowrap hover:bg-[#F0CD0E]">Skapa Konto</a>
                 {% endif %}
             </nav>
         </header>

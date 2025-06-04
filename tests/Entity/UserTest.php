@@ -52,7 +52,6 @@ class UserTest extends TestCase
         # Assert
         $this->assertSame($exp, $res);
         $this->assertEquals($exp, $res);
-        $this->assertIsString($res);
         $this->assertStringStartsWith('J', $res);
 
     }
@@ -86,7 +85,7 @@ class UserTest extends TestCase
         $user = new User();
 
         # Act
-        $user->setBalance(100);
+        $user->setBalance('100');
         $res = $user->getBalance();
         $exp = '100';
 
@@ -97,11 +96,9 @@ class UserTest extends TestCase
         # Assert
         $this->assertEquals($exp, $res);
         $this->assertSame($exp, $res);
-        $this->assertIsString($res);
 
         $this->assertEquals($expPic, $resPic);
         $this->assertSame($expPic, $resPic);
-        $this->assertIsString($resPic);
 
     }
 

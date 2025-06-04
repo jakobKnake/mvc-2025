@@ -15,62 +15,66 @@
         </div>
 
         <div class="flex flex-col gap-2 justify-center items-center p-4">
-            <form>
-            <div class="flex gap-20 flex-wrap justify-evenly">
-                {% for hand in player.getHands() %}
-                    <div class="flex flex-col justify-center items-center gap-2">
-                        <div class="w-24 h-24 border-3 border-gray-100 rounded-full flex items-center justify-center">
-                            <span class="text-gray-800">Bet {{ loop.index }}</span>
-                        </div>
-                        
-                            <div class="flex gap-2 flex-wrap justify-center">
-                                <label for="hand_{{ loop.index0 }}_5" class="cursor-pointer mb-4 block">
-                                    <input type="checkbox" name="hand_{{ loop.index0 }}" value="5" id="hand_{{ loop.index0 }}_5" class="sr-only peer">
-                                        <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
-                                            style="background-image: url('{{ asset('img/proj/pink-mark.png') }}')">
+            <form action="{{ path('make_bets_post') }}" method="post">
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <div class="flex gap-20 flex-wrap justify-evenly">
+                        {% for hand in player.getHands() %}
+                            <div class="flex flex-col justify-center items-center gap-2">
+                                <div class="w-24 h-24 border-3 border-gray-100 rounded-full flex items-center justify-center">
+                                    <span class="text-gray-800">Bet {{ loop.index }}</span>
+                                </div>
+                                
+                                    <div class="flex gap-2 flex-wrap justify-center">
+                                        <label for="hand_{{ loop.index0 }}_5" class="cursor-pointer mb-4 block">
+                                            <input type="checkbox" name="hand_{{ loop.index0 }}[]" value="5" id="hand_{{ loop.index0 }}_5" class="sr-only peer">
+                                                <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
+                                                    style="background-image: url('{{ asset('img/proj/pink-mark.png') }}')">
 
-                                            <div class="absolute inset-0 flex items-center justify-center p-3">
-                                                <span class="text-white text-xs">(5)</span>
-                                            </div>
-                                        </div>
-                                </label>
+                                                    <div class="absolute inset-0 flex items-center justify-center p-3">
+                                                        <span class="text-white text-xs">(5)</span>
+                                                    </div>
+                                                </div>
+                                        </label>
 
-                                <label for="hand_{{ loop.index0 }}_10" class="cursor-pointer mb-4 block">
-                                    <input type="checkbox" name="hand_{{ loop.index0 }}" value="10" id="hand_{{ loop.index0 }}_10" class="sr-only peer">
-                                        <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
-                                            style="background-image: url('{{ asset('img/proj/blue-marker.png') }}')">
+                                        <label for="hand_{{ loop.index0 }}_10" class="cursor-pointer mb-4 block">
+                                            <input type="checkbox" name="hand_{{ loop.index0 }}[]" value="10" id="hand_{{ loop.index0 }}_10" class="sr-only peer">
+                                                <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
+                                                    style="background-image: url('{{ asset('img/proj/blue-marker.png') }}')">
 
-                                            <div class="absolute inset-0 flex items-center justify-center p-3">
-                                                <span class="text-white text-xs">(10)</span>
-                                            </div>
-                                        </div>
-                                </label>
+                                                    <div class="absolute inset-0 flex items-center justify-center p-3">
+                                                        <span class="text-white text-xs">(10)</span>
+                                                    </div>
+                                                </div>
+                                        </label>
 
-                                <label for="hand_{{ loop.index0 }}_25" class="cursor-pointer mb-4 block">
-                                    <input type="checkbox" name="hand_{{ loop.index0 }}" value="25" id="hand_{{ loop.index0 }}_25" class="sr-only peer">
-                                        <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
-                                            style="background-image: url('{{ asset('img/proj/red-marker.png') }}')">
+                                        <label for="hand_{{ loop.index0 }}_25" class="cursor-pointer mb-4 block">
+                                            <input type="checkbox" name="hand_{{ loop.index0 }}[]" value="25" id="hand_{{ loop.index0 }}_25" class="sr-only peer">
+                                                <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
+                                                    style="background-image: url('{{ asset('img/proj/red-marker.png') }}')">
 
-                                            <div class="absolute inset-0 flex items-center justify-center p-3">
-                                                <span class="text-white text-xs">(25)</span>
-                                            </div>
-                                        </div>
-                                </label>
+                                                    <div class="absolute inset-0 flex items-center justify-center p-3">
+                                                        <span class="text-white text-xs">(25)</span>
+                                                    </div>
+                                                </div>
+                                        </label>
 
-                                <label for="hand_{{ loop.index0 }}_50" class="cursor-pointer mb-4 block">
-                                    <input type="checkbox" name="hand_{{ loop.index0 }}" value="50" id="hand_{{ loop.index0 }}_50" class="sr-only peer">
-                                        <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
-                                            style="background-image: url('{{ asset('img/proj/gold-marker.png') }}')">
+                                        <label for="hand_{{ loop.index0 }}_50" class="cursor-pointer mb-4 block">
+                                            <input type="checkbox" name="hand_{{ loop.index0 }}[]" value="50" id="hand_{{ loop.index0 }}_50" class="sr-only peer">
+                                                <div class="relative bg-cover bg-center bg-no-repeat w-[50px] h-[50px] transition-transform peer-checked:scale-140" 
+                                                    style="background-image: url('{{ asset('img/proj/gold-marker.png') }}')">
 
-                                            <div class="absolute inset-0 flex items-center justify-center p-3">
-                                                <span class="text-white text-xs">(50)</span>
-                                            </div>
-                                        </div>
-                                </label>
+                                                    <div class="absolute inset-0 flex items-center justify-center p-3">
+                                                        <span class="text-white text-xs">(50)</span>
+                                                    </div>
+                                                </div>
+                                        </label>
+                                    </div>
                             </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-            </div>
+                    <input class="bg-[#FFE71F] text-black border-2 rounded-sm border-black 
+                        py-[0.6rem] px-[0.6rem] hover:bg-[#F0CD0E] w-64 block mt-3" type="submit" value="Lägg bets">
+                </div>
             </form>
         </div>
     </div>

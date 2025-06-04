@@ -403,3 +403,12 @@ textarea {
     max-width: 100%;
     box-sizing: border-box;
 }
+
+.glow-effect {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+        
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 20px rgba(245, 158, 11, 0.6), 0 0 40px rgba(245, 158, 11, 0.4); }
+    to { box-shadow: 0 0 60px rgba(245, 158, 11, 0.8), 0 0 100px rgba(245, 158, 11, 0.6); }
+}

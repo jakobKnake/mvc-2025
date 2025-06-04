@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+
+
 use App\Entity\Project\History;
 use App\Entity\Project\User;
+use \Datetime;
 
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -53,6 +56,7 @@ class ProfileController extends AbstractController
     {
         $projEntityManager = $doctrine->getManager('project');
 
+        /** @var User|null $sessionUser */
         $sessionUser = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
 
@@ -61,8 +65,9 @@ class ProfileController extends AbstractController
         }
 
         $profilePic = $request->request->get('profile_pic');
+        $profilePic = strval($profilePic);
         $user = $projEntityManager->getRepository(User::class)->find($sessionUser->getId());
-        if ($profilePic) {
+        if ($profilePic && $user) {
             $user->setProfilePic($profilePic . '.png');
 
             $projEntityManager->flush();
@@ -75,7 +80,7 @@ class ProfileController extends AbstractController
             'user' => $user
         ];
 
-        return $this->redirectToRoute('show_user');
+        return $this->redirectToRoute('show_user', $data);
     }
 
     #[Route("/proj/bank", name: "bank", methods: ['GET'])]
@@ -101,6 +106,7 @@ class ProfileController extends AbstractController
     {
         $projEntityManager = $doctrine->getManager('project');
 
+        /** @var User|null $sessionUser */
         $sessionUser = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
         $bonus = $session->get('bonus');
@@ -115,53 +121,24 @@ class ProfileController extends AbstractController
         }
 
         $balanceToSet = $request->request->get('set_balance');
+        $balanceToSet = strval($balanceToSet);
         $withdraw = $request->request->get('withdraw');
+        $withdraw = strval($withdraw);
 
         $userBalance = intval($user->getBalance());
-
-        if ($balanceToSet) {
-            if ($bonus) {
-                if ($balanceToSet <= '1000') {
-                    $bonusBalance = intval($balanceToSet) * 2; 
-                    $user->setBalance($bonusBalance);
-                } else {
-                    $user->setBalance($balanceToSet);
-                }
-                $session->set('bonus', false);
-            } else {
-                $newBalance = $userBalance + intval($balanceToSet);
-                $user->setBalance($newBalance);
-            }
-            $date = new \DateTime();
-
-            $history = new History();
-            $history->setUserId($user);
-            $history->setActionType('Insättning');
-            $history->setDescription('Ny insättning');
-            $history->setAmount($balanceToSet);
-            $history->setCreated($date);
-
-            $projEntityManager->persist($history);
-            $projEntityManager->flush();
-            $session->set('user', $user);
-
-            $this->addFlash('success', 'Du har gjort en ny insättning');
-
-            $data = ['user' => $user];
-            return $this->render('proj/bank.html.twig', $data);
-        }
         
         if ($withdraw) {
             if ($userBalance <= 0 || intval($withdraw) > $userBalance) {
                 $this->addFlash('error', 'Ditt uttag kan inte överskrida ditt saldo!');
 
                 $data = ['user' => $user];
-                return $this->render('proj/bank.html.twig', $data);
+                return $this->redirectToRoute('bank', $data);
             }
             $newBalance = $userBalance - intval($withdraw);
+            $newBalance = strval($newBalance);
             $user->setBalance($newBalance);
 
-            $date = new \DateTime();
+            $date = new DateTime();
 
             $history = new History();
             $history->setUserId($user);
@@ -177,8 +154,40 @@ class ProfileController extends AbstractController
             $this->addFlash('success', 'Pengarna kommer synas på ditt bankkonto om ca 3-5 arbetsdagar.');
 
             $data = ['user' => $user];
-            return $this->render('proj/bank.html.twig', $data);
-        }        
+            return $this->redirectToRoute('bank', $data);
+        }
+
+        if ($bonus) {
+            if ($balanceToSet <= '1000') {
+                $bonusBalance = intval($balanceToSet) * 2;
+                $bonusBalance = strval($bonusBalance);
+                $user->setBalance($bonusBalance);
+            } else {
+                $user->setBalance($balanceToSet);
+            }
+            $session->set('bonus', false);
+        } else {
+            $newBalance = $userBalance + intval($balanceToSet);
+            $newBalance = strval($newBalance);
+            $user->setBalance($newBalance);
+        }
+        $date = new DateTime();
+
+        $history = new History();
+        $history->setUserId($user);
+        $history->setActionType('Insättning');
+        $history->setDescription('Ny insättning');
+        $history->setAmount($balanceToSet);
+        $history->setCreated($date);
+
+        $projEntityManager->persist($history);
+        $projEntityManager->flush();
+        $session->set('user', $user);
+
+        $this->addFlash('success', 'Du har gjort en ny insättning');
+
+        $data = ['user' => $user];
+        return $this->redirectToRoute('bank', $data);
     }
     #[Route("/proj/delete", name: "delete_user")]
     public function deleteUser(SessionInterface $session,
@@ -186,6 +195,7 @@ class ProfileController extends AbstractController
     {
         $projEntityManager = $doctrine->getManager('project');
 
+        /** @var User|null $sessionUser */
         $sessionUser = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
 
@@ -239,7 +249,10 @@ class ProfileController extends AbstractController
             $totalWith += intval($uttag->getAmount());
         }
 
-        $bets = '';
+        $bets = $historyRepo->findBy([
+                'user_id' => $user,
+                'action_type' => 'Spel'
+        ], ['created' => 'DESC']);
 
         $data = [
             'user' => $user,

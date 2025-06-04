@@ -30,7 +30,7 @@ class Player implements PlayerInterface
     protected $hands;
 
     /**
-     * @var int $currentHand The index of which hand is active in hands of player.
+     * @var int $currentHandIndex The index of which hand is active in hands of player.
      */
     protected $currentHandIndex;
 
@@ -115,6 +115,34 @@ class Player implements PlayerInterface
     {
         return count($this->getHands());
     }
+
+    /**
+     * Check if a specific hand is busted.
+     * @param int $handIndex The hand to check.
+     * @return bool True or False if busted.
+     */
+    public function isHandBusted(int $handIndex): bool
+    {
+        if (!isset($this->hands[$handIndex])) {
+            return false;
+        }
+
+        return $this->rules->busted($this->hands[$handIndex]);
+    }
+    /**
+     * Get the hand score for the player.
+     * Of a specific hand.
+     * @param int $handIndex the hand to check.
+     * @return int The score.
+     */
+    public function getHandScore(int $handIndex): int
+    {
+        if (!isset($this->hands[$handIndex])) {
+            return 0;
+        }
+        
+        return $this->rules->calculateHand($this->hands[$handIndex]);
+    } 
 
 
     /**

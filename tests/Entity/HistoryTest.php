@@ -5,6 +5,8 @@ namespace App\Entity\Project;
 use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\Collection;
 
+use \DateTime;
+
 /**
  * Test cases for the History entity.
  */
@@ -40,7 +42,6 @@ class HistoryTest extends TestCase
 
         # Assert
         $this->assertSame($exp, $res);
-        $this->assertIsString($res);
     }
 
     /**
@@ -59,8 +60,6 @@ class HistoryTest extends TestCase
 
         # Assert
         $this->assertSame($exp, $res);
-
-        $this->assertIsString($res);
 
         $this->assertEquals($exp, $res);
 
@@ -83,7 +82,6 @@ class HistoryTest extends TestCase
         # Assert
         $this->assertSame($exp, $res);
         $this->assertEquals($exp, $res);
-        $this->assertIsString($res);
     }
 
     /**
@@ -93,7 +91,7 @@ class HistoryTest extends TestCase
     {
         # Arrange
         $history = new History();
-        $date = new \DateTime('2025-12-12 12:12:12');
+        $date = new DateTime('2025-12-12 12:12:12');
 
         # Act
         $history->setCreated($date);
@@ -101,7 +99,7 @@ class HistoryTest extends TestCase
 
         # Assert
         $this->assertSame($date, $res);
-        $this->assertInstanceOf(\DateTime::class, $date);
+        $this->assertInstanceOf(DateTime::class, $date);
 
     }
 

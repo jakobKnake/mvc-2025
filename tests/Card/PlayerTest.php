@@ -164,8 +164,6 @@ class PlayerTest extends TestCase
         $rules = new BlackJackRules();
         $player = new Player("jake", $rules);
 
-        $currentHand = $player->getCurrentHand();
-
         $numbersOfHands = $player->getNumbersHands();
         $hands = $player->getHands();
 

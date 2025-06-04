@@ -46,12 +46,14 @@ class ProjController extends AbstractController
         $userRepo = $projEntityManager->getRepository(User::class);
 
         $username = $request->request->get('username');
+        $username = strval($username);
         $password = $request->request->get('password');
+        $password = strval($password);
         $isLoggedIn = $session->get('logged_in');
 
         $user = $userRepo->findOneBy(['username' => $username]);
 
-        if ($user && password_verify($password, $user->getPassword())) {
+        if ($user && password_verify($password, strval($user->getPassword()))) {
             $isLoggedIn = true;
 
             $session->set('user', $user);
@@ -80,7 +82,9 @@ class ProjController extends AbstractController
         $projEntityManager = $doctrine->getManager('project');
 
         $username = $request->request->get('username');
+        $username = strval($username);
         $password = $request->request->get('password');
+        $password = strval($password);
         $bonus = $request->request->get('bonus_offer');
 
 

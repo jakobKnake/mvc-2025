@@ -4,8 +4,8 @@
 
 {% block body %}
     <div class="relative z-1 grid grid-rows-2 gap-6 min-h-screen bg-[#367A41] border-8 border-solid border-[#340C02] rounded-xl">
-        <div class="relative p-4">
-            <div class="flex flex-col gap-2 justify-center items-center p-4">
+        <div class="relative">
+            <div class="flex flex-col gap-2 justify-center items-center p-2">
                 <div class="text-white">
                     {{ dealer.name }}
                     {% if not hideCard %}
@@ -49,44 +49,62 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-2 justify-center items-center p-4">
-            <div class="flex gap-2 flex-wrap justify-center">
-                {% for card in player.getHand() %}
-                    {% set cardInfo = card.getCard() %}
-                    <div class="relative w-[80px] h-[120px] bg-white overflow-hidden
-                        {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
-                            text-red-600
-                        {% endif %}">
-                        <div class="absolute inset-0 flex items-center justify-center mb-4">
-                            <span class="text-[120px] scale-[1.1]">{{ card.getCardAsString() }}</span>
+        <div class="flex-1 overflow-y-auto p-2">
+            <div class="flex gap-3 flex-wrap justify-around">
+                {% for hand in player.getHands() %}
+                    <div class="flex flex-col justify-center items-center p-4
+                    {% if loop.index0 == currentHandIndex %}
+                        bg-amber-100 rounded-md glow-effect
+                    {% endif %}">
+                    <div class="mb-2 text-xl {% if loop.index0 == currentHandIndex %}text-black{% else %}text-white{% endif %}">
+                        {{ player.getHandScore(loop.index0) }}
+                    </div>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            {% for card in hand.getCards() %}
+                                {% set cardInfo = card.getCard() %}
+                                <div class="relative w-[80px] h-[120px] bg-white overflow-hidden
+                                    {% if cardInfo.color == 'Diamonds' or cardInfo.color == 'Hearts' %}
+                                        text-red-600
+                                    {% endif %}">
+                                    <div class="absolute inset-0 flex items-center justify-center mb-4">
+                                        <span class="text-[120px] scale-[1.1]">{{ card.getCardAsString() }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
+                
+                    
+                    {% if not gameOver %}
+                        <div class="flex gap-2 mt-2">
+                            <form action="{{ path('proj_game_double') }}" method="post">
+                                <input class="inline-block rounded-full bg-blue-300 text-black 
+                                        font-bold text-xl hover:bg-blue-500 transition-colors duration-300 text-center h-16 w-16" 
+                                type="submit" name="Dubbla" value="Double"
+                                {% if hand.isHandStanding() or player.isHandBusted(loop.index0) or hand.getCards()|length != 2 %}disabled{% endif %}>
+                            </form>
+                            <form action="{{ path('proj_game_hit') }}" method="post">
+                                <input class="inline-block rounded-full bg-lime-300 text-black 
+                                        font-bold text-xl hover:bg-lime-500 transition-colors duration-300 text-center h-16 w-16" 
+                                type="submit" name="Hit" value="Hit" 
+                                {% if hand.isHandStanding() or player.isHandBusted(loop.index0) %}disabled{% endif %}>
+                            </form>
+                            <form action="{{ path('proj_game_stand') }}" method="post">
+                                <input class="inline-block rounded-full bg-red-400 text-black 
+                                        font-bold text-xl hover:bg-red-600 transition-colors duration-300 text-center h-16 w-16" 
+                                type="submit" name="Stand" value="Stand"
+                                {% if hand.isHandStanding() or player.isHandBusted(loop.index0) %}disabled{% endif %}>
+                            </form>
+                            <form action="{{ path('proj_game_split') }}" method="post">
+                                <input class="inline-block rounded-full bg-yellow-400 text-black 
+                                        font-bold text-xl hover:bg-yellow-600 transition-colors duration-300 text-center h-16 w-16" 
+                                type="submit" name="Split" value="Split"
+                                {% if hand.isHandStanding() or player.isHandBusted(loop.index0) or hand.getCards()|length != 2 %}disabled{% endif %}>
+                            </form>
+                        </div>
+                    {% endif %}
                     </div>
                 {% endfor %}
-                <div class="text-white text-center">
-                    <div class="font-bold">Hand {{ loop.index }}</div>
-                    <div class="text-lg">({{ player.getHandScore(loop.index0) }})</div>
-                </div>
             </div>
-            <div class="text-white">
-                {{ player.name }}
-                ({{ player.getScore() }})
-            </div>
-            {% if not gameOver %}
-                <div class="flex gap-4 mt-3">
-                    <form action="{{ path('game_hit') }}" method="post">
-                        <input class="inline-block rounded-full bg-lime-300 text-black 
-                                font-bold text-xl hover:bg-lime-500 transition-colors duration-300 text-center h-16 w-16" 
-                        type="submit" name="Hit" value="Hit" 
-                        {% if player.isStanding() or player.isBusted() %}disabled{% endif %}>
-                    </form>
-                    <form action="{{ path('game_stand') }}" method="post">
-                        <input class="inline-block rounded-full bg-red-400 text-black 
-                                font-bold text-xl hover:bg-red-600 transition-colors duration-300 text-center h-16 w-16" 
-                        type="submit" name="Stand" value="Stand"
-                        {% if player.isStanding() or player.isBusted() %}disabled{% endif %}>
-                    </form>
-                </div>
-            {% endif %}
         </div>
 
         {% if gameOver %}
