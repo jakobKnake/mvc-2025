@@ -47,7 +47,10 @@ class ProfileControllerTest extends WebTestCase
 
         $testUser = $userRepository->findOneBy(['username' => 'testKonto']);
 
-        $client->loginUser($testUser);
+        if ($testUser) {
+            $client->loginUser($testUser);
+        }
+
 
         $client->request('GET', '/proj/show_user');
         $this->assertResponseRedirects('/proj/loggin');
