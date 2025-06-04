@@ -44,7 +44,7 @@ class ProfileControllerTest extends WebTestCase
         $client = static::createClient();
 
         $client->request('POST', '/proj/loggin', [
-            'username' => 'test',
+            'username' => 'testKonto',
             'password' => 'test123'
         ]);
 

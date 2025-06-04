@@ -97,7 +97,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $player = $game->getPlayers()[0];
@@ -131,7 +131,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $player = $game->getPlayers()[0];
@@ -200,7 +200,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
 
@@ -294,7 +294,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $game->playerHit();
@@ -335,7 +335,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $isPlayerStanding = $game->playerStand();
@@ -381,7 +381,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $user = $projEntityManager->getRepository(User::class)->find($sessionUser->getId());
@@ -448,7 +448,7 @@ class ProjectGameController extends AbstractController
         $game = $session->get("proj_game");
 
         if (!$game instanceof GameLogic) {
-            return $this->redirectToRoute("init_game_get");
+            return $this->redirectToRoute("proj_init_game");
         }
 
         $player = $game->getPlayers()[0];

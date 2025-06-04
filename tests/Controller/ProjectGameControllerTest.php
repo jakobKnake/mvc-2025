@@ -35,4 +35,46 @@ class ProjectGameControllerTest extends WebTestCase
         }
 
     }
+
+    /**
+     * Test when logged in get routes.
+     */
+    public function testWithLoggedInUser(): void
+    {
+        # Arrange
+        $client = static::createClient();
+
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'testKonto',
+            'password' => 'test123'
+        ]);
+        
+        $client->followRedirects();
+
+        # Act / Assert
+        $client->request('GET', '/proj/init_game');
+        $this->assertResponseIsSuccessful();
+
+        # Act / Assert
+        $client->request('POST', '/proj/init');
+        $this->assertResponseIsSuccessful();
+
+        # Act / Assert
+        $client->request('POST', '/proj/bets');
+        $this->assertResponseIsSuccessful();
+
+        # Act / Assert
+        $client->request('GET', '/proj/play');
+        $this->assertResponseIsSuccessful();
+
+        $postRoutes = ['/proj/hit', '/proj/split', '/proj/double'];
+
+        # Act / Assert
+        foreach ($postRoutes as $route) {
+            $client->request('POST', $route);
+            $this->assertResponseIsSuccessful();
+        }
+        
+        
+    }
 }
