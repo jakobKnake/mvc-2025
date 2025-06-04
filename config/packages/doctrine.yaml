@@ -61,6 +61,7 @@ when@test:
             default_connection: default
             connections:
                 default:
+                    url: 'sqlite:///%kernel.project_dir%/var/test.db'
                     # "TEST_TOKEN" is typically set by ParaTest
                     dbname_suffix: '_test%env(default::TEST_TOKEN)%'
                 project:
