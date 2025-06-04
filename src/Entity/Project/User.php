@@ -54,7 +54,7 @@ class User
     private Collection $histories;
 
     /**
-     * Automatically initialize $histories when doing new User(). 
+     * Automatically initialize $histories when doing new User().
      */
     public function __construct()
     {

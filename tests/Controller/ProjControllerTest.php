@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Project\User;
+use App\Entity\Project\History;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -38,5 +40,35 @@ class ProjControllerTest extends WebTestCase
         # Assert
         $this->assertResponseRedirects('/proj');
     }
-    
+
+    /**
+     * Test loggin with POST successful.
+     */
+    public function testUserLogin(): void
+    {
+        $client = static::createClient();
+
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'testKonto',
+            'password' => 'test123'
+        ]);
+
+        $this->assertResponseRedirects('/proj');
+    }
+
+    /**
+     * Test failed loggin with POST.
+     */
+    public function testUserLoginFail(): void
+    {
+        $client = static::createClient();
+
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'testKontoret',
+            'password' => '123test'
+        ]);
+
+        $this->assertResponseRedirects('/proj/loggin');
+    }
+
 }

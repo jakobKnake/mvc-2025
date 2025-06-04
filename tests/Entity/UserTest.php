@@ -128,7 +128,7 @@ class UserTest extends TestCase
         $history = $this->createMock(History::class);
 
         $history->method('getUserId')->willReturn($user);
-        
+
 
         # Act
         $user->addHistory($history);
@@ -142,7 +142,7 @@ class UserTest extends TestCase
         # Act
         $user->removeHistory($history);
         $res2 = $user->getHistories();
-        
+
 
         # Assert
         $this->assertCount(0, $res2);

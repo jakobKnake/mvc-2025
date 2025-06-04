@@ -55,7 +55,7 @@ class BlackJackControllerTest extends WebTestCase
 
         $client->request('GET', '/game/play');
         # Act
-        $client->submitForm('Hit');
+        $client->request('POST', '/game/hit');
 
         $response = $client->getResponse();
         $location = $response->headers->get('Location');
@@ -78,7 +78,7 @@ class BlackJackControllerTest extends WebTestCase
         $client->request('GET', '/game/play');
 
         # Act
-        $client->submitForm('Stand');
+        $client->request('POST', '/game/stand');
 
         # Assert
         $this->assertResponseRedirects('/game/dealer');

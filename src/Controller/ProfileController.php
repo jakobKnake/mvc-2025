@@ -2,14 +2,10 @@
 
 namespace App\Controller;
 
-
-
 use App\Entity\Project\History;
 use App\Entity\Project\User;
-use \Datetime;
-
+use Datetime;
 use Doctrine\Persistence\ManagerRegistry;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,9 +47,11 @@ class ProfileController extends AbstractController
     }
 
     #[Route("/proj/show_user", name: "update_user", methods: ['POST'])]
-    public function updateUser(SessionInterface $session,
-    ManagerRegistry $doctrine, Request $request): Response
-    {
+    public function updateUser(
+        SessionInterface $session,
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -72,7 +70,7 @@ class ProfileController extends AbstractController
 
             $projEntityManager->flush();
             $session->set('user', $user);
-            
+
             $this->addFlash('success', 'Du har bytt Avatar');
         }
 
@@ -101,9 +99,11 @@ class ProfileController extends AbstractController
     }
 
     #[Route("/proj/bank", name: "bank_post", methods: ['POST'])]
-    public function bankPost(SessionInterface $session,
-    ManagerRegistry $doctrine, Request $request): Response
-    {
+    public function bankPost(
+        SessionInterface $session,
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -126,7 +126,7 @@ class ProfileController extends AbstractController
         $withdraw = strval($withdraw);
 
         $userBalance = intval($user->getBalance());
-        
+
         if ($withdraw) {
             if ($userBalance <= 0 || intval($withdraw) > $userBalance) {
                 $this->addFlash('error', 'Ditt uttag kan inte överskrida ditt saldo!');
@@ -190,9 +190,10 @@ class ProfileController extends AbstractController
         return $this->redirectToRoute('bank', $data);
     }
     #[Route("/proj/delete", name: "delete_user")]
-    public function deleteUser(SessionInterface $session,
-    ManagerRegistry $doctrine): Response
-    {
+    public function deleteUser(
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -216,9 +217,10 @@ class ProfileController extends AbstractController
         return $this->redirectToRoute('home_bet');
     }
     #[Route("/proj/history", name: "user_history")]
-    public function userHistories(SessionInterface $session,
-    ManagerRegistry $doctrine): Response
-    {
+    public function userHistories(
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
         $historyRepo = $projEntityManager->getRepository(History::class);
 

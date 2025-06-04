@@ -98,7 +98,7 @@ class BlackJackRules
         }
 
         $cards = $playerHand->getCards();
-        
+
         $card1 = $cards[0]->getCard();
         $card2 = $cards[1]->getCard();
 
@@ -107,7 +107,7 @@ class BlackJackRules
         }
 
         return false;
-        
+
     }
 
 }

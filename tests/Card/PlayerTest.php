@@ -187,7 +187,7 @@ class PlayerTest extends TestCase
      * Test the get current hand method when.
      * Index is more than amount of hands.
      */
-    public function testGetCurrentHandWithBigIndex(): void 
+    public function testGetCurrentHandWithBigIndex(): void
     {
         # Arrange
         $rules = new BlackJackRules();
@@ -201,5 +201,70 @@ class PlayerTest extends TestCase
 
         # Assert
         $this->assertSame($currentHand, $isTheSameHand);
+    }
+
+    /**
+     * Test get the handscore with invalid index and correct index.
+     */
+    public function testGetHandScore(): void
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+        $player = new Player("jake", $rules);
+
+        $card1 = new Card();
+        $card2 = new Card();
+
+        $card1->setCard("Spades", "10");
+        $card2->setCard("Diamonds", "7");
+
+        # Act
+        $player->addCard($card1);
+        $player->addCard($card2);
+
+        $res = $player->getHandScore(0);
+        $invalidIndex = 10;
+        $result = $player->getHandScore($invalidIndex);
+
+        # Assert
+        $this->assertSame(17, $res);
+        $this->assertSame(0, $result);
+    }
+
+    /**
+     * Test isHandBusted with valid and invalid index.
+     * Also with false hand and true hand (non busted and busted).
+     */
+    public function testIsHandBusted(): void
+    {
+        # Arrange
+        $rules = new BlackJackRules();
+        $player = new Player("jake", $rules);
+        $player2 = new Player("jake2", $rules);
+
+        $card1 = new Card();
+        $card2 = new Card();
+        $card3 = new Card();
+
+        $card1->setCard("Spades", "10");
+        $card2->setCard("Diamonds", "7");
+        $card3->setCard("Hearts", "7");
+
+        $player->addCard($card1);
+        $player->addCard($card2);
+
+        $player2->addCard($card1);
+        $player2->addCard($card2);
+        $player2->addCard($card3);
+
+        # Act
+        $res = $player->isHandBusted(0);
+        $res2 = $player2->isHandBusted(0);
+        $res3 = $player->isHandBusted(5);
+
+        # Assert
+        $this->assertFalse($res);
+        $this->assertTrue($res2);
+        $this->assertFalse($res3);
     }
 }

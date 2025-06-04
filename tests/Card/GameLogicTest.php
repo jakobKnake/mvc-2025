@@ -222,7 +222,7 @@ class GameLogicTest extends TestCase
         $game->addPlayer("jake2");
         $player2 = $game->getPlayers()[0];
         $currentHand2 = $player2->getCurrentHand();
-        
+
         $card1 = new Card();
         $card1->setCard('Spades', '7');
         $currentHand2->add($card1);
@@ -283,7 +283,7 @@ class GameLogicTest extends TestCase
         $this->assertCount(2, $handsamount);
         $this->assertTrue($res3);
         $this->assertEquals(1, $index);
-        
+
     }
 
     /**
@@ -368,7 +368,7 @@ class GameLogicTest extends TestCase
 
         $cardHand3->add($card5);
         $cardHand3->add($card6);
-        
+
         $cardHand4->add($card3);
         $cardHand4->add($card5);
         $cardHand4->add($card1);
@@ -381,11 +381,19 @@ class GameLogicTest extends TestCase
         $game->method('getDealer')->willReturn($dealer);
         $game->method('getPlayers')->willReturn([$player1]);
 
+        $exp = [
+            0 => "Loss",
+            1 => "BlackJack",
+            2 => "Push",
+            3 => "Bust",
+            4 => "Win"
+        ];
+
         # Act
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Dina händer:<br>Win: 1<br>Loss: 1<br>Bust: 1<br>BlackJack: 1<br>Push: 1", $res['Player1']);
+        $this->assertEquals($exp, $res['Player1']);
     }
 
     /**
@@ -432,7 +440,7 @@ class GameLogicTest extends TestCase
         $player1->addHand($cardHand);
         $player2->addHand($cardHand2);
         $player3->addHand($cardHand3);
-    
+
         $player1->method('getHands')->willReturn([$cardHand]);
         $player1->method('getName')->willReturn('Player1');
         $player1->method('getNumbersHands')->willReturn(1);
@@ -452,10 +460,10 @@ class GameLogicTest extends TestCase
         $res = $game->decideWinner();
 
         # Assert
-        $this->assertEquals("Win", $res['Player1']);
-        $this->assertEquals("BlackJack", $res['Player2']);
-        $this->assertEquals("Bust", $res['Player3']);
-        
+        $this->assertEquals([0 => "Win"], $res['Player1']);
+        $this->assertEquals([0 => "BlackJack"], $res['Player2']);
+        $this->assertEquals([0 => "Bust"], $res['Player3']);
+
     }
 
 

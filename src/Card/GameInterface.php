@@ -44,7 +44,7 @@ interface GameInterface
     /**
      * Decide the winner or winners of the game.
      * Compare player hand with dealer to set outcome.
-     * @return array<string,string> Array with name of player and outcome for that player.
+     * @return array<string,array<int, string>> Array with name of player and outcome for that player.
      */
     public function decideWinner();
 

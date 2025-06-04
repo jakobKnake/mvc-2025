@@ -4,8 +4,7 @@ namespace App\Entity\Project;
 
 use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\Collection;
-
-use \DateTime;
+use DateTime;
 
 /**
  * Test cases for the History entity.

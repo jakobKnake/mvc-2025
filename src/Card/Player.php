@@ -91,7 +91,7 @@ class Player implements PlayerInterface
      * @return CardHand The active hand.
      */
     public function getCurrentHand(): CardHand
-    { 
+    {
         if ($this->getCurrentHandIndex() >= $this->getNumbersHands()) {
             return $this->hands[$this->getNumbersHands() - 1];
         }
@@ -140,9 +140,9 @@ class Player implements PlayerInterface
         if (!isset($this->hands[$handIndex])) {
             return 0;
         }
-        
+
         return $this->rules->calculateHand($this->hands[$handIndex]);
-    } 
+    }
 
 
     /**

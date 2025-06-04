@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Card\GameLogic;
 use App\Entity\Project\History;
 use App\Entity\Project\User;
-
 use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,12 +24,12 @@ class ProjController extends AbstractController
     {
         $isLoggedIn = $session->get('logged_in', false);
         $user = $session->get('user');
-        
+
         $data = [
             'inloggad' => $isLoggedIn,
             'user' => $user
         ];
-        
+
         return $this->render('proj/home.html.twig', $data);
     }
     #[Route("/proj/loggin", name: "logg_in", methods:['GET'])]
@@ -39,9 +39,11 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj/loggin", name: "logg_in_post", methods: ['POST'])]
-    public function logInPost(Request $request, 
-    ManagerRegistry $doctrine, SessionInterface $session): Response
-    {
+    public function logInPost(
+        Request $request,
+        ManagerRegistry $doctrine,
+        SessionInterface $session
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
         $userRepo = $projEntityManager->getRepository(User::class);
 
@@ -76,9 +78,11 @@ class ProjController extends AbstractController
         return $this->render('proj/create.html.twig');
     }
     #[Route("/proj/create", name: "create_user_post", methods: ['POST'])]
-    public function createPost(ManagerRegistry $doctrine, 
-    Request $request, SessionInterface $session): Response
-    {
+    public function createPost(
+        ManagerRegistry $doctrine,
+        Request $request,
+        SessionInterface $session
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         $username = $request->request->get('username');
@@ -90,7 +94,7 @@ class ProjController extends AbstractController
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $date = new \DateTime();
+        $date = new DateTime();
 
         $user = new User();
         $history = new History();

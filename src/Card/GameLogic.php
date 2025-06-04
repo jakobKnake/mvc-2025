@@ -84,7 +84,7 @@ class GameLogic implements GameInterface
         }
 
     }
-    
+
 
     /**
      * Deal card to either player or dealer.
@@ -291,7 +291,7 @@ class GameLogic implements GameInterface
     /**
      * Decide the winner or winners of the game.
      * Compare player hand with dealer to set outcome.
-     * @return array<string,string> Array with name of player and outcome for that player.
+     * @return array<string,array<int, string>> Array with name of player and outcome for that player.
      */
     public function decideWinner(): array
     {
@@ -328,7 +328,7 @@ class GameLogic implements GameInterface
                 }
             }
 
-             $result[$playerName] = $handRes;
+            $result[$playerName] = $handRes;
         }
 
         return $result;

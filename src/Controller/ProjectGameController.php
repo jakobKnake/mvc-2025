@@ -7,11 +7,8 @@ use App\Card\CardHand;
 use App\Card\CardGraphic;
 use App\Entity\Project\History;
 use App\Entity\Project\User;
-
-use \DateTime;
-
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,8 +43,7 @@ class ProjectGameController extends AbstractController
     public function initGameCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         /** @var User|null $user */
         $user = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
@@ -116,9 +112,11 @@ class ProjectGameController extends AbstractController
         return $this->render("proj/bets.html.twig", $data);
     }
     #[Route("/proj/bets", name: "make_bets_post", methods: ['POST'])]
-    public function makeBetsPost(Request $request,
-    SessionInterface $session, ManagerRegistry $doctrine): Response
-    {
+    public function makeBetsPost(
+        Request $request,
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -135,13 +133,13 @@ class ProjectGameController extends AbstractController
         if (!$game instanceof GameLogic) {
             return $this->redirectToRoute("init_game_get");
         }
-        
+
         $player = $game->getPlayers()[0];
         $hands = $player->getNumbersHands();
 
         $bets = [];
         $totalBettingAmount = 0;
-        for ($i=0; $i < $hands; $i++) {
+        for ($i = 0; $i < $hands; $i++) {
             $handBets = $request->request->all("hand_$i");
 
             if (empty($handBets)) {
@@ -149,7 +147,7 @@ class ProjectGameController extends AbstractController
                 return $this->redirectToRoute('make_bets');
             }
             $totalHandBet = array_sum(array_map('intval', $handBets));
-            
+
             if ($totalHandBet < 5) {
                 $this->addFlash('error', "Du måste lägga minst 5kr bet per hand!");
                 return $this->redirectToRoute('make_bets');
@@ -170,7 +168,7 @@ class ProjectGameController extends AbstractController
             $this->addFlash('error', "Otillräckligt saldo!");
             return $this->redirectToRoute('make_bets');
         }
-        
+
         $newBalance = $userBalance - $totalBettingAmount;
         $newBalance = strval($newBalance);
         $user->setBalance($newBalance);
@@ -184,9 +182,10 @@ class ProjectGameController extends AbstractController
     }
 
     #[Route("/proj/play", name: "proj_game_play", methods: ['GET'])]
-    public function projPlayGame(SessionInterface $session, 
-    ManagerRegistry $doctrine): Response
-    {
+    public function projPlayGame(
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -223,7 +222,11 @@ class ProjectGameController extends AbstractController
         if (!$hideCard) {
             $res = $game->decideWinner();
             $outcome = reset($res);
+            if ($outcome === false) {
+                $outcome = [];
+            }
 
+            /** @var array<int, array<string|int>> $bets */
             $bets = $session->get('bets');
             $totalBet = 0;
             $totalWin = 0;
@@ -266,8 +269,11 @@ class ProjectGameController extends AbstractController
             $projEntityManager->persist($history);
             $projEntityManager->flush();
 
-            $data["outcome"] = implode(", ", $outcome);
-            $data["gameOver"] = true;
+            if (!empty($outcome)) {
+                $data["outcome"] = implode(", ", $outcome);
+                $data["gameOver"] = true;
+            }
+
         }
 
         return $this->render('proj/play.html.twig', $data);
@@ -295,7 +301,7 @@ class ProjectGameController extends AbstractController
 
         $canContinue = $game->canPlayerContinue();
 
-        if (!$canContinue) { 
+        if (!$canContinue) {
             $this->addFlash(
                 'warning',
                 'Du kan inte dra fler kort!'
@@ -354,14 +360,17 @@ class ProjectGameController extends AbstractController
     }
 
     #[Route("/proj/split", name: "proj_game_split", methods: ['POST'])]
-    public function projGameSplit(SessionInterface $session,
-    ManagerRegistry $doctrine): Response
-    {
+    public function projGameSplit(
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
         $sessionUser = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
+
+        /** @var array<int, array<string|int>>|null $bets */
         $bets = $session->get('bets');
 
         if (!$isLoggedIn || !$sessionUser) {
@@ -379,7 +388,7 @@ class ProjectGameController extends AbstractController
         if (!$user) {
             throw $this->createNotFoundException('No user found for id');
         }
-        
+
         $player = $game->getPlayers()[0];
         $currentHandIndex = $player->getCurrentHandIndex();
 
@@ -393,7 +402,7 @@ class ProjectGameController extends AbstractController
                 return $this->redirectToRoute("proj_game_play");
             }
 
-             $splitWorked = $game->playerSplit();
+            $splitWorked = $game->playerSplit();
 
             if ($splitWorked) {
                 $newBalance = $userBalance - $currBet;
@@ -418,14 +427,17 @@ class ProjectGameController extends AbstractController
     }
 
     #[Route("/proj/double", name: "proj_game_double", methods: ['POST'])]
-    public function projGameDouble(ManagerRegistry $doctrine,
-    SessionInterface $session): Response
-    {
+    public function projGameDouble(
+        ManagerRegistry $doctrine,
+        SessionInterface $session
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
         $sessionUser = $session->get('user');
         $isLoggedIn = $session->get('logged_in');
+
+        /** @var array<int, array<string|int>>|null $bets */
         $bets = $session->get('bets');
 
         if (!$isLoggedIn || !$sessionUser) {
