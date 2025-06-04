@@ -57,9 +57,12 @@ doctrine_migrations:
 when@test:
     doctrine:
         dbal:
-            # "TEST_TOKEN" is typically set by ParaTest
-            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            
+            default_connection: default
             connections:
+                default:
+                    # "TEST_TOKEN" is typically set by ParaTest
+                    dbname_suffix: '_test%env(default::TEST_TOKEN)%'
                 project:
                     url: 'sqlite:///%kernel.project_dir%/var/test-project.db'
 
