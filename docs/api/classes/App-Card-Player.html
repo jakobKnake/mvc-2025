@@ -69,6 +69,10 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-datafixtures.html" class="">DataFixtures</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-entity.html" class="">Entity</a>
                 
             </li>
@@ -188,9 +192,21 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/App-Card-Player.html#property_currentHandIndex">$currentHandIndex</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/App-Card-Player.html#property_hand">$hand</a>
     <span>
                         &nbsp;: <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/App-Card-Player.html#property_hands">$hands</a>
+    <span>
+                        &nbsp;: array&lt;int, <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&gt;            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -228,6 +244,27 @@
 <dd>Add a card to the player.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_addHand">addHand()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Add a new hand to the player.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_getCurrentHand">getCurrentHand()</a>
+    <span>
+                                &nbsp;: <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>    </span>
+</dt>
+<dd>Get the current hand of the player.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_getCurrentHandIndex">getCurrentHandIndex()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Get the current hand index.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_getHand">getHand()</a>
     <span>
                                 &nbsp;: array&lt;int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;    </span>
@@ -235,11 +272,32 @@
 <dd>Get and return the player hand.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_getHands">getHands()</a>
+    <span>
+                                &nbsp;: array&lt;int, <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&gt;    </span>
+</dt>
+<dd>Get multiple hands from the player</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_getHandScore">getHandScore()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Get the hand score for the player.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_getName">getName()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Get the name of the player.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_getNumbersHands">getNumbersHands()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Count the hands the player got.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-StatusTrait.html#method_getScore">getScore()</a>
@@ -263,11 +321,25 @@
 <dd>Check if the hand is busted (more than 21).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_isHandBusted">isHandBusted()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Check if a specific hand is busted.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-StatusTrait.html#method_isStanding">isStanding()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
 <dd>Check if the player is standing.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-Player.html#method_nextHand">nextHand()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Move the index one hand.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-StatusTrait.html#method_stand">stand()</a>
@@ -334,6 +406,44 @@
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_currentHandIndex">
+        $currentHandIndex
+        <a href="classes/App-Card-Player.html#property_currentHandIndex" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">35</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$currentHandIndex</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"><p>The index of which hand is active in hands of player.</p>
+</section>
+
+    
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_hand">
         $hand
         <a href="classes/App-Card-Player.html#property_hand" class="headerlink"><i class="fas fa-link"></i></a>
@@ -358,6 +468,44 @@
 
     
         <section class="phpdocumentor-description"><p>The hand of cards of the player.</p>
+</section>
+
+    
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_hands">
+        $hands
+        <a href="classes/App-Card-Player.html#property_hands" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">30</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;int, <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__name">$hands</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"><p>The hands the player holds.</p>
 </section>
 
     
@@ -463,7 +611,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -519,7 +667,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
@@ -558,6 +706,141 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addHand">
+        addHand()
+        <a href="classes/App-Card-Player.html#method_addHand" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">153</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Add a new hand to the player.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHand</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$newHand</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$newHand</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A new hand.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCurrentHand">
+        getCurrentHand()
+        <a href="classes/App-Card-Player.html#method_getCurrentHand" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">93</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get the current hand of the player.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCurrentHand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>The active one.</p>
+</section>
+
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The active hand.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCurrentHandIndex">
+        getCurrentHandIndex()
+        <a href="classes/App-Card-Player.html#method_getCurrentHandIndex" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">105</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get the current hand index.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCurrentHandIndex</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The current hand index.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getHand">
         getHand()
         <a href="classes/App-Card-Player.html#method_getHand" class="headerlink"><i class="fas fa-link"></i></a>
@@ -566,7 +849,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
@@ -597,6 +880,102 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getHands">
+        getHands()
+        <a href="classes/App-Card-Player.html#method_getHands" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">83</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get multiple hands from the player</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getHands</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getHandScore">
+        getHandScore()
+        <a href="classes/App-Card-Player.html#method_getHandScore" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">138</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get the hand score for the player.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getHandScore</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$handIndex</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Of a specific hand.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$handIndex</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the hand to check.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The score.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getName">
         getName()
         <a href="classes/App-Card-Player.html#method_getName" class="headerlink"><i class="fas fa-link"></i></a>
@@ -605,7 +984,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
@@ -629,6 +1008,49 @@
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The name of the player.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getNumbersHands">
+        getNumbersHands()
+        <a href="classes/App-Card-Player.html#method_getNumbersHands" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">114</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Count the hands the player got.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getNumbersHands</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The number of hands.</p>
 </section>
 
             </section>
@@ -769,6 +1191,61 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_isHandBusted">
+        isHandBusted()
+        <a href="classes/App-Card-Player.html#method_isHandBusted" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">124</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Check if a specific hand is busted.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isHandBusted</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$handIndex</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$handIndex</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The hand to check.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True or False if busted.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_isStanding">
         isStanding()
         <a href="classes/App-Card-StatusTrait.html#method_isStanding" class="headerlink"><i class="fas fa-link"></i></a>
@@ -805,6 +1282,41 @@
 
             </section>
 
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_nextHand">
+        nextHand()
+        <a href="classes/App-Card-Player.html#method_nextHand" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Player.php"><a href="files/src-card-player.html"><abbr title="src/Card/Player.php">Player.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">162</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Move the index one hand.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">nextHand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -955,7 +1467,9 @@
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/App-Card-Player.html#property_name">$name</a></li>
+                                                    <li class=""><a href="classes/App-Card-Player.html#property_currentHandIndex">$currentHandIndex</a></li>
                                                     <li class=""><a href="classes/App-Card-Player.html#property_hand">$hand</a></li>
+                                                    <li class=""><a href="classes/App-Card-Player.html#property_hands">$hands</a></li>
                                                     <li class=""><a href="classes/App-Card-Player.html#property_rules">$rules</a></li>
                                                     <li class=""><a href="classes/App-Card-StatusTrait.html#property_standing">$standing</a></li>
                                             </ul>
@@ -966,12 +1480,20 @@
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-Card-Player.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/App-Card-Player.html#method_addCard">addCard()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_addHand">addHand()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_getCurrentHand">getCurrentHand()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_getCurrentHandIndex">getCurrentHandIndex()</a></li>
                                             <li class=""><a href="classes/App-Card-Player.html#method_getHand">getHand()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_getHands">getHands()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_getHandScore">getHandScore()</a></li>
                                             <li class=""><a href="classes/App-Card-Player.html#method_getName">getName()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_getNumbersHands">getNumbersHands()</a></li>
                                             <li class=""><a href="classes/App-Card-StatusTrait.html#method_getScore">getScore()</a></li>
                                             <li class=""><a href="classes/App-Card-StatusTrait.html#method_hasBlackJack">hasBlackJack()</a></li>
                                             <li class=""><a href="classes/App-Card-StatusTrait.html#method_isBusted">isBusted()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_isHandBusted">isHandBusted()</a></li>
                                             <li class=""><a href="classes/App-Card-StatusTrait.html#method_isStanding">isStanding()</a></li>
+                                            <li class=""><a href="classes/App-Card-Player.html#method_nextHand">nextHand()</a></li>
                                             <li class=""><a href="classes/App-Card-StatusTrait.html#method_stand">stand()</a></li>
                                     </ul>
             </li>

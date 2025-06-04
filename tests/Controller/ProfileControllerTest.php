@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Project\User;
 use App\Entity\Project\History;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -42,7 +43,9 @@ class ProfileControllerTest extends WebTestCase
     {
         # Arrange
         $client = static::createClient();
-        $projectEntityManager = static::getContainer()->get('doctrine')->getManager('project');
+        /** @var ManagerRegistry $doctrine */
+        $doctrine = static::getContainer()->get('doctrine');
+        $projectEntityManager = $doctrine->getManager('project');
         $userRepository = $projectEntityManager->getRepository(User::class);
 
         $testUser = $userRepository->findOneBy(['username' => 'testKonto']);

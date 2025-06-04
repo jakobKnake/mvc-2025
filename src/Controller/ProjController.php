@@ -128,5 +128,10 @@ class ProjController extends AbstractController
         $this->addFlash('success', 'Du har loggat ut.');
         return $this->redirectToRoute('home_bet');
     }
+    #[Route("/proj/about", name: "proj_about")]
+    public function displayAbout(): Response
+    {
+        return $this->render('proj/about.html.twig');
+    }
 
 }

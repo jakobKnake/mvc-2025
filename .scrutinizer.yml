@@ -2,7 +2,7 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*, tools/php-cs-fixer/*, src/Controller/CardGameController.php, src/Controller/BookController.php]
+    excluded_paths: [vendor/*, test/*, tools/php-cs-fixer/*, src/Controller/CardGameController.php, src/Controller/BookController.php, src/DataFixtures/*]
 
 build:
     image: default-bionic

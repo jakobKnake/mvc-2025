@@ -5,9 +5,8 @@ namespace App\Controller;
 use App\Entity\Project\User;
 use App\Entity\Project\History;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
 use Symfony\Bundle\FrameworkBundle\Console\Application; // LÄGG TILL DENNA
-use Symfony\Component\Console\Input\ArrayInput; 
+use Symfony\Component\Console\Input\ArrayInput;
 
 /**
  * Test cases for ProjectGameController.
@@ -62,14 +61,14 @@ class ProjectGameControllerTest extends WebTestCase
 
         $client->followRedirects();
         $client->request('POST', '/proj/init_game');
-        
+
 
         $client->request('GET', '/proj/bets');
         $this->assertResponseIsSuccessful();
 
         $client->followRedirects();
         $client->request('POST', '/proj/bets');
-        
+
 
 
         $client->request('GET', '/proj/play');
@@ -77,11 +76,11 @@ class ProjectGameControllerTest extends WebTestCase
 
         $client->followRedirects();
         $client->request('POST', '/proj/split');
-        
+
 
         $client->request('GET', '/proj/play');
         $this->assertResponseIsSuccessful();
-        
+
 
     }
 
