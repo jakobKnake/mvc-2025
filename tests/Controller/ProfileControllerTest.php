@@ -34,4 +34,28 @@ class ProfileControllerTest extends WebTestCase
         }
 
     }
+
+    /**
+     * Test logging in and display user, bank and history
+     */
+    public function testRoutesWhileLoggedIn(): void
+    {
+        # Arrange
+        $client = static::createClient();
+
+        $client->request('POST', '/proj/loggin', [
+            'username' => 'test',
+            'password' => 'test123'
+        ]);
+
+        $routes = ['/proj/show_user', '/proj/bank', '/proj/history'];
+
+       # Act / Assert
+        foreach ($routes as $route) {
+            $client->request('GET', $route);
+            $this->assertResponseIsSuccessful();
+        }
+
+
+    }
 }
