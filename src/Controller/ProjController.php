@@ -133,5 +133,10 @@ class ProjController extends AbstractController
     {
         return $this->render('proj/about.html.twig');
     }
+    #[Route("/proj/about/database", name: "proj_about_database")]
+    public function displayAboutDb(): Response
+    {
+        return $this->render('proj/database.html.twig');
+    }
 
 }

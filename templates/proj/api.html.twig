@@ -1,0 +1,44 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Api Projekt{% endblock %}
+
+{% block body %}
+    <div class="api-container">
+        <h1>API-Dokumentation Projektet</h1>
+        <div class="api-lista">
+            <p>Sammanställning av alla JSON routes</p>
+            <ul>
+                {% for route in routes %}
+                    <li>
+                        <div class="api-route">
+                        {% if route.name == 'proj_api_history' %}
+                            <a href="{{ path(route.name, {'username': 'testKonto'}) }}">
+                                {{ route.path }} (Exempel länk till användaren testKonto)
+                            </a>
+                        {% elseif route.method == 'POST' %}
+                            {{ route.path }} (Testa formuläret nedan)
+                            
+                        {% elseif route.method == 'GET' %}
+                            <a href="{{ path(route.name) }}">
+                                {{ route.path }}
+                            </a>
+                        {% endif %}    
+                        </div>
+                        <div class="api-description">
+                            <b>{{ route.method }}</b> {{ route.description }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2 class="mb-3 text-center mt-2">Testa sätt in pengar!</h2>
+            <form method="POST" action="{{ path('proj_api_balance') }}">
+                <input class="border-2 rounded-sm border-black py-[0.6rem] px-[0.6rem]" id="amount" required type="number" min="1" name="amount">
+                <input type="submit" value="Sätt in pengar" class="cursor-pointer bg-[#3a3f44] py-2 px-4 rounded text-white mb-2">
+            </form>
+        </div>
+    </div>
+    
+
+{% endblock %}

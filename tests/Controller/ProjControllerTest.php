@@ -18,7 +18,7 @@ class ProjControllerTest extends WebTestCase
     {
         # Arrange
         $client = static::createClient();
-        $routes = ['/proj', '/proj/loggin', '/proj/create'];
+        $routes = ['/proj', '/proj/loggin', '/proj/create', '/proj/about', '/proj/about/database'];
 
         # Act / Assert
         foreach ($routes as $route) {

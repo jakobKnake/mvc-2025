@@ -21,14 +21,14 @@
             </a>
             <nav aria-label="Global navigation" class="w-full flex justify-center items-center">
                 <ul class="flex items-center gap-6 text-base py-6">
-                    <li><a class="{% if app.request.attributes.get('_route') == 'home' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('home') }}">Home</a></li>
-                    <li><a class="{% if app.request.attributes.get('_route') == 'about' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('about') }}">About</a></li>
-                    <li><a class="{% if app.request.attributes.get('_route') == 'api_index' %}text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('api_index') }}">API</a></li>
-                    <li><a class="{% if app.request.attributes.get('_route') == 'game' %} text-[#ff8b6b] {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('game') }}">Casino Lounge</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'home' %} text-black {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('home') }}">Home-Report</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'proj_about' %} text-black {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('proj_about') }}">About</a></li>
+                    <li><a class="{% if app.request.attributes.get('_route') == 'proj_api' %}text-black {% else %} text-white {% endif %} transition hover:text-white/75" href="{{ path('proj_api') }}">API</a></li>
                 </ul>
             </nav>
             <nav aria-label="Log in navigation" class="flex justify-end gap-3">
                 {% if app.session.get('logged_in') and app.session.get('user') %}
+                    {% set user = app.session.get('user') %}
                     <a href="{{ path('show_user') }}" class="w-[40px] h-[40px]"><img src="{{ asset('img/proj/' ~ user.getProfilePic()) }}" alt="Profil Avatar för {{ user.getUsername() }}"></a>
 
                     <div class="whitespace-nowrap">Saldo: {{ user.getBalance }}</div>

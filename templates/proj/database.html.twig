@@ -1,0 +1,80 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Database{% endblock %}
+
+{% block body %}
+<div class="bg-white p-6">
+    <h1>Om databasen</h1>
+
+    <div class="flex flex-col gap-2 justify-center items-center">
+
+    <div class="h-auto w-xl">
+        <img class="object-contain w-full h-full" src="{{ asset('/img/proj/db.png') }}" alt="Bild på ER diagram">
+    </div>
+    <div>
+        <h2>Tabellerna</h2>
+
+        <h3>User</h3>
+        <p>I User tabellen sparas användarens uppgifter i form av användarnamn, lösenord och kontosaldo.
+         Används för att logga in på betBTH.</p>
+
+        <h3>History</h3>
+
+        <p>History tabellen kopplas ihop med User genom user_id. Där sparas relevanta händelser under ett kontos livstid såsom
+            insättningar, uttag, när konto skapades och antal insatser tillsammans med summan som hanterades i eventet. 
+            Det sparas tillsammans med datumet händelsen inträffade.</p>
+
+    </div>
+
+    <div>
+        <h2>Databas</h2>
+        <p>För databasen använde jag mig av SQLite då jag använda samma under kursens gång. Kände att det bara var att hoppa på utan att behöva
+         ändra allt för mycket i config filerna...</p>
+         <p>Jag valde att skapa en ny databas för att inte krocka med tabeller från kursmomentet men det skapade en del problem för mig.
+         Framförallt då migrationer krockade med varandra och doctrine kunde inte hämta rätt tabell med mera.
+        Detta löstes genom väldigt lång tid av felsökning, google sökningar samt en del läsning i StackOverflow.
+        För andra med liknande problem länkar jag därför de tips jag följde. Problemet var att doctrines entity managers
+        använde fel connection som jag fick sätta i doctrine.yaml. Länkar:
+        <a class="underline" href="https://symfony.com/doc/current/reference/configuration/doctrine.html">Symfony</a>
+        <a class="underline" href="https://github.com/doctrine/DoctrineBundle/issues/816">Github</a> 
+        <a class="underline" href="https://stackoverflow.com/questions/58190190/doctrine-entity-manager-using-wrong-connection">stackoverflow</a></p>
+    </div>
+
+    <div>
+        <h2>Tester</h2>
+        <p>Jag försökte mig på att göra tester mot databasen. Jag skulle inte säga att det blev helt lyckat då jag inte riktigt fick till 
+        det jag hade tänkt genom att följa Symfonys dokumentation 
+        (<a class="underline" href="https://symfony.com/doc/current/testing.html#configuring-a-database-for-tests">Symfony</a>).
+        Jag ställde in DAMA, fixtures och laddade den med 'dummy' data men jag fick ändå inte till delen när man simulerar en inloggning.
+        Efter väldigt lång tid av felsökning fick jag ge se mig besegrad. Jag lyckades inte simulera inloggning. Istället fick jag skapa ett 
+        nytt testkonto i mina tester. På grund av detta samt otillräckliga kunskaper i Applikations tester så kunde jag inte 
+        testa mina projekt controllers fullt ut. Dock testades entiteterna förutom de metoder som var obligatoriska vid 'UserInterface' och 'PasswordAuthenticatedUserInterface'.</p>
+        <p>Testerna gick igenom i Scrutinizer, även där efter en del failade builds men som löstes genom att uppdatera de dependencies som skulle laddas 'before'
+        i Scrutinizer.yaml.</p>
+    </div>
+
+    <div>
+        <h2>ORM</h2>
+        <p>De fördelar jag ser med ORM jämfört med hur vi jobbade i databas-kursen är att man slipper skriva så mycket kod.
+        Den automatiserar för en och den har ett användarvänligt sätt att skapa entiteterna. Dock gillar jag inte att 
+        phpmd klagar på de variabler som skapats med ORM, till exempel att de inte är CamelCase som blir störande att få klag på.
+        En till nackdel som jag ser det på är att man behövde ställa in så många olika inställningar i yaml filer för att hämta rätt manager, få rätt connection osv 
+        medan som vi jobbade i databaskursen var det bara att köra 'use eshop' för att få rätt databas. I början av projektet när jag inte hade 
+        ställt in korrekt connection så var det enklaste att bara köra med vanlig SQL-frågor istället för att hämta entity manager. Så det är positivt att man kan kommunicera 
+        med databasen på mer än ett sätt.</p>
+        <p>Dock använde jag mig inte utav invecklade joins denna gång då jag inte känner mig riktigt säker än med ORM och där ser jag en klar fördel 
+        med vanliga SQL-frågor.</p>
+        <p>När det kommer till relationer mellan tabellerna så är det en del skillnad. När jag skapade ER-diagrammet satt jag i WorkBench
+        och manuellt skrev in Foreign Keys medan ORM använda 'OneToMany' som automatiskt fixade det.</p>
+        <p>Därav lite skillnad på mitt ER diagram som skapades i WorkBench framförallt 'balance'-int som blev en sträng genom ORM.</p>
+        <p>Just nu skulle jag föredra ren SQL men det är pågrund av att jag känner mig mer säkrare i det just nu.
+         Till framtiden tror jag att ORM underlättar i större projekt. Dock behövs mer kunskap för att kunna utnyttja 
+         de inbyggda funktionerna. Man sparar väldigt mycket tid kände jag men alla config filer fick det att käka tid från projektet också.<p>
+    </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
