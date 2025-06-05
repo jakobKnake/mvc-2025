@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-use \DateTime;
+use DateTime;
 
 
 class ProjApiController extends AbstractController
@@ -95,7 +95,7 @@ class ProjApiController extends AbstractController
         /** @var array<int, array<string|int>> $bets */
         $bets = $session->get('bets');
 
-        if (!$bets || empty($bets)) {
+        if (empty($bets)) {
             return new JsonResponse(['error' => 'Inga bets lagda än. Starta ett spel och lägg insatser'], 404);
         }
 
@@ -207,7 +207,7 @@ class ProjApiController extends AbstractController
                 'action' => $history->getActionType(),
                 'amount' => $history->getAmount(),
                 'description' => $history->getDescription(),
-                'created' => $history->getCreated()->format('Y-m-d H:i:s')
+                'created' => $history->getCreated()?->format('Y-m-d H:i:s') ?? 'Tomt på datum'
             ];
         }
 

@@ -761,6 +761,46 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProfileController.html#method_userHistories"
         },                {
+            "fqsen": "\\App\\Controller\\ProjApiController",
+            "name": "ProjApiController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojIndex\u0028\u0029",
+            "name": "projIndex",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projIndex"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiUser\u0028\u0029",
+            "name": "projApiUser",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiUser"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiBets\u0028\u0029",
+            "name": "projApiBets",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiBets"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiGameStatus\u0028\u0029",
+            "name": "projApiGameStatus",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiGameStatus"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiData\u0028\u0029",
+            "name": "projApiData",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiData"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiHistory\u0028\u0029",
+            "name": "projApiHistory",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiHistory"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AprojApiAddBalance\u0028\u0029",
+            "name": "projApiAddBalance",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_projApiAddBalance"
+        },                {
             "fqsen": "\\App\\Controller\\ProjController",
             "name": "ProjController",
             "summary": "Controller\u0020for\u0020the\u0020project.",
@@ -795,6 +835,16 @@ Search.appendIndex(
             "name": "logout",
             "summary": "",
             "url": "classes/App-Controller-ProjController.html#method_logout"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AdisplayAbout\u0028\u0029",
+            "name": "displayAbout",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_displayAbout"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AdisplayAboutDb\u0028\u0029",
+            "name": "displayAboutDb",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_displayAboutDb"
         },                {
             "fqsen": "\\App\\Controller\\ProjectGameController",
             "name": "ProjectGameController",
