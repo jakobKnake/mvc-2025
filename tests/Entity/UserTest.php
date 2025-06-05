@@ -4,6 +4,7 @@ namespace App\Entity\Project;
 
 use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\Collection;
+use LogicException;
 
 /**
  * Test cases for the User entity.
@@ -147,6 +148,47 @@ class UserTest extends TestCase
         # Assert
         $this->assertCount(0, $res2);
 
+    }
+
+    /**
+     * Test useridentifier
+     */
+    public function testUserIdentifier(): void
+    {
+        # Arrange
+        $user = new User();
+        $nullUser = new User();
+        $username = 'test';
+        $user->setUsername($username);
+
+        # Act
+        $res = $user->getUserIdentifier();
+
+        # Assert
+        $this->assertSame($username, $res);
+
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Username cannot be empty');
+
+        $nullUser->getUserIdentifier();
+    }
+
+    /**
+     * Test eraseCredentials kan anropas.
+     * Metoden är tom.
+     */
+    public function testEraseCredentials(): void
+    {
+        # Arrange
+        $user = new User();
+        $username = 'test';
+        $user->setUsername($username);
+
+        # Act / Assert
+        $user->eraseCredentials();
+        $user->eraseCredentials();
+
+        $this->assertSame($username, $user->getUsername());
     }
 
 
