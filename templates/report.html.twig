@@ -204,7 +204,61 @@
         </div>
         <div class="kursmoment" id="kmom10">
             <h2>Kmom10</h2>
-            <p>Här visas redovsningstext för kursmomentet</p>
+            <p>För landningssidan och projektet design så valde jag att skapa helt ny stylesheet och 
+            modifierade min befintliga. Mitt tema för projektet var online casino med inspiration från 
+            kända spelsidor. För att skilja den från report sidan så valdes ett helt annat färgschema 
+            med grön, vit, gul och svart. Typsnittet förblev samma då det är en av de mest användarvänliga 
+            för läsbarhet. Header och footern innehåller de länkar som är relevanta för projektet och jag har 
+            valt att inkludera inloggning av användare som då ändrar navbaren på hela me/report. På projektets 
+            about-sida kan man läsa en kort men informativ text om projektet med en länk till sidan om databasen.<br> 
+            På mitt repo finns min README.md som innehåller Scrutinizer badges för build, coverage och quality. 
+            Jag har en kodtäckning på 75% för me/report, den har alltså sänkts från senaste kursmoment men jag 
+            har 100% coverage på mina klasser för blackjack spelet samt entiteterna för detta projekt. 
+            Det som drar ner på overall procenten är på grund av att mina Controller är för stora samt att 
+            jag inte har lyckats testa dom fullt ut. Phpdoc och phpmetrics är uppdaterade samt att instruktionen 
+            för kloning av repo var där sedan kursstart.</p>
+
+            <p>Jag skapade ett JSON API till projektet med 6 olika routes som täcker de nya metoderna och funktionaliteterna 
+            som jag implementerade i projektet. Proj/api listar alla routes med klickbara länkar samt ett 
+            formulär för att testa POST-routen. För min POST-route valde jag att interagera med databasen 
+            och User för att uppdatera en användares saldo. Alla routes som visar upp User har jag valt att 
+            exkludera att visa upp det hashade lösenordet på grund av känslig information, även fast det är 
+            fiktiva konton och skolprojekt. Mina GET-metoder returnerar alltså den inloggade användaren, alla 
+            användare, insatser användaren gjort inför sin blackjack runda, status för spelet med användarens 
+            alla händer samt Historiken för användaren med username i URL:en. Att testa Controllern för JSON 
+            API:t var svårt och fick endast 30% kodtäckning på den. Känner mig nöjd ändå då vi inte gått igenom 
+            tester för Controllers.</p>
+
+            <p>Jag skapade en databas via ORM med två tabeller, User och History. User-tabellen används för att 
+            spara användaruppgifter som användarnamn, lösenord, kontosaldo samt en liten rolig avatar för 
+            profilbild som finns att välja mellan på profilsidan. History-tabellen kopplas till User med user_id 
+            och sparar då relevanta kontohändelser som exempelvis insättning, uttag, spelinsatser tillsammans med 
+            tidsstämplar för händelsen. Relationerna mellan tabellerna sattes med ORM istället för att manuellt 
+            sätta foreign keys.<br>
+            Jag använde SQLite som databas och skapade då en separat databas för projektet som dock orsakade 
+            konfigurationsproblem med Doctrines entity managers. Jag löste det genom att ställa in rätt 
+            connection i doctrine.yaml. Att enhetstesta mot databasen var svårt och tidskrävande vilket 
+            gjorde att jag inte lyckades helt med det. Jag följde Symfonys dokumentation och jag fick DAMA och 
+            fixtures att fungera men att simulera en inloggning likt dokumentationen fick jag aldrig till. 
+            Istället skapade jag nya testkonton i testerna istället.</p>
+
+            <p>Som jag tidigare nämnde så skapade jag en separat databas för projektet istället för att bara lägga till 
+            tabeller i biblioteksdatabasen som fanns sedan tidigare. Detta var väldigt tidskrävande och mer 
+            utmanande än vad jag trodde från början. När jag valde att skapa en separat databas tänkte jag 
+            inte att det skulle bli krockar mellan databasen där entity managern inte hittade rätt tabeller. 
+            Genom mycket tid på StackOverflow och dokumentation så hittade jag andra med liknande problem vilket 
+            jag länkade i min about-sida. Jag fick det att fungera korrekt vilket jag är nöjd över.<br>
+            En annan utmaning jag stötte på var att testa mot mina Controllers och mot databasen vilket vi inte gick 
+            igenom under kursen men som jag försökte mig på i kursmomentet med tester. I projektet fortsatte jag 
+            att försöka skapa tester som täcker mina controllers men som jag nämnde tidigare så fick jag inte 
+            full kodtäckning på dom.<br>
+            Utöver dessa måste jag säga att lära sig ett helt nytt ramverk i Tailwind var väldigt mentalt krävande 
+            och även den tidskrävande då jag inte var helt klar med syntaxen för Tailwind CSS. Jag valde att 
+            använda detta ramverk i början av kursen för att utmana mig själv och lära mig nya tekniker vilket 
+            jag själv känner att jag lyckats med. I framtiden kommer jag använda mig av Tailwind men jag är även 
+            nyfiken på att testa en ny för att ytterligare utforska och hitta nya favoriter. Just nu föredrar 
+            jag Tailwind och då jag fortfarande är novis i detta så ser jag ändå en stor förbättringspotential 
+            i framtiden när man lär sig flera funktioner i ramverket.</p>
         </div>
     </div>
 

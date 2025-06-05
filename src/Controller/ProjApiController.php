@@ -6,16 +6,13 @@ use App\Card\GameLogic;
 use App\Entity\Project\User;
 use App\Entity\Project\History;
 use Doctrine\Persistence\ManagerRegistry;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use DateTime;
-
 
 class ProjApiController extends AbstractController
 {
@@ -110,11 +107,11 @@ class ProjApiController extends AbstractController
         }
 
         $response = new JsonResponse($data);
-    
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
-        
+
         return $response;
     }
 
@@ -150,11 +147,11 @@ class ProjApiController extends AbstractController
         ];
 
         $response = new JsonResponse($data);
-    
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
-        
+
         return $response;
     }
 
@@ -162,7 +159,7 @@ class ProjApiController extends AbstractController
     public function projApiData(ManagerRegistry $doctrine): Response
     {
         $projEntityManager = $doctrine->getManager('project');
-        
+
         $users = $projEntityManager->getRepository(User::class)->findAll();
 
 
@@ -177,11 +174,11 @@ class ProjApiController extends AbstractController
         }
 
         $response = new JsonResponse($data);
-    
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
-        
+
         return $response;
 
     }
@@ -212,19 +209,21 @@ class ProjApiController extends AbstractController
         }
 
         $response = new JsonResponse($data);
-    
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
-        
+
         return $response;
 
     }
 
     #[Route("/proj/api/add_balance", name: "proj_api_balance", methods: ['POST'])]
-    public function projApiAddBalance(ManagerRegistry $doctrine, 
-    Request $request, SessionInterface $session): Response
-    {
+    public function projApiAddBalance(
+        ManagerRegistry $doctrine,
+        Request $request,
+        SessionInterface $session
+    ): Response {
         $projEntityManager = $doctrine->getManager('project');
 
         /** @var User|null $sessionUser */
@@ -268,11 +267,11 @@ class ProjApiController extends AbstractController
         ];
 
         $response = new JsonResponse($data);
-    
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
-        
+
         return $response;
     }
 }
